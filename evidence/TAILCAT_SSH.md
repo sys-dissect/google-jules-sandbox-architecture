@@ -10,7 +10,7 @@
 2026/10/05 20:44:39 Bringing WireGuard device up...
 2026/10/05 20:44:39 Starting network monitor...
 2026/10/05 20:44:39 Engine created.
-# 🐈 Server listening with new address: tcpGFwWCB4kL-bJnV4SoYOQ7kx5p6Fwr1fczjV3EBEDgVW4XKUOGFrWCCePMPzAykMIn3xg_TiUlMQflCgBKIF2jBl82UgUrXHPGFxWCCx0fWODe6bTO4OTNqzCth_TPzKu76HodyJLjgv8LXsQmFpGQEt
+# 🐈 Server listening with new address: <address>
 2026/10/05 20:46:23 got meow from nodekey:[REDACTED]
 2026/10/05 20:46:23 wg: [v2] peer(Tsy3…8Z1A) - Starting
 2026/10/05 20:46:23 wg: [v2] peer(Tsy3…8Z1A) - Received handshake initiation
@@ -31,8 +31,8 @@
 
 1. **Inbound SSH Connections**:
    - Inbound WireGuard handshakes and TCP SSH connection attempts (port 22) succeeded.
-   - Connections originated from peers `[Tsy37]` and `[QWn/7]` (e.g. peer endpoint `49.204.165.155:42546`).
+   - Connections originated from peers `[Tsy37]` and `[QWn/7]` (e.g. peer endpoint `[REDACTED]`).
 2. **Authorized Keys**:
    - Tailcat allowed and accepted inbound connections against the supplied `--ssh-authorized-keys` parameter.
 3. **Key Source Confirmation**:
-   - The authorized public keys used were provided directly by the user in the prompt instructions (`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7UMbg/h++f8V0Y2n4vdp7hahxkKuUy2JuSnlhVIg89 onkar@fedora-to-raspberrypi`, `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAjyJnzKT3ta2HqxIcRM7ir9i6Sxdccq3JMJtkWsZJ9j u0_a451@localhost`, and `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU15YSbGpEQvbADLn+dStxC6xfcXIjMs9lawF7B+oyP hatch`). None were generated in this session.
+   - The authorized public keys used were provided directly by the user in the prompt instructions (`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7UMbg/h++f8V0Y2n4vdp7hahxkKuUy2JuSnlhVIg89 [REDACTED]`, `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAjyJnzKT3ta2HqxIcRM7ir9i6Sxdccq3JMJtkWsZJ9j u0_a451@localhost`, and `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU15YSbGpEQvbADLn+dStxC6xfcXIjMs9lawF7B+oyP hatch`). None were generated in this session.
