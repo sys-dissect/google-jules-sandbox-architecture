@@ -2,10 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Ubuntu%2024.04%20%7C%20Linux%206.8--devbox-informational.svg)](evidence/HARDENING.md)
-[![Isolation](https://img.shields.io/badge/Isolation-KVM%20MicroVM%20(Virtio--MMIO)-orange.svg)](evidence/SYSTEM_TOPOLOGY.md)
-[![Control Plane](https://img.shields.io/badge/Control%20Plane-Virtio--VSOCK%20%2B%20tmux-blueviolet.svg)](evidence/OPT_AND_HARNESS.md)
-[![Storage](https://img.shields.io/badge/Storage-SquashFS%20%2B%20OverlayFS-red.svg)](evidence/BOOT_AND_HYPERVISOR.md)
-[![Methodology](https://img.shields.io/badge/Methodology-Black--Box%20Verification-brightgreen.svg)](evidence/)
+[![Isolation `[Tier 1]`](https://img.shields.io/badge/Isolation-KVM%20MicroVM%20(Virtio--MMIO)-orange.svg)](evidence/SYSTEM_TOPOLOGY.md)
+[![Control Plane `[Tier 1]`](https://img.shields.io/badge/Control%20Plane-Virtio--VSOCK%20%2B%20tmux-blueviolet.svg)](evidence/OPT_AND_HARNESS.md)
+[![Storage `[Tier 1]`](https://img.shields.io/badge/Storage-SquashFS%20%2B%20OverlayFS-red.svg)](evidence/BOOT_AND_HYPERVISOR.md)
+[![Methodology `[Tier 1]`](https://img.shields.io/badge/Methodology-Black--Box%20Verification-brightgreen.svg)](evidence/)
 
 > Google engineered the agent devbox. We audited the syscalls and hypervisor.<br>
 > Independent systems dissection of Google's **Jules** asynchronous coding agent execution sandbox, with empirical measurements, kernel dmesg telemetry, and runtime inspection extracted directly from inside live workload sessions.
@@ -63,7 +63,7 @@ All statements, measurements, and logs in this study are categorized according t
                                                   ▼
 +===================================================================================================+
 |                                3. HOST HYPERVISOR BOUNDARY                                        |
-|   [ KVM MicroVM (Cloud Hypervisor / Firecracker architecture) | pci=off | 4 vCPUs | 8 GiB RAM ]   |
+|   [ KVM MicroVM (Inferred Cloud Hypervisor / Firecracker architecture) | pci=off | 4 vCPUs | 8 GiB RAM ]   |
 |                                                                                                   |
 |   Virtio-MMIO Registers:                                                                          |
 |   - 0xc0001000: virtio0 (vda, 4.36 GiB SquashFS Base Image)                                      |
@@ -111,12 +111,12 @@ All statements, measurements, and logs in this study are categorized according t
 ### 1. MicroVM Virtualization & Syscall Confinement
 
 * **Kernel Command Line** `[Tier 1]`:
-  ```text
+  ```text `[Tier 1]`
   console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
   ```
 * **MicroVM Hypervisor Architecture** `[Tier 1]`:
   * `pci=off`: PCI bus probing is explicitly disabled. Traditional PCI host bridges and buses do not exist.
-  * **Virtio-MMIO**: Device enumeration occurs entirely via 4 fixed memory-mapped I/O windows (`0xc0001000` through `0xc0004000`, IRQs 5-8). This topology is characteristic of purpose-built microVM hypervisors such as **Cloud Hypervisor** or **Firecracker**, optimized for sub-second startup times and minimal memory footprint.
+  * **Virtio-MMIO**: Device enumeration occurs entirely via 4 fixed memory-mapped I/O windows (`0xc0001000` through `0xc0004000`, IRQs 5-8). This topology suggests an inference of a purpose-built microVM hypervisor such as **Cloud Hypervisor** or **Firecracker**, optimized for minimal memory footprint.
 * **CPU & Microarchitecture** `[Tier 1]`:
   * 4 vCPUs backed by `Intel(R) Xeon(R) Processor @ 2.30GHz`.
   * Feature flags include `avx`, `avx2`, `f16c`, `bmi1`, `bmi2`, `erms`, `aes`, `rdrand`.
@@ -164,7 +164,7 @@ The guest storage architecture is decoupled into an immutable golden image and a
   ```
 * **Cross-Task Durability Semantics** `[Tier 1]`:
   * **Within a Task**: Modifications across turns (files in `/tmp`, `/home/jules`, and `/app`) persist perfectly in the `/dev/vdb` upperdir.
-  * **Across Separate Tasks**: As proven by [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md), markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`, which booted with a fresh timestamp (`08:32:26`). Each task is provisioned with a newly allocated `/dev/vdb` disk or clean overlay instance.
+  * **Across Separate Tasks**: As proven by [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md), markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`. However, `tune2fs -l /dev/vdb` reveals the filesystem was created 2026-03-06, meaning the per-task isolation is implemented via host-side snapshots of the backing image, not a fresh format per task. Furthermore, `uptime -s` shows non-uniform kernel freshness across the fleet (mixing fresh boots with ~213-day uptimes), though isolation semantics remain intact.
 
 ---
 
@@ -229,11 +229,11 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
 
 * **1. Docker Container Execution Failure (Overlay-on-Overlay)** `[Tier 1]`:
   * **Observation**: Running `docker run --rm alpine uname -a` successfully pulled the image from Docker Hub (confirming registry egress), but failed immediately at runtime:
-    ```text
+    ```text `[Tier 1]`
     docker: Error response from daemon: failed to mount /tmp/containerd-mount...: mount source: "overlay", ... err: invalid argument
     ```
   * **Kernel Confirmation**: Kernel `dmesg` confirmed the exact failure point:
-    ```text
+    ```text `[Tier 1]`
     [18408631.151288] overlay: filesystem on /var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/work not supported as upperdir
     ```
   * **Systems Root Cause**: The root filesystem `/` is already an `overlayfs`. Containerd's default `overlayfs` snapshotter attempts to mount an upperdir residing on this underlying overlayfs. The Linux kernel explicitly rejects using an overlayfs as an upper layer for another overlayfs (`EINVAL`).
@@ -248,7 +248,7 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
 
 ## Comparative Matrix: Google Jules vs. Gemini Spark
 
-A comparative analysis of Google's two primary agent execution environments:
+A comparative analysis of Google.s two primary agent execution environments (Note: Spark-side claims are sourced from a different external teardown testimony, not direct observation here):
 
 | Architectural Dimension | Google Jules Devbox | Gemini Spark Sandbox |
 | :--- | :--- | :--- |
@@ -261,7 +261,7 @@ A comparative analysis of Google's two primary agent execution environments:
 | **Storage Architecture** | SquashFS `/rom` (ro) + ext4 `/overlay` (rw) via `pivot_root` | Ephemeral root overlayfs + Plan 9 (9P) persistent host mounts |
 | **Cognitive Memory Plane** | Ephemeral per task; no in-guest vector memory FUSE | In-guest FUSE daemon (**Jetski `mfs`**) connected to host Dumbo/Remy |
 | **Visual Automation** | Headless Google Chrome + Playwright | 1440p TigerVNC virtual display + `ffmpeg` + `xdotool` |
-| **Container Engine** | `dockerd` running (fails to launch due to nested overlayfs) | Container runtime disallowed inside gVisor |
+| **Container Engine** | `dockerd` running (default overlay snapshotter fails; vfs works) | Container runtime disallowed inside gVisor |
 
 ---
 
@@ -278,6 +278,8 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
 | [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
+| [`evidence/RUNTIME_AUDIT.md`](evidence/RUNTIME_AUDIT.md) | Runtime execution audit | Package mirrors (us-central1 GCE), storage I/O, Chrome DOM rendering, VFS container testing |
+| [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying host-side vdb snapshots and non-uniform kernel freshness |
 
 ---
 
