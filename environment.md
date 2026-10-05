@@ -20,6 +20,24 @@ During initial setup, the following tools were found available on the system:
 * **Uptime:** Unknown (Machine had been up for ~8 minutes when last observed)
 * **Egress Connectivity:** Verified outbound access to `google.com`, `github.com`, and `proxy.golang.org` via HTTPS port 443. Other egress unknown.
 
+## Virtualization and Resource Limits
+
+* **Environment Type:** Virtual Machine (KVM)
+  * **Evidence:** The command `systemd-detect-virt` returns `kvm`. The init process cgroup (`/proc/1/cgroup`) is `0::/init.scope`, lacking the typical `/docker/` or `/lxc/` hierarchy seen in containers. There is no `/.dockerenv` file. System processes include `systemd-journald`, `systemd-udevd`, `systemd-logind`, `dockerd`, `containerd`, and various `kworker` threads, typical of a full OS boot.
+* **Resources:**
+  * **CPU:** 4 logical processors (determined via `nproc` and system load output).
+  * **Memory:** 7.8Gi total, 7.4Gi available (determined via `free -h`).
+  * **Disk:** Root volume (`/`) has 98G total, 93G available (determined via `df -h`).
+  * **Limits:** No explicit limits on memory, CPU, or disk were identifiable from basic resource probes.
+
+## Exposed Interfaces
+
+* **Interfaces:**
+  * System uses **systemd**, exposing D-Bus at `systemd:` (observed via `ps aux`).
+  * An SSH server (`sshd`) is running, listening for connections, and `socat` maps a VSOCK connection (VSOCK-LISTEN:22) to TCP 127.0.0.1:22.
+  * `dockerd` is running and listens locally on a unix socket (`fd://` and `/run/containerd/containerd.sock`).
+  * No explicit API schemas, custom config files (aside from standard system configurations like `/etc/os-release`), or application-specific service definitions were discovered directly in the initial environment.
+
 ## Chosen Stack
 
 * **Language:** Go
