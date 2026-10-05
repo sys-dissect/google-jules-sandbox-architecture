@@ -164,7 +164,7 @@ The guest storage architecture is decoupled into an immutable golden image and a
   ```
 * **Cross-Task Durability Semantics** `[Tier 1]`:
   * **Within a Task**: Modifications across turns (files in `/tmp`, `/home/jules`, and `/app`) persist perfectly in the `/dev/vdb` upperdir.
-  * **Across Separate Tasks**: As proven by [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md), markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`, which booted with a fresh timestamp (`08:32:26`). Each task is provisioned with a newly allocated `/dev/vdb` disk or clean overlay instance.
+  * **Across Separate Tasks**: As proven by [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md), markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`. However, `tune2fs -l /dev/vdb` reveals the filesystem was created 2026-03-06, meaning the per-task isolation is implemented via host-side snapshots of the backing image, not a fresh format per task. Furthermore, `uptime -s` shows non-uniform kernel freshness across the fleet (mixing fresh boots with ~213-day uptimes), though isolation semantics remain intact.
 
 ---
 
@@ -279,7 +279,7 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
 | [`evidence/RUNTIME_AUDIT.md`](evidence/RUNTIME_AUDIT.md) | Runtime execution audit | Package mirrors (us-central1 GCE), storage I/O, Chrome DOM rendering, VFS container testing |
-| [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying fresh overlay per task |
+| [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying host-side vdb snapshots and non-uniform kernel freshness |
 
 ---
 
