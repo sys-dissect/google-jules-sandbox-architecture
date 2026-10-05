@@ -164,7 +164,7 @@ The guest storage architecture is decoupled into an immutable golden image and a
   ```
 * **Cross-Task Durability Semantics** `[Tier 1]`:
   * **Within a Task**: Modifications across turns (files in `/tmp`, `/home/jules`, and `/app`) persist perfectly in the `/dev/vdb` upperdir.
-  * **Across Separate Tasks**: As proven by `CROSS_TASK_CHECK.md`, markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`, which booted with a fresh timestamp (`08:32:26`). Each task is provisioned with a newly allocated `/dev/vdb` disk or clean overlay instance.
+  * **Across Separate Tasks**: As proven by [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md), markers written during task `14165408129265143467` disappeared completely in task `10448450951705239643`, which booted with a fresh timestamp (`08:32:26`). Each task is provisioned with a newly allocated `/dev/vdb` disk or clean overlay instance.
 
 ---
 
@@ -275,8 +275,9 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/OPT_AND_HARNESS.md`](evidence/OPT_AND_HARNESS.md) | Runtime tooling & process tree | `/opt/environment_summary.sh`, Chrome/Playwright census, `pstree` (`socat`, `tmux`, `inotifywait`), VSOCK unit file |
 | [`evidence/SYSTEM_TOPOLOGY.md`](evidence/SYSTEM_TOPOLOGY.md) | Hypervisor & storage topology | Kernel `/proc/cmdline` (`pci=off`, `virtio_mmio`), `lsblk` (SquashFS + ext4), Docker overlay mount failure |
 | [`evidence/BOOT_AND_HYPERVISOR.md`](evidence/BOOT_AND_HYPERVISOR.md) | Boot script & kernel proof | `/usr/sbin/overlay-init` source, kernel `dmesg` overlay error, MMIO resource allocations, `/proc/cpuinfo` flags |
-| [`TASK_LIFECYCLE.md`](TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
-| [`PERSISTENCE.md`](PERSISTENCE.md) & [`CROSS_TASK_CHECK.md`](CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
+| [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
+| [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
+| [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
 
 ---
 
