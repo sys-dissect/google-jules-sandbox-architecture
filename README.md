@@ -298,6 +298,7 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
 | [`evidence/RUNTIME_AUDIT.md`](evidence/RUNTIME_AUDIT.md) | Runtime execution audit | Package mirrors (us-central1 GCE), storage I/O, Chrome DOM rendering, VFS container testing |
 | [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying host-side vdb snapshots and non-uniform kernel freshness |
+| [`evidence/IDLE_AND_LIFECYCLE.md`](evidence/IDLE_AND_LIFECYCLE.md) | MicroVM idle & suspension | Firecracker `state: Paused` vCPU freezing, CRNG fork reseed telemetry, and turn-boundary keepalive analysis |
 
 ---
 
