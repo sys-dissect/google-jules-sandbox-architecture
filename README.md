@@ -300,7 +300,7 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying host-side vdb snapshots and non-uniform kernel freshness |
 | [`evidence/IDLE_AND_LIFECYCLE.md`](evidence/IDLE_AND_LIFECYCLE.md) | MicroVM idle & suspension | Firecracker `state: Paused` vCPU freezing, CRNG fork reseed telemetry, and turn-boundary keepalive analysis |
 | [`evidence/VIRTIO_AND_HARDWARE_DEVICES.md`](evidence/VIRTIO_AND_HARDWARE_DEVICES.md) | Virtio bus & hardware inventory | Virtio device register map, IO-APIC interrupts, TSC clocksource, cache hierarchy, and SquashFS superblock parsing |
-| [`evidence/NETWORK_TOPOLOGY_AND_EGRESS.md`](evidence/NETWORK_TOPOLOGY_AND_EGRESS.md) | Network topology & routing | Public IP (`34.72.116.213` GCP `us-central1`), Firecracker MAC address derivation, MTU offloads, and iptables |
+| [`evidence/NETWORK_TOPOLOGY_AND_EGRESS.md`](evidence/NETWORK_TOPOLOGY_AND_EGRESS.md) | Network topology & routing | Public IP (`34.72.116.xxx` GCP `us-central1`), Firecracker MAC address derivation, MTU offloads, and iptables |
 | [`evidence/SECURITY_AND_CGROUPS.md`](evidence/SECURITY_AND_CGROUPS.md) | Confinement & cgroups v2 | Absence of LSM (no AppArmor/SELinux), passwordless `sudo`, and unthrottled cgroups v2 user slice |
 
 ---

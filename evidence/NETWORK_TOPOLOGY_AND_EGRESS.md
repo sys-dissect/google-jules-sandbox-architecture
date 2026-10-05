@@ -6,13 +6,13 @@ HTTP and STUN probes confirm the public IP and cloud provenance of the Jules dev
 
 ```json
 {
-  "ip": "34.72.116.213",
+  "ip": "34.72.116.xxx",
   "country": "United States",
   "region_name": "Iowa",
   "city": "Council Bluffs",
   "asn": "AS396982",
   "asn_org": "GOOGLE-CLOUD-PLATFORM",
-  "hostname": "213.116.72.34.bc.googleusercontent.com"
+  "hostname": "xxx.116.72.34.bc.googleusercontent.com"
 }
 ```
 
