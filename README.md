@@ -279,6 +279,7 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
 | [`evidence/RUNTIME_AUDIT.md`](evidence/RUNTIME_AUDIT.md) | Runtime execution audit | Package mirrors (us-central1 GCE), storage I/O, Chrome DOM rendering, VFS container testing |
+| [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying fresh overlay per task |
 
 ---
 
