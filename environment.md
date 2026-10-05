@@ -12,8 +12,13 @@ During initial setup, the following tools were found available on the system:
 * **GCC:** gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 * **Cargo:** cargo 1.94.0 (85eff7c80 2026-01-15)
 
-System specifications:
-* `Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux`
+## Environment Report
+
+* **Operating System:** Ubuntu 24.04.4 LTS (Noble Numbat)
+* **Kernel Version:** Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+* **Boot Time:** 2026-10-05 06:48:42
+* **Uptime:** Unknown (Machine had been up for ~8 minutes when last observed)
+* **Egress Connectivity:** Verified outbound access to `google.com`, `github.com`, and `proxy.golang.org` via HTTPS port 443. Other egress unknown.
 
 ## Chosen Stack
 
