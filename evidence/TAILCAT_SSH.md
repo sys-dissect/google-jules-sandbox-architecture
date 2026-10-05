@@ -17,7 +17,7 @@
 2026/10/05 20:46:23 wg: [v2] peer(Tsy3…8Z1A) - Sending handshake response
 2026/10/05 20:46:23 [v1] Accept: TCP{[fd7a:115c:a1e0:4ecc:b7ef:99ae:64e5:b500]:47368 > [fd7a:115c:a1e0:7890:bf9b:2675:784a:860e]:22} 80 tcp ok
 2026/10/05 20:47:15 got meow from nodekey:[REDACTED]
-2026/10/05 20:47:15 magicsock: disco: node [QWn/7] d:[REDACTED] now using 49.204.165.155:42546 mtu=1360 tx=[REDACTED]
+2026/10/05 20:47:15 magicsock: disco: node [QWn/7] d:[REDACTED] now using [REDACTED] mtu=1360 tx=[REDACTED]
 2026/10/05 20:47:15 wg: [v2] peer(QWn/…iQH8) - Starting
 2026/10/05 20:47:15 wg: [v2] peer(QWn/…iQH8) - Received handshake initiation
 2026/10/05 20:47:15 wg: [v2] peer(QWn/…iQH8) - Sending handshake response
