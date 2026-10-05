@@ -31,13 +31,21 @@ exec /usr/sbin/init $@
 unknown
 ```
 
-3. MicroVM & Virtio dmesg: dmesg | grep -iE "hypervisor|virtio|kvm|overlay" | head -n 40; cat /proc/iomem | grep -i virtio
+3. MicroVM & Virtio dmesg: dmesg | grep -iE "hypervisor|virtio|kvm|overlay|acpi" | head -n 40; cat /proc/iomem | grep -i virtio
 ```
+[    0.000000] Linux version 6.8.0 (feyu@feyu-encarta.c.googlers.com) (gcc (Debian 15.2.0-3) 15.2.0, GNU ld (GNU Binutils for Debian) 2.45) #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026
 [    0.000000] Command line: console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
+[    0.000000] DMI not present or invalid.
 [    0.000000] Hypervisor detected: KVM
 [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
 [    0.000001] kvm-clock: using sched offset of 72721302 cycles
 [    0.000022] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.002522] ACPI: RSDP 0x00000000000E0000 000024 (v02 FIRECK)
+[    0.002602] ACPI: XSDT 0x00000000000A024E 00003C (v01 FIRECK FCMVXSDT 00000000 FCAT 20240119)
+[    0.002686] ACPI: FACP 0x00000000000A00A6 000114 (v06 FIRECK FCVMFADT 00000000 FCAT 20240119)
+[    0.002751] ACPI: DSDT 0x000000000009FD6C 00033A (v02 FIRECK FCVMDSDT 00000000 FCAT 20240119)
+[    0.002756] ACPI: APIC 0x00000000000A01BA 000058 (v06 FIRECK FCVMMADT 00000000 FCAT 20240119)
+[    0.002761] ACPI: MCFG 0x00000000000A0212 00003C (v01 FIRECK FCMVMCFG 00000000 FCAT 20240119)
 [    0.762632] kvm-guest: APIC: eoi() replaced with kvm_guest_apic_eoi_write()
 [    0.762895] kvm-guest: KVM setup pv remote TLB flush
 [    0.762933] kvm-guest: setup PV sched yield

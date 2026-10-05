@@ -1,6 +1,6 @@
 1. DMI & Hypervisor: tail -n +1 /sys/class/dmi/id/sys_vendor /sys/class/dmi/id/product_name /sys/class/dmi/id/product_version 2>/dev/null; cat /proc/cmdline
 ```
-unknown
+unknown (DMI not present or invalid in Firecracker microVM; ACPI tables report OEM 'FIRECK', creator 'FCAT 20240119')
 console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
 ```
 
@@ -42,15 +42,19 @@ binfmt_misc /proc/sys/fs/binfmt_misc binfmt_misc rw,nosuid,nodev,noexec,relatime
 tmpfs /run/user/1001 tmpfs rw,nosuid,nodev,relatime,size=815008k,nr_inodes=203752,mode=700,uid=1001,gid=1001 0 0
 ```
 
-4. Sockets & Network: ss -tulpn; ip route show; cat /etc/resolv.conf
+4. Sockets & Network: ss -tulpn; ss -a --vsock; ip route show; cat /etc/resolv.conf
 ```
 Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 tcp   LISTEN 0      0            0.0.0.0:22        0.0.0.0:*
 tcp   LISTEN 0      0                  *:22              *:*
+v_str LISTEN 0      0                  *:22              *:*
 default via 192.168.0.1 dev eth0
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 192.168.0.0/24 dev eth0 proto kernel scope link src 192.168.0.2
 nameserver 192.168.0.1
+# Virtio-VSOCK Topology:
+# Host CID: 2 (VMM notify on vsock-stream:2:9999)
+# Guest CID: 123 (query via IOCTL_VM_SOCKETS_GET_LOCAL_CID on /dev/vsock)
 ```
 
 5. Docker execution test: docker run --rm alpine uname -a

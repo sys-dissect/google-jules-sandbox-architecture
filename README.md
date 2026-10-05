@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Ubuntu%2024.04%20%7C%20Linux%206.8--devbox-informational.svg)](evidence/HARDENING.md)
+[![Hypervisor `[Tier 1]`](https://img.shields.io/badge/Hypervisor-AWS%20Firecracker%20(ACPI%20FIRECK)-blue.svg)](evidence/FIRECRACKER_AND_VSOCK.md)
 [![Isolation `[Tier 1]`](https://img.shields.io/badge/Isolation-KVM%20MicroVM%20(Virtio--MMIO)-orange.svg)](evidence/SYSTEM_TOPOLOGY.md)
 [![Control Plane `[Tier 1]`](https://img.shields.io/badge/Control%20Plane-Virtio--VSOCK%20%2B%20tmux-blueviolet.svg)](evidence/OPT_AND_HARNESS.md)
 [![Storage `[Tier 1]`](https://img.shields.io/badge/Storage-SquashFS%20%2B%20OverlayFS-red.svg)](evidence/BOOT_AND_HYPERVISOR.md)
@@ -20,12 +21,12 @@ This repository documents the guest execution environment from the inside out—
 
 The architecture comprises five operational layers:
 
-1. **Virtualization & Hardware Plane**: A paravirtualized hardware virtual machine (**KVM**) running a custom kernel (`Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC`). The hypervisor enforces a **PCI-free (`pci=off`) microVM topology** where all virtual devices (disks, network, vsock) are mapped via **Virtio-MMIO** registers, initialized with static kernel network routing and sub-second boot times.
+1. **Virtualization & Hardware Plane**: A paravirtualized hardware virtual machine (**KVM**) running a custom kernel (`Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC` compiled by Google's `feyu@feyu-encarta.c.googlers.com`). The hypervisor is directly confirmed via ACPI tables (`FIRECK` / `FCAT 20240119`) as **AWS Firecracker**, enforcing a **PCI-free (`pci=off`) microVM topology** where all virtual devices (disks, network, vsock) are mapped via **Virtio-MMIO** registers, initialized with static kernel network routing and sub-second boot times.
 2. **Storage Subsystem & Lifecycle Durability**: An immutable, read-only compressed base image (**SquashFS 4.0** on `/dev/vda`) paired with an ephemeral writable scratch disk (**ext4** on `/dev/vdb`). A custom init script (`/usr/sbin/overlay-init`) mounts an `overlayfs` uniting them and pivots the root (`pivot_root`). Task state is fully durable across turns *within* a task, but structurally ephemeral *across* separate tasks.
-3. **Control Plane & Command Harness**: The host hypervisor mediates orchestration via **Virtio-VSOCK** (`vsock-stream:2:9999` for VMM lifecycle notification; `VSOCK-LISTEN:22` bridged by `socat` to localhost SSH). Execution runs inside a persistent background **`tmux`** session, using a file-piped FIFO harness in `/run/devbox-session/default/` synchronized via bash `PROMPT_COMMAND` and `inotifywait`.
+3. **Control Plane & Command Harness**: The host hypervisor mediates orchestration via **Virtio-VSOCK** (`vsock-stream:2:9999` on Host CID 2 for VMM lifecycle notification; `VSOCK-LISTEN:22` on Guest CID 123 bridged by `socat` to localhost SSH). Execution runs inside a persistent background **`tmux`** session managed headless by `swebot@notty`, using a file-piped FIFO harness in `/run/devbox-session/default/` synchronized via bash `PROMPT_COMMAND` and `inotifywait`.
 4. **Tooling & Headless Automation Plane**: A comprehensive, pre-baked developer ecosystem featuring a complete **Google Chrome** (268 MB) and **Playwright** virtual environment for browser testing, alongside multi-language SDKs (Python, Node/NVM, Java, Go, Rust, Bun, C/C++, Flutter, Android SDK) audited via `/opt/environment_summary.sh`.
 5. **Empirical Negative Results & Security Boundaries**:
-   * **Container Execution Failure**: Containerd fails out-of-the-box (`EINVAL: filesystem not supported as upperdir`) due to kernel restrictions prohibiting nested overlayfs mounts on an underlying overlayfs root.
+   * **Container Execution Failure**: Containerd fails out-of-the-box (`EINVAL: filesystem not supported as upperdir`) due to kernel restrictions prohibiting nested overlayfs mounts on an underlying overlayfs root. However, ad-hoc execution via `dockerd --storage-driver=vfs` succeeds cleanly.
    * **Nested Virtualization Absent**: CPU features lack `vmx` / `svm` flags; hardware virtualization cannot be nested.
    * **Zero Hardware Bus Exposure**: `pci=off` disables PCI enumeration entirely.
 
@@ -63,13 +64,13 @@ All statements, measurements, and logs in this study are categorized according t
                                                   ▼
 +===================================================================================================+
 |                                3. HOST HYPERVISOR BOUNDARY                                        |
-|   [ KVM MicroVM (Inferred Cloud Hypervisor / Firecracker architecture) | pci=off | 4 vCPUs | 8 GiB RAM ]   |
+|   [ KVM MicroVM (AWS Firecracker | ACPI: FIRECK / FCAT) | pci=off | 4 vCPUs | 8 GiB RAM ]          |
 |                                                                                                   |
 |   Virtio-MMIO Registers:                                                                          |
 |   - 0xc0001000: virtio0 (vda, 4.36 GiB SquashFS Base Image)                                      |
 |   - 0xc0002000: virtio1 (vdb, 100 GiB ext4 Scratch Overlay Disk)                                 |
 |   - 0xc0003000: virtio2 (eth0, Virtio-Net, Static IP 192.168.0.2)                                 |
-|   - 0xc0004000: virtio3 (Virtio-VSOCK, Host Channel)                                             |
+|   - 0xc0004000: virtio3 (Virtio-VSOCK, Host CID 2, Guest CID 123)                                 |
 +=================================================│=================================================+
                                                   │ MMIO Bus / VSOCK Streams
                                                   ▼
@@ -87,9 +88,9 @@ All statements, measurements, and logs in this study are categorized according t
 |                                                                                                   |
 |   +-------------------------------------------------------------------------------------------+   |
 |   |  Control Plane & IPC Harness                                                              |   |
-|   |  - Host Notification: systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999        |   |
-|   |  - socat (PID 876): VSOCK-LISTEN:22 ──> TCP 127.0.0.1:22 (SSH Bridge)                    |   |
-|   |  - sshd (PID 929): Host worker connects over VSOCK                                        |   |
+|   |  - Host Notification: systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 (CID 2)|   |
+|   |  - socat (PID 876): VSOCK-LISTEN:22 ──> TCP 127.0.0.1:22 (SSH Bridge on Guest CID 123)   |   |
+|   |  - sshd (PID 929): Host orchestrator 'swebot@notty' connects over VSOCK                   |   |
 |   |  - tmux server (PID 2348): Holds session 'default' (cwd: /app, JULES_SESSION_ID)          |   |
 |   |  - File FIFO IPC: /run/devbox-session/default/{command,stdin,stdout,stderr}               |   |
 |   |  - Liveness & Completion: inotifywait watches /run/.../stamp; PROMPT_COMMAND touches stamp|   |
@@ -99,7 +100,8 @@ All statements, measurements, and logs in this study are categorized according t
 |   |  Execution & Automation Engines                                                           |   |
 |   |  - Headless Browser: Google Chrome (/opt/google/chrome) + Playwright (/opt/jules)         |   |
 |   |  - Multi-Language Toolchain: Go 1.24, Python 3.12, Node 22, Rust, Flutter, Android SDK    |   |
-|   |  - Docker Daemon: dockerd active, but container launch blocked by overlay-on-overlay     |   |
+|   |  - Docker Daemon: dockerd active (overlay-on-overlay fails, vfs storage driver succeeds)  |   |
+|   |  - Interactive Tunnel: Tailcat WireGuard DERP relay allows authenticated developer ingress|   |
 |   +-------------------------------------------------------------------------------------------+   |
 +===================================================================================================+
 ```
@@ -114,9 +116,16 @@ All statements, measurements, and logs in this study are categorized according t
   ```text `[Tier 1]`
   console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
   ```
-* **MicroVM Hypervisor Architecture** `[Tier 1]`:
+* **MicroVM Hypervisor Architecture: AWS Firecracker** `[Tier 1]`:
   * `pci=off`: PCI bus probing is explicitly disabled. Traditional PCI host bridges and buses do not exist.
-  * **Virtio-MMIO**: Device enumeration occurs entirely via 4 fixed memory-mapped I/O windows (`0xc0001000` through `0xc0004000`, IRQs 5-8). This topology suggests an inference of a purpose-built microVM hypervisor such as **Cloud Hypervisor** or **Firecracker**, optimized for minimal memory footprint.
+  * **Virtio-MMIO**: Device enumeration occurs entirely via 4 fixed memory-mapped I/O windows (`0xc0001000` through `0xc0004000`, IRQs 5-8).
+  * **ACPI Table Fingerprint** `[Tier 1]`: Kernel dmesg logs confirm the microVM hypervisor is AWS **Firecracker**:
+    * RSDP OEM ID: `FIRECK`
+    * Table Signatures: `FCVMXSDT`, `FCVMFADT`, `FCVMDSDT`, `FCVMMADT`, `FCMVMCFG`
+    * Table Creator: `FCAT 20240119` (Firecracker ACPI Tables).
+  * **Custom Kernel Build & Provenance** `[Tier 1]`:
+    * Kernel Banner: `Linux version 6.8.0 (feyu@feyu-encarta.c.googlers.com) (gcc (Debian 15.2.0-3) 15.2.0, GNU ld (GNU Binutils for Debian) 2.45) #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026`
+    * Compiled by Google engineer `feyu` on `feyu-encarta.c.googlers.com`, providing direct provenance linkage to the author of `/usr/sbin/overlay-init`.
 * **CPU & Microarchitecture** `[Tier 1]`:
   * 4 vCPUs backed by `Intel(R) Xeon(R) Processor @ 2.30GHz`.
   * Feature flags include `avx`, `avx2`, `f16c`, `bmi1`, `bmi2`, `erms`, `aes`, `rdrand`.
@@ -173,12 +182,12 @@ The guest storage architecture is decoupled into an immutable golden image and a
 Google avoids external agent daemon bloat by reusing battle-tested Unix utilities (`socat`, `sshd`, `tmux`, `inotifywait`):
 
 ```
-[Host Hypervisor]
-       │ (Virtio-VSOCK Stream, Host CID 2)
+[Host Hypervisor] (CID 2)
+       │ (Virtio-VSOCK Stream, Host CID 2, notify on vsock-stream:2:9999)
        ▼
-socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22 (PID 876)
+socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22 (PID 876, Guest CID 123)
        │
-sshd worker (PID 929)
+sshd worker (PID 929: swebot@notty)
        ├─ inotifywait -e create,moved_to --include /stamp$ /run/devbox-session/default
        └─ tail --pid 2349 -f /dev/null
        ▲
@@ -190,9 +199,12 @@ tmux server (PID 2348: new-session -d -s default -c /app -e JULES_SESSION_ID=...
             PROMPT_COMMAND: echo $? > exit_code && touch stamp
 ```
 
-* **VSOCK SSH Proxy** `[Tier 1]`: `devbox-ssh-over-vsock.service` maps `VSOCK-LISTEN:22` to `TCP 127.0.0.1:22`. The unit file explicitly documents the rationale:
-  > *"For systemd > 256 there is also a systemd-ssh-generator(8) that can configure sshd over vsock. We use a somewhat old ubuntu for guest that has systemd 255. So the approach here is slightly more portable... c.f. https://libvirt.org/ssh-proxy.html#guest-os-requirements"*
-* **VMM Notification Credential** `[Tier 1]`: The kernel passes `systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999` to allow guest initialization services to report status back to the hypervisor management plane on VSOCK CID 2, port 9999.
+* **VSOCK Addressing & Topography** `[Tier 1]`:
+  * **Host Hypervisor CID:** `2` (listening on port `9999` for VMM lifecycle notification: `systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999`).
+  * **Guest Workload CID:** `123` (empirically queried from `/dev/vsock` via `IOCTL_VM_SOCKETS_GET_LOCAL_CID` `0x7b9`).
+  * **VSOCK SSH Proxy**: `devbox-ssh-over-vsock.service` maps `VSOCK-LISTEN:22` to `TCP 127.0.0.1:22` (`ss -a --vsock` displays `v_str LISTEN 0 0 *:22 *:*`). The unit file explicitly documents the rationale:
+    > *"For systemd > 256 there is also a systemd-ssh-generator(8) that can configure sshd over vsock. We use a somewhat old ubuntu for guest that has systemd 255. So the approach here is slightly more portable... c.f. https://libvirt.org/ssh-proxy.html#guest-os-requirements"*
+* **Host Orchestrator Identity (`swebot`)** `[Tier 1]`: The host agent logs in via SSH over VSOCK as user `swebot` without allocating a TTY (`sshd: swebot@notty`), isolating control-plane synchronization from user sessions.
 * **Interactive Tmux Session** `[Tier 1]`: Rather than executing transient SSH commands, the host binds to a persistent `tmux` session named `default` running in `/app` with `JULES_SESSION_ID` and `GIT_TERMINAL_PROMPT=0`.
 * **Execution Synchronization** `[Tier 1]`:
   1. The host agent writes the instruction script to `/run/devbox-session/default/command`.
@@ -202,6 +214,7 @@ tmux server (PID 2348: new-session -d -s default -c /app -e JULES_SESSION_ID=...
      PROMPT_COMMAND='__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;'
      ```
   4. `touch stamp` notifies `inotifywait` on the SSH worker, which harvests the outputs and notifies the host.
+* **Volatile Systemd Mount** `[Tier 1]`: `var-lib-systemd.mount` isolates systemd runtime journal data into a 4 GiB dedicated `tmpfs` at `/var/lib/systemd`, avoiding unnecessary disk writes to the underlying ext4 `/dev/vdb` overlayfs.
 
 ---
 
@@ -222,6 +235,9 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
   * **Java**: JDK, Maven, Gradle
   * **Mobile / Cross-Platform**: Android SDK (`sdkmanager`), Flutter
   * **Web**: Bun, PHP (Composer), Ruby (Bundler), .NET SDKs
+* **Interactive Ingress & User Debugging Plane (Tailcat WireGuard Tunnel)** `[Tier 1]`:
+  * While the hypervisor enforces a strict inbound VSOCK-only boundary (`pci=off`, private network on `192.168.0.2`), open outbound egress permits running user-space WireGuard tunnels (`tailcat serve --ssh-authorized-keys=... ssh`).
+  * Uses Tailscale's DERP relay network (NYC region 301) to grant authorized external developers and pair-programming agents bidirectional interactive SSH access without requiring hypervisor port forwarding or modifying host policies.
 
 ---
 
@@ -237,7 +253,7 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
     [18408631.151288] overlay: filesystem on /var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/work not supported as upperdir
     ```
   * **Systems Root Cause**: The root filesystem `/` is already an `overlayfs`. Containerd's default `overlayfs` snapshotter attempts to mount an upperdir residing on this underlying overlayfs. The Linux kernel explicitly rejects using an overlayfs as an upper layer for another overlayfs (`EINVAL`).
-  * **Implication**: Jules cannot execute Docker containers in the devbox unless dockerd is manually reconfigured with the `vfs` or `fuse-overlayfs` driver.
+  * **Workaround Verified**: Running dockerd with the VFS storage driver (`dockerd --storage-driver=vfs`) successfully bypasses this constraint and executes containers inside the devbox.
 * **2. Absence of Nested Virtualization** `[Tier 1]`:
   * `/proc/cpuinfo` flags contain neither `vmx` (Intel) nor `svm` (AMD).
   * Hardware-accelerated nested KVM microVMs or Android QEMU emulators cannot be spawned.
@@ -248,15 +264,15 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
 
 ## Comparative Matrix: Google Jules vs. Gemini Spark
 
-A comparative analysis of Google.s two primary agent execution environments (Note: Spark-side claims are sourced from a different external teardown testimony, not direct observation here):
+A comparative analysis of Google's two primary agent execution environments (Note: Spark-side claims are sourced from a different external teardown testimony, not direct observation here):
 
 | Architectural Dimension | Google Jules Devbox | Gemini Spark Sandbox |
 | :--- | :--- | :--- |
 | **Virtualization Primitive** | Hardware Virtual Machine (**KVM**) | Process-level Syscall Emulation (**gVisor / Sentry**) |
-| **Hypervisor Architecture** | Virtio-MMIO MicroVM (`pci=off`) | gVisor Gofer + Sentry (Linux 4.19 ABI) |
+| **Hypervisor Architecture** | Virtio-MMIO MicroVM (**AWS Firecracker**, `pci=off`) | gVisor Gofer + Sentry (Linux 4.19 ABI) |
 | **Privilege Model** | User `jules` (UID 1001) with **passwordless `sudo`** | Unprivileged `spark` (UID 1235), `CapEff: 0x0` |
-| **Network Egress** | Open outbound HTTPS (GitHub, npm, PyPI, Go, Docker) | Strict Air-Gap (loopback only, zero routes) |
-| **Host-to-Guest IPC** | **Virtio-VSOCK** (CID 2, port 22 SSH + port 9999 VMM notify) | `runsc exec` + Unix socket bridge (`/ipc/remy_memfs_proxy.sock`) |
+| **Network Egress** | Open outbound HTTPS & UDP (GitHub, npm, PyPI, Go, Docker) | Strict Air-Gap (loopback only, zero routes) |
+| **Host-to-Guest IPC** | **Virtio-VSOCK** (Host CID 2, Guest CID 123, port 22 SSH + port 9999 VMM notify) | `runsc exec` + Unix socket bridge (`/ipc/remy_memfs_proxy.sock`) |
 | **Execution Supervisor** | Persistent `tmux` session + file FIFO (`devbox-session`) | In-memory **FastAPI / Uvicorn** daemon (`dynamo_exec.py`) |
 | **Storage Architecture** | SquashFS `/rom` (ro) + ext4 `/overlay` (rw) via `pivot_root` | Ephemeral root overlayfs + Plan 9 (9P) persistent host mounts |
 | **Cognitive Memory Plane** | Ephemeral per task; no in-guest vector memory FUSE | In-guest FUSE daemon (**Jetski `mfs`**) connected to host Dumbo/Remy |
@@ -275,6 +291,8 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/OPT_AND_HARNESS.md`](evidence/OPT_AND_HARNESS.md) | Runtime tooling & process tree | `/opt/environment_summary.sh`, Chrome/Playwright census, `pstree` (`socat`, `tmux`, `inotifywait`), VSOCK unit file |
 | [`evidence/SYSTEM_TOPOLOGY.md`](evidence/SYSTEM_TOPOLOGY.md) | Hypervisor & storage topology | Kernel `/proc/cmdline` (`pci=off`, `virtio_mmio`), `lsblk` (SquashFS + ext4), Docker overlay mount failure |
 | [`evidence/BOOT_AND_HYPERVISOR.md`](evidence/BOOT_AND_HYPERVISOR.md) | Boot script & kernel proof | `/usr/sbin/overlay-init` source, kernel `dmesg` overlay error, MMIO resource allocations, `/proc/cpuinfo` flags |
+| [`evidence/FIRECRACKER_AND_VSOCK.md`](evidence/FIRECRACKER_AND_VSOCK.md) | Firecracker ACPI & VSOCK audit | ACPI `FIRECK` table fingerprint, Guest CID 123, Host CID 2, kernel builder provenance, `swebot` worker |
+| [`evidence/TAILCAT_SSH.md`](evidence/TAILCAT_SSH.md) | Interactive ingress over WireGuard | Tailcat SSH server logs, WireGuard DERP relay negotiation (`nyc`), authorized keys enforcement |
 | [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
 | [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
