@@ -141,8 +141,8 @@ The guest storage architecture is decoupled into an immutable golden image and a
 +------------------------------------+   +--------------------------------+
 |      Upper Layer (/overlay/root)   |   |       Lower Layer (/rom)       |
 |  - Writable ext4 (/dev/vdb)        |   |  - Read-Only SquashFS (/dev/vda)
-|  - 100 GiB capacity, 93 GiB free   |   |  - 4.36 GiB compressed golden  |
-|  - Holds all task session writes   |   |  - Clean Ubuntu 24.04 + tools  |
+|  - 100 GiB capacity, 93 GiB free   |   |  - 4.4 GiB compressed golden   |
+|  - Holds all task session writes   |   |  - Ubuntu 24.04.4 + fat toolchain|
 +------------------------------------+   +--------------------------------+
 ```
 
@@ -207,6 +207,10 @@ tmux server (PID 2348: new-session -d -s default -c /app -e JULES_SESSION_ID=...
 
 ### 4. Tooling & Headless Automation Plane
 
+* **Identity & Cloud Context** `[Tier 1]`:
+  * The control plane SSH proxy authenticates as `swebot` rather than `jules`. However, `id swebot` reveals UID 1001 (`jules`), and `/rom/home/swebot` symlinks directly to `/home/jules`.
+  * **No Cloud Metadata**: Attempts to reach `169.254.169.254` timeout instantly, confirming isolation from the underlying host network context.
+
 The base image contains an expansive, pre-installed toolchain matrix verified by Google's baked-in `/opt/environment_summary.sh` script:
 
 * **Headless Browser & E2E Testing** `[Tier 1]`:
@@ -254,8 +258,8 @@ A comparative analysis of Google.s two primary agent execution environments (Not
 | :--- | :--- | :--- |
 | **Virtualization Primitive** | Hardware Virtual Machine (**KVM**) | Process-level Syscall Emulation (**gVisor / Sentry**) |
 | **Hypervisor Architecture** | Virtio-MMIO MicroVM (`pci=off`) | gVisor Gofer + Sentry (Linux 4.19 ABI) |
-| **Privilege Model** | User `jules` (UID 1001) with **passwordless `sudo`** | Unprivileged `spark` (UID 1235), `CapEff: 0x0` |
-| **Network Egress** | Open outbound HTTPS (GitHub, npm, PyPI, Go, Docker) | Strict Air-Gap (loopback only, zero routes) |
+| **Privilege Model** | User `jules` (UID 1001) with **passwordless `sudo`** (harness SSH identity `swebot` aliases to `jules`) | Unprivileged `spark` (UID 1235), `CapEff: 0x0` |
+| **Network Egress** | Open outbound HTTPS, working UDP DNS (8.8.8.8), restricted TCP egress | Strict Air-Gap (loopback only, zero routes) |
 | **Host-to-Guest IPC** | **Virtio-VSOCK** (CID 2, port 22 SSH + port 9999 VMM notify) | `runsc exec` + Unix socket bridge (`/ipc/remy_memfs_proxy.sock`) |
 | **Execution Supervisor** | Persistent `tmux` session + file FIFO (`devbox-session`) | In-memory **FastAPI / Uvicorn** daemon (`dynamo_exec.py`) |
 | **Storage Architecture** | SquashFS `/rom` (ro) + ext4 `/overlay` (rw) via `pivot_root` | Ephemeral root overlayfs + Plan 9 (9P) persistent host mounts |
