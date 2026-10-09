@@ -181,22 +181,22 @@ The guest storage architecture is decoupled into an immutable golden image and a
 
 Google avoids external agent daemon bloat by reusing battle-tested Unix utilities (`socat`, `sshd`, `tmux`, `inotifywait`):
 
-```
-[Host Hypervisor] (CID 2)
-       │ (Virtio-VSOCK Stream, Host CID 2, notify on vsock-stream:2:9999)
-       ▼
-socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22 (PID 876, Guest CID 123)
-       │
-sshd worker (PID 929: swebot@notty)
-       ├─ inotifywait -e create,moved_to --include /stamp$ /run/devbox-session/default
-       └─ tail --pid 2349 -f /dev/null
-       ▲
-       │ (Synchronized via tmpfs FIFO files)
-       ▼
-tmux server (PID 2348: new-session -d -s default -c /app -e JULES_SESSION_ID=...)
-   └─ bash (PID 2349)
-         └─ source /run/devbox-session/default/command < stdin > stdout 2> stderr
-            PROMPT_COMMAND: echo $? > exit_code && touch stamp
+```text
+Firecracker Host (CID 2)
+  │
+  ├─► Virtio-VSOCK (CID 2) ──► AF_VSOCK (Guest CID 123)
+  │                              │
+  │                              ▼
+  │                   socat (VSOCK-LISTEN:22 -> TCP 127.0.0.1:22)
+  │                              │
+  │                              ▼
+  │                         OpenSSH (sshd: swebot@notty)
+  │                              │
+  │                              ▼
+  │                    tmux harness (session 'default')
+  │                              │
+  │                              ▼
+  └───────────────────► devbox runner (/app)
 ```
 
 * **VSOCK Addressing & Topography** `[Tier 1]`:
@@ -292,6 +292,10 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/SYSTEM_TOPOLOGY.md`](evidence/SYSTEM_TOPOLOGY.md) | Hypervisor & storage topology | Kernel `/proc/cmdline` (`pci=off`, `virtio_mmio`), `lsblk` (SquashFS + ext4), Docker overlay mount failure |
 | [`evidence/BOOT_AND_HYPERVISOR.md`](evidence/BOOT_AND_HYPERVISOR.md) | Boot script & kernel proof | `/usr/sbin/overlay-init` source, kernel `dmesg` overlay error, MMIO resource allocations, `/proc/cpuinfo` flags |
 | [`evidence/FIRECRACKER_AND_VSOCK.md`](evidence/FIRECRACKER_AND_VSOCK.md) | Firecracker ACPI & VSOCK audit | ACPI `FIRECK` table fingerprint, Guest CID 123, Host CID 2, kernel builder provenance, `swebot` worker |
+| [`evidence/SYSTEMD_AND_HARNESS_IPC.md`](evidence/SYSTEMD_AND_HARNESS_IPC.md) | Systemd process tree & harness IPC | `inotifywait` session stamp watcher, `socat` VSOCK-LISTEN bridge, systemd process hierarchy |
+| [`evidence/KERNEL_SYSCTL_AND_BINFMT.md`](evidence/KERNEL_SYSCTL_AND_BINFMT.md) | Sysctl parameters & binfmt_misc | Raised `epoll` limits (`1813414`), vsyscall32, Python 3.12 `binfmt_misc` bytecode handler |
+| [`evidence/CONTAINERD_DOCKER_RUNTIME.md`](evidence/CONTAINERD_DOCKER_RUNTIME.md) | Container runtime audit | `dockerd` overlayfs driver, containerd gRPC/ttrpc sockets, overlay backing on `/dev/vdb` |
+| [`evidence/PAM_AND_AUTH_SECURITY.md`](evidence/PAM_AND_AUTH_SECURITY.md) | PAM auth & SSH host keys | Passwordless `sudo` for `jules`/`swebot`, SSH key fingerprints for root & host keys |
 | [`evidence/TAILCAT_SSH.md`](evidence/TAILCAT_SSH.md) | Interactive ingress over WireGuard | Tailcat SSH server logs, WireGuard DERP relay negotiation (`nyc`), authorized keys enforcement |
 | [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
 | [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
