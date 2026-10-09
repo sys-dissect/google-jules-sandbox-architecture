@@ -1,0 +1,9 @@
+total 24
+drwxr-xr-x 1 root  root  4096 Mar  6  2026 .
+drwxr-xr-x 1 root  root  4096 Oct  9 07:52 ..
+drwxr-xr-x 1 jules jules 4096 Mar  2  2026 android-sdk
+drwx--x--x 4 root  root  4096 Mar  6  2026 containerd
+-r-xr-xr-x 1 root  root  3298 Mar  6  2026 environment_summary.sh
+drwxr-xr-x 1 jules jules 4096 Mar  2  2026 flutter
+drwxr-xr-x 3 root  root    29 Mar  2  2026 google
+drwxr-xr-x 4 root  root    45 Mar  2  2026 jules

@@ -306,6 +306,8 @@ All conclusions in this report are substantiated by raw outputs committed in thi
 | [`evidence/VIRTIO_AND_HARDWARE_DEVICES.md`](evidence/VIRTIO_AND_HARDWARE_DEVICES.md) | Virtio bus & hardware inventory | Virtio device register map, IO-APIC interrupts, TSC clocksource, cache hierarchy, and SquashFS superblock parsing |
 | [`evidence/NETWORK_TOPOLOGY_AND_EGRESS.md`](evidence/NETWORK_TOPOLOGY_AND_EGRESS.md) | Network topology & routing | Public IP (`34.72.116.xxx` GCP `us-central1`), Firecracker MAC address derivation, MTU offloads, and iptables |
 | [`evidence/SECURITY_AND_CGROUPS.md`](evidence/SECURITY_AND_CGROUPS.md) | Confinement & cgroups v2 | Absence of LSM (no AppArmor/SELinux), passwordless `sudo`, and unthrottled cgroups v2 user slice |
+| [`evidence/INCREMENTAL_AUDIT.md`](evidence/INCREMENTAL_AUDIT.md) | Incremental telemetry & isolation | Seccomp mode, capabilities, metadata endpoint probes, subnet scan, SUID binaries, dpkg manifest |
+| [`evidence/SNAPSHOT_AND_PROXY_DEEPDIVE.md`](evidence/SNAPSHOT_AND_PROXY_DEEPDIVE.md) | Snapshot & Git proxy deep-dive | Firecracker VM snapshot clock resync, Python Git proxy headers, `/usr/sbin/overlay-init` source, iptables |
 
 ---
 

@@ -1,0 +1,1 @@
+/tmp/collect_incremental.sh: line 66: dmidecode: command not found

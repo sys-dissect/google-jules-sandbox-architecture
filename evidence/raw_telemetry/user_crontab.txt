@@ -1,0 +1,1 @@
+/tmp/collect_incremental.sh: line 51: crontab: command not found

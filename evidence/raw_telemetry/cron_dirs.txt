@@ -1,0 +1,16 @@
+/etc/cron.d:
+total 6
+drwxr-xr-x 5 root root   60 Mar  2  2026 .
+drwxr-xr-x 1 root root 4096 Mar  6  2026 ..
+-rw-r--r-- 1 root root  201 Apr  8  2024 e2scrub_all
+-rw-r--r-- 1 root root  712 Jan 19  2024 php
+-rw-r--r-- 1 root root  396 Jan  9  2024 sysstat
+
+/etc/cron.daily:
+total 7
+drwxr-xr-x 6 root root   81 Mar  2  2026 .
+drwxr-xr-x 1 root root 4096 Mar  6  2026 ..
+-rwxr-xr-x 1 root root 1478 Mar 22  2024 apt-compat
+-rwxr-xr-x 1 root root  123 Feb  5  2024 dpkg
+lrwxrwxrwx 1 root root   37 Feb 20  2026 google-chrome -> /opt/google/chrome/cron/google-chrome
+-rwxr-xr-x 1 root root  518 Jan  9  2024 sysstat

@@ -1,0 +1,1 @@
+/tmp/collect_incremental.sh: line 45: resolvectl: command not found

@@ -1,0 +1,300 @@
+Mar 06 17:10:38 devbox systemd[887]: Queued start job for default target default.target.
+Mar 06 17:10:38 devbox systemd[887]: Created slice app.slice - User Application Slice.
+Mar 06 17:10:38 devbox systemd[887]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Mar 06 17:10:38 devbox systemd[887]: Reached target paths.target - Paths.
+Mar 06 17:10:38 devbox systemd[887]: Reached target timers.target - Timers.
+Mar 06 17:10:38 devbox systemd[887]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Mar 06 17:10:38 devbox systemd[887]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Mar 06 17:10:38 devbox systemd[887]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Mar 06 17:10:38 devbox systemd[887]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Mar 06 17:10:38 devbox systemd[887]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Mar 06 17:10:38 devbox systemd[887]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Mar 06 17:10:38 devbox systemd[887]: Listening on keyboxd.socket - GnuPG public key management service.
+Mar 06 17:10:38 devbox systemd[887]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Mar 06 17:10:38 devbox systemd[887]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Mar 06 17:10:38 devbox systemd[887]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Mar 06 17:10:38 devbox systemd[887]: Reached target sockets.target - Sockets.
+Mar 06 17:10:38 devbox systemd[887]: Reached target basic.target - Basic System.
+Mar 06 17:10:38 devbox systemd[887]: Reached target default.target - Main User Target.
+Mar 06 17:10:38 devbox systemd[887]: Startup finished in 613ms.
+Mar 06 17:10:39 devbox sudo[908]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012set -xe#012echo nameserver 192.168.0.1 > /etc/resolv.conf#012timeout 1s socat /dev/null TCP4:devbox-gateway.internal:53'
+Mar 06 17:10:39 devbox sudo[908]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Mar 06 17:10:39 devbox sudo[908]: pam_unix(sudo:session): session closed for user root
+Mar 06 17:10:39 devbox sudo[914]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/date -s @1772817039.7944698
+Mar 06 17:10:39 devbox sudo[914]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Mar 06 17:10:39 devbox sudo[914]: pam_unix(sudo:session): session closed for user root
+Mar 06 17:10:40 devbox sudo[930]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012set -xe#012echo nameserver 192.168.0.1 > /etc/resolv.conf#012timeout 1s socat /dev/null TCP4:devbox-gateway.internal:53#012timeout 1s socat /dev/null TCP4:192.168.0.1:8080'
+Mar 06 17:10:40 devbox sudo[930]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Mar 06 17:10:40 devbox sudo[930]: pam_unix(sudo:session): session closed for user root
+Mar 06 17:10:40 devbox sudo[935]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/date -s @1791532362.376545
+Mar 06 17:10:40 devbox sudo[935]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:42 devbox sudo[935]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:43 devbox sudo[944]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012set -eux#012#012function preclean_git_config() {#012  local keys_to_unset=$(git config get --global --all  --show-names --regexp "^url.*insteadof$" | cut -d\' \' -f1)#012  if [[ -z "$keys_to_unset" ]]; then#012    echo "No stale git config to unset"#012    return#012  fi#012  echo "$keys_to_unset" | (#012    while read -r key; do#012      git config unset --global --all "$key" || echo "git config unset exited with code $?" >&2#012      echo "git config unset \'$key\'"#012    done#012  )#012}#012#012function setup_git_config() {#012  preclean_git_config#012  git config --global user.name "google-labs-jules[bot]"#012  git config --global user.email "161369871+google-labs-jules[bot]@users.noreply.github.com"#012  # Use the oauth URL instead of the base one if private.#012  git config --global --add url.http://git@192.168.0.1:8080/.insteadOf
+Oct 09 07:52:43 devbox sudo[944]:    jules : (command continued) https://github.com/#012  git config --global --add url.http://git@192.168.0.1:8080/.insteadOf git@github.com:#012  git config --global core.hooksPath /dev/null#012}#012#012# Important: this must be called after setup_git_config to ensure tokens are#012# removed from the git config.#012function cleanup_git_config() {#012  git config --global --remove url.http://git@192.168.0.1:8080/#012}#012#012#012sudo rm -rf /app#012sudo mkdir /app#012sudo chown 1001 /app#012setup_git_config#012git clone --depth 1 --shallow-submodules --no-single-branch --recursive https://github.com/sys-dissect/google-jules-sandbox-architecture -b main /app#012cleanup_git_config#012'
+Oct 09 07:52:43 devbox sudo[944]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:45 devbox sudo[1240]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/rm -rf /app
+Oct 09 07:52:45 devbox sudo[1240]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:45 devbox sudo[1240]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:45 devbox sudo[1242]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir /app
+Oct 09 07:52:45 devbox sudo[1242]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:45 devbox sudo[1242]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:46 devbox sudo[1244]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/chown 1001 /app
+Oct 09 07:52:46 devbox sudo[1244]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:46 devbox sudo[1244]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:47 devbox sudo[944]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:47 devbox sudo[1327]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012set -eux#012cd /app && git log &> /dev/null#012'
+Oct 09 07:52:47 devbox sudo[1327]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:48 devbox sudo[1327]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:48 devbox sudo[1668]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012cd /app; git rev-parse HEAD'
+Oct 09 07:52:48 devbox sudo[1668]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:48 devbox sudo[1668]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:48 devbox sudo[1893]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git ls-files -s -z --full-name )'
+Oct 09 07:52:48 devbox sudo[1893]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:49 devbox sudo[1893]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:49 devbox sudo[2116]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012cd /app && git switch -c jules-1732599560545719224-f420cd54'
+Oct 09 07:52:49 devbox sudo[2116]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:49 devbox sudo[2116]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:55 devbox sudo[2340]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012tmux new-session -d -s \'default\' -c /app -e JULES_SESSION_ID=1732599560545719224 -e GIT_TERMINAL_PROMPT=0 && tmux set-option remain-on-exit on'
+Oct 09 07:52:55 devbox sudo[2340]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:55 devbox sudo[2340]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:56 devbox sudo[2356]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012tmux new-session -d -s \'default\' -c /app -e JULES_SESSION_ID=1732599560545719224 -e GIT_TERMINAL_PROMPT=0 && tmux set-option remain-on-exit on'
+Oct 09 07:52:56 devbox sudo[2356]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2356]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:56 devbox sudo[2403]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012tmux list-panes -f \'#{==:#{session_name},default}\' -F \'#{pane_pid}\''
+Oct 09 07:52:56 devbox sudo[2403]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2403]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:56 devbox sudo[2468]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:52:56 devbox sudo[2459]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:52:56 devbox sudo[2468]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2459]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2468]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:56 devbox sudo[2459]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:52:56 devbox sudo[2526]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:52:56 devbox sudo[2526]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2526]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:52:56 devbox sudo[2587]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:52:56 devbox sudo[2587]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2587]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:56 devbox sudo[2603]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:52:56 devbox sudo[2603]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2605]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:52:56 devbox sudo[2605]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2605]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:52:56 devbox sudo[2603]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:52:56 devbox sudo[2614]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:52:56 devbox sudo[2614]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2614]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:52:56 devbox sudo[2618]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:52:56 devbox sudo[2618]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:56 devbox sudo[2618]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:52:57 devbox sudo[2630]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:52:57 devbox sudo[2630]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:52:57 devbox sudo[2630]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:02 devbox sudo[2854]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:02 devbox sudo[2854]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:02 devbox sudo[2855]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:02 devbox sudo[2855]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:02 devbox sudo[2855]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:02 devbox sudo[2854]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:02 devbox sudo[2864]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:02 devbox sudo[2864]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:02 devbox sudo[2864]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:02 devbox sudo[2868]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:02 devbox sudo[2868]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:02 devbox sudo[2868]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:03 devbox sudo[2879]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:03 devbox sudo[2879]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:03 devbox sudo[2881]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:03 devbox sudo[2881]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:03 devbox sudo[2879]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:03 devbox sudo[2881]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:03 devbox sudo[2890]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:03 devbox sudo[2890]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:03 devbox sudo[2890]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:03 devbox sudo[2894]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:03 devbox sudo[2894]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:03 devbox sudo[2894]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:16 devbox sudo[2908]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:53:16 devbox sudo[2908]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:16 devbox sudo[2908]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:22 devbox sudo[3132]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:22 devbox sudo[3132]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3133]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:22 devbox sudo[3133]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3133]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:22 devbox sudo[3132]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:22 devbox sudo[3142]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:22 devbox sudo[3142]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3142]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:22 devbox sudo[3146]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:22 devbox sudo[3146]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3146]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:22 devbox sudo[3157]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:22 devbox sudo[3157]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3159]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:22 devbox sudo[3159]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3159]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:22 devbox sudo[3157]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:22 devbox sudo[3168]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:22 devbox sudo[3168]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:22 devbox sudo[3168]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:23 devbox sudo[3172]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:23 devbox sudo[3172]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:23 devbox sudo[3172]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:23 devbox sudo[3186]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:53:23 devbox sudo[3186]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:23 devbox sudo[3186]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:27 devbox sudo[3409]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:27 devbox sudo[3409]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3411]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:27 devbox sudo[3411]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3411]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:27 devbox sudo[3409]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:27 devbox sudo[3420]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:27 devbox sudo[3420]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3420]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:27 devbox sudo[3424]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:27 devbox sudo[3424]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3424]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:27 devbox sudo[3435]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:53:27 devbox sudo[3435]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3437]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:53:27 devbox sudo[3437]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3437]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:53:27 devbox sudo[3435]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:27 devbox sudo[3446]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:53:27 devbox sudo[3446]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:53:27 devbox sudo[3446]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:53:28 devbox sudo[3450]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:53:28 devbox sudo[3450]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:28 devbox sudo[3450]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:53:29 devbox sudo[3464]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:53:29 devbox sudo[3464]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:53:30 devbox sudo[3464]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:31 devbox sudo[3687]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:31 devbox sudo[3687]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:31 devbox sudo[3687]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:31 devbox sudo[3910]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:31 devbox sudo[3910]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:32 devbox sudo[3910]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:32 devbox sudo[4133]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:32 devbox sudo[4133]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:32 devbox sudo[4133]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:32 devbox sudo[4356]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:32 devbox sudo[4356]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:33 devbox sudo[4356]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:33 devbox sudo[4580]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:54:33 devbox sudo[4580]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:33 devbox sudo[4581]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:54:33 devbox sudo[4581]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:54:33 devbox sudo[4581]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:54:33 devbox sudo[4580]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:33 devbox sudo[4590]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:54:33 devbox sudo[4590]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:33 devbox sudo[4590]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:33 devbox sudo[4594]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:54:33 devbox sudo[4594]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:33 devbox sudo[4594]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:34 devbox sudo[4605]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:54:34 devbox sudo[4605]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:34 devbox sudo[4607]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:54:34 devbox sudo[4607]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:54:34 devbox sudo[4607]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:54:34 devbox sudo[4605]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:34 devbox sudo[4616]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:54:34 devbox sudo[4616]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:34 devbox sudo[4616]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:34 devbox sudo[4620]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:54:34 devbox sudo[4620]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:34 devbox sudo[4620]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:36 devbox sudo[4635]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:54:36 devbox sudo[4635]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:37 devbox sudo[4635]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:37 devbox sudo[4858]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:37 devbox sudo[4858]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:37 devbox sudo[4858]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:37 devbox sudo[5081]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:37 devbox sudo[5081]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:37 devbox sudo[5081]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:37 devbox sudo[5304]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:38 devbox sudo[5304]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:38 devbox sudo[5304]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:38 devbox sudo[5527]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:38 devbox sudo[5527]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:38 devbox sudo[5527]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:38 devbox sudo[5750]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:38 devbox sudo[5750]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:39 devbox sudo[5750]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:39 devbox sudo[5973]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:39 devbox sudo[5973]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:39 devbox sudo[5973]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:40 devbox sudo[6196]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:40 devbox sudo[6196]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:40 devbox sudo[6196]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:40 devbox sudo[6419]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:40 devbox sudo[6419]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:41 devbox sudo[6419]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:41 devbox sudo[6642]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:41 devbox sudo[6642]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:41 devbox sudo[6642]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:41 devbox sudo[6865]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:41 devbox sudo[6865]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:41 devbox sudo[6865]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:42 devbox sudo[7088]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:42 devbox sudo[7088]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:42 devbox sudo[7088]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:42 devbox sudo[7311]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:42 devbox sudo[7311]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:42 devbox sudo[7311]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:44 devbox sudo[7534]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:54:44 devbox sudo[7534]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7536]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:54:44 devbox sudo[7536]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7536]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:54:44 devbox sudo[7534]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:44 devbox sudo[7545]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:54:44 devbox sudo[7545]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7545]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:44 devbox sudo[7549]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:54:44 devbox sudo[7549]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7549]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:44 devbox sudo[7560]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+Oct 09 07:54:44 devbox sudo[7560]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7560]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:44 devbox sudo[7565]:    jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/mkdir -m777 -p /run/devbox-session/default
+Oct 09 07:54:44 devbox sudo[7565]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7565]: pam_unix(sudo:session): session closed for user root
+Oct 09 07:54:44 devbox sudo[7571]:    jules : PWD=/home/jules ; USER=swebot ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'
+Oct 09 07:54:44 devbox sudo[7571]: pam_unix(sudo:session): session opened for user swebot(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7571]: pam_unix(sudo:session): session closed for user swebot
+Oct 09 07:54:44 devbox sudo[7575]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -c 'echo "${BASHPID}"#012#012COMMAND=\'PROMPT_COMMAND=\'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr;#012 __CODExx__=$?;if ! [[ -f /run/devbox-session/default/stamp ]]; then echo $__CODExx__ > /run/devbox-session/default/exit_code; touch /run/devbox-session/default/stamp; fi\'#012SESSION_NAME=default#012#012set -x#012printf \'%s\\n\' "${COMMAND}" | tmux load-buffer - || exit 1#012tmux paste-buffer -t "${SESSION_NAME}" || exit 1#012tmux send-keys -t "${SESSION_NAME}" Enter || exit 1#012'
+Oct 09 07:54:44 devbox sudo[7575]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:44 devbox sudo[7575]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:45 devbox sudo[7587]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa --diff-filter=AM --name-only#012echo "---SEPARATOR---"#012git ls-files --others --exclude-standard#012'
+Oct 09 07:54:45 devbox sudo[7587]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:45 devbox sudo[7587]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:45 devbox sudo[7810]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:45 devbox sudo[7810]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:45 devbox sudo[7810]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:45 devbox sudo[8033]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:45 devbox sudo[8033]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:46 devbox sudo[8033]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:46 devbox sudo[8256]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:46 devbox sudo[8256]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:46 devbox sudo[8256]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:46 devbox sudo[8479]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:46 devbox sudo[8479]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:46 devbox sudo[8479]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:47 devbox sudo[8702]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:47 devbox sudo[8702]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:47 devbox sudo[8702]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:47 devbox sudo[8925]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:47 devbox sudo[8925]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:47 devbox sudo[9111]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+Oct 09 07:54:47 devbox sudo[9111]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:47 devbox sudo[8925]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:47 devbox sudo[9111]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:48 devbox sudo[9371]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 bc8dc57a967c36e0b2b46ad2abf8f7fafa3923fa)'
+Oct 09 07:54:48 devbox sudo[9371]: pam_unix(sudo:session): session opened for user jules(uid=1001) by (uid=1001)
+Oct 09 07:54:48 devbox sudo[9371]: pam_unix(sudo:session): session closed for user jules
+Oct 09 07:54:48 devbox sudo[9594]:    jules : PWD=/home/jules ; USER=jules ; COMMAND=/usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
