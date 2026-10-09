@@ -1,0 +1,26 @@
+[    0.000000] Command line: console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
+[    0.000000] DMI not present or invalid.
+[    0.776001] Kernel command line: console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
+[    0.777127] random: crng init done
+[    2.016222] virtio-mmio: Registering device virtio-mmio.0 at 0xc0001000-0xc0001fff, IRQ 5.
+[    2.021547] virtio-mmio: Registering device virtio-mmio.1 at 0xc0002000-0xc0002fff, IRQ 6.
+[    2.026848] virtio-mmio: Registering device virtio-mmio.2 at 0xc0003000-0xc0003fff, IRQ 7.
+[    2.032204] virtio-mmio: Registering device virtio-mmio.3 at 0xc0004000-0xc0004fff, IRQ 8.
+[    2.078252] virtio-mmio virtio-mmio.0: can't request region for resource [mem 0xc0001000-0xc0001fff]
+[    2.083761] virtio-mmio: probe of virtio-mmio.0 failed with error -16
+[    2.087642] virtio-mmio virtio-mmio.1: can't request region for resource [mem 0xc0002000-0xc0002fff]
+[    2.093065] virtio-mmio: probe of virtio-mmio.1 failed with error -16
+[    2.096980] virtio-mmio virtio-mmio.2: can't request region for resource [mem 0xc0003000-0xc0003fff]
+[    2.102395] virtio-mmio: probe of virtio-mmio.2 failed with error -16
+[    2.106264] virtio-mmio virtio-mmio.3: can't request region for resource [mem 0xc0004000-0xc0004fff]
+[    2.111677] virtio-mmio: probe of virtio-mmio.3 failed with error -16
+[    2.134967] virtio_blk virtio0: 1/0/0 default/read/poll queues
+[    2.140210] virtio_blk virtio0: [vda] 9144320 512-byte logical blocks (4.68 GB/4.36 GiB)
+[    2.146606] virtio_blk virtio1: 1/0/0 default/read/poll queues
+[    2.151706] virtio_blk virtio1: [vdb] 209715200 512-byte logical blocks (107 GB/100 GiB)
+[    3.607967] systemd[1]: systemd 255.4-1ubuntu8.12 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[18715335.937550] random: crng reseeded due to virtual machine fork
+[18716196.519371] random: crng reseeded due to virtual machine fork
+[18717295.922910] random: crng reseeded due to virtual machine fork
+[18717912.884196] random: crng reseeded due to virtual machine fork
+[18723682.702274] random: crng reseeded due to virtual machine fork

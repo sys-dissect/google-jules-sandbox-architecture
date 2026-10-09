@@ -1,0 +1,1 @@
+ls: cannot open directory '/sys/fs/bpf': Permission denied
