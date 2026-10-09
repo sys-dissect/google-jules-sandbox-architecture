@@ -1,0 +1,1 @@
+sudo: aa-status: command not found

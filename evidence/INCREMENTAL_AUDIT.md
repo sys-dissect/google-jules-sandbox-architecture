@@ -14,7 +14,7 @@ This report extends the empirical systems dissection of Google's **Jules** devbo
   - Full effective and bounding capability set granted to root (`CapInh: 0000000000000000`, `CapPrm: 000001ffffffffff`, `CapEff: 000001ffffffffff`, `CapBnd: 000001ffffffffff`, `CapAmb: 0000000000000000`).
 * **CPU Hardware Vulnerability Mitigations**:
   - All standard kernel mitigation flags active (`itlb_multihit`, `l1tf`, `mdb`, `meltdown`, `spec_store_bypass`, `spectre_v1`, `spectre_v2`, `srbds`, `tsx_async_abort`).
-  - **SMT / Hyperthreading**: SMT is disabled at the host hypervisor level (`l1tf: Mitigation: PTE Inversion; VMX: flush allocation, SMT disabled`).
+  - **SMT / Hyperthreading**: SMT Host state is unknown (hypervisor abstracts topology; l1tf: PTE Inversion active).
 
 ---
 
