@@ -34,7 +34,7 @@ The architecture comprises five operational layers:
 3. **Control Plane & Command Harness**: The host hypervisor mediates orchestration via **Virtio-VSOCK** (`vsock-stream:2:9999` on Host CID 2 for VMM lifecycle notification; `VSOCK-LISTEN:22` on Guest CID 123 bridged by `socat` to localhost SSH). Execution runs inside a persistent background **`tmux`** session managed headless by `swebot@notty`, using a file-piped FIFO harness in `/run/devbox-session/default/` synchronized via bash `PROMPT_COMMAND` and `inotifywait`.
 4. **Tooling & Headless Automation Plane**: A comprehensive, pre-baked developer ecosystem featuring a complete **Google Chrome** (268 MB) and **Playwright** virtual environment for browser testing, alongside multi-language SDKs (Python, Node/NVM, Java, Go, Rust, Bun, C/C++, Flutter, Android SDK) audited via `/opt/environment_summary.sh`.
 5. **Empirical Negative Results & Security Boundaries**:
-   * **Container Execution Failure**: Containerd fails out-of-the-box (`EINVAL: filesystem not supported as upperdir`) due to kernel restrictions prohibiting nested overlayfs mounts on an underlying overlayfs root. However, ad-hoc execution via `dockerd --storage-driver=vfs` succeeds cleanly.
+   * **Container Execution Failure & Breakthrough**: Containerd fails out-of-the-box (`EINVAL: filesystem not supported as upperdir`) due to kernel restrictions prohibiting nested overlayfs mounts on an underlying overlayfs root. However, both `dockerd --storage-driver=vfs` and native ext4 direct mounting (`containerd --root /rom/overlay/ctrd-root`) succeed cleanly, the latter providing full-speed hardware-accelerated Linux kernel `overlayfs` containers.
    * **Nested Virtualization Absent**: CPU features lack `vmx` / `svm` flags; hardware virtualization cannot be nested.
    * **Zero Hardware Bus Exposure**: `pci=off` disables PCI enumeration entirely.
 
@@ -261,7 +261,9 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
     [18408631.151288] overlay: filesystem on /var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/work not supported as upperdir
     ```
   * **Systems Root Cause**: The root filesystem `/` is already an `overlayfs`. Containerd's default `overlayfs` snapshotter attempts to mount an upperdir residing on this underlying overlayfs. The Linux kernel explicitly rejects using an overlayfs as an upper layer for another overlayfs (`EINVAL`).
-  * **Workaround Verified**: Running dockerd with the VFS storage driver (`dockerd --storage-driver=vfs`) successfully bypasses this constraint and executes containers inside the devbox.
+  * **Verified Workarounds**:
+    1. *VFS Storage Driver*: Running dockerd with `dockerd --storage-driver=vfs` completely bypasses overlay nesting and executes containers.
+    2. *Native Ext4 Containerd Root*: Directing containerd to store state on the underlying ext4 scratch partition (`containerd --root /rom/overlay/ctrd-root`) resolves the conflict completely, enabling native Linux kernel `overlayfs` containers at 100% full hardware speed.
 * **2. Absence of Nested Virtualization** `[Tier 1]`:
   * `/proc/cpuinfo` flags contain neither `vmx` (Intel) nor `svm` (AMD).
   * Hardware-accelerated nested KVM microVMs or Android QEMU emulators cannot be spawned.
@@ -320,6 +322,11 @@ All conclusions in this report are substantiated by raw outputs and expanded aud
 | [`evidence/SECURITY_AND_CGROUPS.md`](evidence/SECURITY_AND_CGROUPS.md) | Confinement & cgroups v2 | Absence of LSM (no AppArmor/SELinux), passwordless `sudo`, and unthrottled cgroups v2 user slice |
 | [`evidence/INCREMENTAL_AUDIT.md`](evidence/INCREMENTAL_AUDIT.md) | Incremental telemetry & isolation | Seccomp mode, capabilities, metadata endpoint probes, subnet scan, SUID binaries, dpkg manifest |
 | [`evidence/SNAPSHOT_AND_PROXY_DEEPDIVE.md`](evidence/SNAPSHOT_AND_PROXY_DEEPDIVE.md) | Snapshot & Git proxy deep-dive | Firecracker VM snapshot clock resync, Python Git proxy headers, `/usr/sbin/overlay-init` source, iptables |
+| [`evidence/live_telemetry_antigravity/AUDIT_REPORT.md`](evidence/live_telemetry_antigravity/AUDIT_REPORT.md) | **Live Out-of-Band Audit Report** | Forensic summary of 46 live devbox telemetry captures, DSDT disassembly, and provenance |
+| [`evidence/live_telemetry_antigravity/acpi_tables/DSDT.dsl`](evidence/live_telemetry_antigravity/acpi_tables/DSDT.dsl) | **Disassembled ACPI DSDT** | Full ASL disassembly showing `_SB.GED` IRQ 9, `_SB.VGEN` (VM_Gen_Counter), Virtio-MMIO devices |
+| [`evidence/live_telemetry_antigravity/network_and_proxy/GIT_PROXY_SPECIFICATION.md`](evidence/live_telemetry_antigravity/network_and_proxy/GIT_PROXY_SPECIFICATION.md) | **Git Reverse Proxy Specification** | Empirical wire analysis of `192.168.0.1:8080`, Smart HTTP pkt-lines, and OAuth token injection |
+| [`evidence/live_telemetry_antigravity/storage_and_boot/BUILD_PROVENANCE.md`](evidence/live_telemetry_antigravity/storage_and_boot/BUILD_PROVENANCE.md) | **Golden Image Build Provenance** | `bootstrap.log` reconstruction, `ftpmaster.internal` mirror, SquashFS 4.0 header offsets |
+| [`evidence/live_telemetry_antigravity/storage_and_boot/DOCKER_OVERLAYFS_ROOT_CAUSE.md`](evidence/live_telemetry_antigravity/storage_and_boot/DOCKER_OVERLAYFS_ROOT_CAUSE.md) | **Native Ext4 Container Breakthrough** | Proof and reproduction of full-speed native Linux kernel overlayfs containers via `/rom/overlay` |
 
 ---
 

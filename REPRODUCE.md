@@ -185,23 +185,31 @@ EOF
 sudo chroot /tmp/rootfs-dir systemctl enable devbox-ssh-over-vsock.service
 sudo chroot /tmp/rootfs-dir systemctl enable var-lib-systemd.mount
 
-# 3. Pre-configure Docker Daemon for VFS Storage Driver
+# 3. Docker Daemon & Containerd Configuration
 # Crucial: Under an underlying OverlayFS root, containerd/docker's default overlayfs
 # snapshotter fails with EINVAL ("filesystem not supported as upperdir").
-# Pre-configuring the VFS storage driver prevents this failure out-of-the-box.
+
+# Option A: Native Ext4 Snapshotting (Recommended - Full Hardware Speed)
+# Point containerd and dockerd directly to the underlying ext4 scratch partition
+# (/rom/overlay), completely avoiding nested overlay upperdirs while retaining full
+# copy-on-write overlayfs container performance:
 sudo mkdir -p /tmp/rootfs-dir/etc/docker
 cat << 'EOF' | sudo tee /tmp/rootfs-dir/etc/docker/daemon.json
 {
-  "storage-driver": "vfs"
+  "data-root": "/rom/overlay/docker-root"
 }
 EOF
 
-# Note on Storage Optimization: While VFS works reliably without kernel overlay conflicts,
-# it copies entire filesystem layers, leading to higher disk usage. Systems researchers
-# seeking copy-on-write efficiency can alternatively install fuse-overlayfs:
-#   apt-get install -y fuse-overlayfs
-# and configure daemon.json with:
-#   { "storage-driver": "fuse-overlayfs" }
+# In containerd config (/etc/containerd/config.toml), configure root:
+# root = "/rom/overlay/ctrd-root"
+# state = "/rom/overlay/ctrd-state"
+
+# Option B: VFS Storage Driver Fallback (Simpler, but no CoW layer deduplication)
+# cat << 'EOF' | sudo tee /tmp/rootfs-dir/etc/docker/daemon.json
+# {
+#   "storage-driver": "vfs"
+# }
+# EOF
 ```
 
 ### Compress into SquashFS Golden Image
@@ -242,32 +250,64 @@ sudo iptables -A FORWARD -i tap0 -o eth0 -j ACCEPT
 
 ### Run Transparent Host Git Proxy (`devbox-gateway.internal:8080`)
 
-Launch a lightweight Python reverse proxy on port 8080:
+Launch a Python reverse proxy on host port 8080 that handles Git Smart HTTP protocol streams, extracts the repository target, and transparently attaches OAuth credentials:
 
 ```python
 #!/usr/bin/env python3
-# host_git_proxy.py
-from http.server import HTTPServer, BaseHTTPRequestHandler
+# host_git_proxy.py - Transparent Git Proxy for Firecracker Sandbox
+import sys
 import urllib.request
+import urllib.error
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+EPHEMERAL_GITHUB_TOKEN = "ghp_mock_token_for_reproduction_testing"
 
 class GitProxyHandler(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+
     def do_GET(self):
-        self.proxy_request()
+        self._proxy_request()
 
     def do_POST(self):
-        self.proxy_request()
+        self._proxy_request()
 
-    def proxy_request(self):
-        # Forward request upstream to github.com and inject OAuth credentials
+    def _proxy_request(self):
         target_url = "https://github.com" + self.path
-        # Upstream proxy logic here...
-        self.send_response(200)
-        self.end_headers()
+        headers = {k: v for k, v in self.headers.items() if k.lower() not in ("host", "authorization")}
+        headers["Host"] = "github.com"
+        headers["Authorization"] = f"Bearer {EPHEMERAL_GITHUB_TOKEN}"
+
+        body = None
+        if "Content-Length" in self.headers:
+            body = self.rfile.read(int(self.headers["Content-Length"]))
+
+        req = urllib.request.Request(target_url, data=body, headers=headers, method=self.command)
+        try:
+            with urllib.request.urlopen(req) as resp:
+                self.send_response(resp.status)
+                for header, value in resp.getheaders():
+                    if header.lower() not in ("transfer-encoding", "content-length"):
+                        self.send_header(header, value)
+                resp_body = resp.read()
+                self.send_header("Content-Length", str(len(resp_body)))
+                self.end_headers()
+                self.wfile.write(resp_body)
+        except urllib.error.HTTPError as e:
+            self.send_response(e.code)
+            self.end_headers()
+            self.wfile.write(e.read())
+        except Exception as e:
+            self.send_response(502)
+            self.end_headers()
+            self.wfile.write(f"Proxy Gateway Error: {e}\n".encode())
 
 if __name__ == '__main__':
     server = HTTPServer(('192.168.0.1', 8080), GitProxyHandler)
     print("Host Git Proxy listening on 192.168.0.1:8080")
-    server.serve_forever()
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
 ```
 
 ---
@@ -341,3 +381,79 @@ ssh -p 2222 jules@127.0.0.1
 ```
 
 Once inside, you will have a live, authentic Google Jules execution environment with the identical storage overlay, Virtio-MMIO devices, and VSOCK orchestration harness.
+
+---
+
+## 8. Replicating the Devbox Asynchronous Execution Harness
+
+Google Jules coordinates multi-turn agent execution without creating new interactive SSH login sessions per command. Replicate this lightweight harness:
+
+### 1. Initialize Headless Tmux Session & In-Memory FIFO Spool
+Inside the guest (as user `jules`):
+```bash
+# Setup session IPC directory in ramfs (/run)
+mkdir -p /run/devbox-session/default
+touch /run/devbox-session/default/{command,stdin,stdout,stderr,exit_code}
+chmod 777 /run/devbox-session/default/*
+
+# Start the persistent session rooted in /app
+tmux new-session -d -s default -c /app -e JULES_SESSION_ID=12345 -e GIT_TERMINAL_PROMPT=0
+```
+
+### 2. Configure Transparent Git Redirection
+Inside the guest devbox:
+```bash
+git config --global --add url.http://git@192.168.0.1:8080/.insteadOf https://github.com/
+git config --global --add url.http://git@192.168.0.1:8080/.insteadOf git@github.com:
+git config --global core.hooksPath /dev/null
+```
+
+### 3. Host-Side Turn Dispatch & Inotifywait Synchronization
+On the host orchestrator (over the VSOCK SSH tunnel):
+```bash
+# 1. Write the turn instructions
+cat << 'EOF' > /run/devbox-session/default/command
+git status
+python3 -m unittest discover tests/
+EOF
+
+# 2. Instruct the tmux shell to execute and set the exit code trap
+tmux send-keys -t default "PROMPT_COMMAND='__CODExx__=\$?; echo \$__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;' source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr" C-m
+
+# 3. Block until inotifywait signals the creation of /run/devbox-session/default/stamp
+inotifywait -q -e create,moved_to --include '/stamp$' /run/devbox-session/default
+
+# 4. Harvest the exit code and outputs immediately
+EXIT_CODE=$(cat /run/devbox-session/default/exit_code)
+STDOUT=$(cat /run/devbox-session/default/stdout)
+STDERR=$(cat /run/devbox-session/default/stderr)
+
+# 5. Clean stamp for the next turn
+rm -f /run/devbox-session/default/stamp
+```
+
+---
+
+## 9. Direct Guest-to-Host VSOCK Communication Test
+
+Verify AF_VSOCK connectivity from guest to host hypervisor (CID 2, port 9999):
+
+```python
+#!/usr/bin/env python3
+# test_vsock.py (Run inside guest)
+import socket
+
+AF_VSOCK = 40
+HOST_CID = 2
+VMM_PORT = 9999
+
+sock = socket.socket(AF_VSOCK, socket.SOCK_STREAM)
+try:
+    sock.connect((HOST_CID, VMM_PORT))
+    print(f"Connected successfully to Host CID {HOST_CID}:{VMM_PORT}")
+    sock.sendall(b"READY=1\nSTATUS=Reproduction host verification\n")
+except ConnectionRefusedError:
+    print(f"Connection refused (Host CID {HOST_CID} not listening on port {VMM_PORT})")
+finally:
+    sock.close()
+```

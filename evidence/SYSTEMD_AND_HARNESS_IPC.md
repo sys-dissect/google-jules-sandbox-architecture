@@ -16,10 +16,53 @@ jules      74600 inotifywait -e create,moved_to --include /stamp$ /run/devbox-se
 ```
 
 ### Protocol Mechanics
-1. **Host Ingress**: The host orchestrator connects to Guest CID 123 over AF_VSOCK port 22.
-2. **VSOCK Forwarder (`socat`)**: Runs as a systemd unit forwarding `VSOCK-LISTEN:22` to `127.0.0.1:22` (`sshd`).
-3. **Session multiplexing (`tmux`)**: Holds state in session `default` at `/app`.
-4. **Execution Synchronization**: Turn instructions are piped into `/run/devbox-session/default/command`. `PROMPT_COMMAND` executes upon completion, writing `$?` to `exit_code` and touching `stamp`. `inotifywait` catches the inode change and signals the orchestrator immediately.
+1. **Host Ingress**: The host orchestrator connects to Guest CID 123 over AF_VSOCK port 22 via Firecracker's Unix domain socket on the host (`socat - UNIX-CONNECT:/tmp/firecracker-vsock.sock`).
+2. **VSOCK Forwarder (`socat`)**: Runs as a systemd unit (`devbox-ssh-over-vsock.service`) forwarding `VSOCK-LISTEN:22` to `127.0.0.1:22` (`sshd`).
+3. **Session Multiplexing (`tmux`)**: Holds state in persistent session `default` at `/app` across turns without re-allocating interactive TTYs.
+4. **Execution Synchronization via File-Pipes**:
+   - Turn instructions are staged into `/run/devbox-session/default/command`.
+   - The tmux shell executes:
+     ```bash
+     PROMPT_COMMAND='__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;'
+     source /run/devbox-session/default/command < /run/devbox-session/default/stdin > /run/devbox-session/default/stdout 2> /run/devbox-session/default/stderr
+     ```
+   - On the host SSH worker thread, an asynchronous watcher blocks on the directory:
+     ```bash
+     coproc inw { inotifywait -e create,moved_to --include '/stamp$' /run/devbox-session/default; }
+     tail --pid <PANE_PID> -f /dev/null
+     ```
+   - The moment `touch stamp` occurs, `inotifywait` unblocks immediately, and the host collects `exit_code`, `stdout`, and `stderr` with zero polling delays.
+
+---
+
+## 2. Direct AF_VSOCK Communication Mechanics
+
+VSOCK (`AF_VSOCK = 40`) addresses endpoints using a 32-bit Context ID (CID) and a 32-bit port, completely bypassing IP networks, ARP, and routing tables.
+
+### 1. Ingress: Host-to-Guest SSH
+Firecracker bridges guest VSOCK to a host Unix domain socket:
+```bash
+# On the host:
+socat - UNIX-CONNECT:/tmp/firecracker-vsock.sock
+```
+Inside the guest, `devbox-ssh-over-vsock.service` forwards port 22 to `127.0.0.1:22`, connecting the host orchestrator as user `swebot`.
+
+### 2. Egress: Guest-to-Host VMM Lifecycle Heartbeat
+A guest Python script can speak directly to the hypervisor (Host CID 2, port 9999):
+```python
+import socket
+
+AF_VSOCK = 40
+HOST_CID = 2     # Host hypervisor
+VMM_PORT = 9999  # vmm.notify_socket
+
+sock = socket.socket(AF_VSOCK, socket.SOCK_STREAM)
+try:
+    sock.connect((HOST_CID, VMM_PORT))
+    sock.sendall(b"READY=1\nSTATUS=Initialization complete\n")
+finally:
+    sock.close()
+```
 
 ---
 
