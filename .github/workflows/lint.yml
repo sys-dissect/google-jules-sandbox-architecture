@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Install MarkdownLint and Mermaid CLI
         run: |
@@ -28,18 +28,19 @@ jobs:
 
       - name: Validate Mermaid Diagrams in ARCHITECTURE.md
         run: |
-          # Extract mermaid blocks and validate syntax
-          python3 -c "
+          echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer-config.json
+          python3 - << 'EOF'
           import re, subprocess, sys
           content = open('ARCHITECTURE.md').read()
           blocks = re.findall(r'```mermaid\n(.*?)\n```', content, re.DOTALL)
+          print(f"Validating {len(blocks)} Mermaid diagrams from ARCHITECTURE.md...")
           for idx, b in enumerate(blocks):
               fname = f'/tmp/diag_{idx}.mmd'
               with open(fname, 'w') as f:
                   f.write(b)
-              res = subprocess.run(['mmdc', '-i', fname, '-o', f'/tmp/diag_{idx}.svg'])
+              res = subprocess.run(['mmdc', '-p', '/tmp/puppeteer-config.json', '-i', fname, '-o', f'/tmp/diag_{idx}.svg'])
               if res.returncode != 0:
-                  print(f'Diagram {idx} failed syntax check')
+                  print(f"Mermaid diagram {idx} failed syntax validation")
                   sys.exit(1)
-          print(f'Successfully validated {len(blocks)} Mermaid diagrams')
-          "
+          print(f"Successfully validated all {len(blocks)} Mermaid diagrams!")
+          EOF
