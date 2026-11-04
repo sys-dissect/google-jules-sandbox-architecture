@@ -1,0 +1,3 @@
+user.name=google-labs-jules[bot]
+user.email=161369871+google-labs-jules[bot]@users.noreply.github.com
+core.hookspath=/dev/null
