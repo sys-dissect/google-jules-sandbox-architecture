@@ -1,0 +1,14 @@
+/run/devbox-session/:
+total 0
+drwxr-xr-x  3 root  root  60 Nov  4 10:46 .
+drwxr-xr-x 17 root  root 500 Nov  4 10:46 ..
+drwxrwxrwx  2 jules root 120 Nov  4 10:46 default
+
+/run/devbox-session/default:
+total 8
+drwxrwxrwx 2 jules root   120 Nov  4 10:46 .
+drwxr-xr-x 3 root  root    60 Nov  4 10:46 ..
+-rw-r--r-- 1 jules jules 2468 Nov  4 10:46 command
+-rw-rw-r-- 1 jules jules   32 Nov  4 10:46 stderr
+-rw-r--r-- 1 jules jules    0 Nov  4 10:46 stdin
+-rw-rw-r-- 1 jules jules    0 Nov  4 10:46 stdout

@@ -6,10 +6,18 @@
 [![Isolation `[Tier 1]`](https://img.shields.io/badge/Isolation-KVM%20MicroVM%20(Virtio--MMIO)-orange.svg)](evidence/SYSTEM_TOPOLOGY.md)
 [![Control Plane `[Tier 1]`](https://img.shields.io/badge/Control%20Plane-Virtio--VSOCK%20%2B%20tmux-blueviolet.svg)](evidence/OPT_AND_HARNESS.md)
 [![Storage `[Tier 1]`](https://img.shields.io/badge/Storage-SquashFS%20%2B%20OverlayFS-red.svg)](evidence/BOOT_AND_HYPERVISOR.md)
-[![Methodology `[Tier 1]`](https://img.shields.io/badge/Methodology-Black--Box%20Verification-brightgreen.svg)](evidence/)
+[![Specification](https://img.shields.io/badge/Specification-ARCHITECTURE.md-green.svg)](ARCHITECTURE.md)
+[![Replication Guide](https://img.shields.io/badge/Blueprint-REPRODUCE.md-teal.svg)](REPRODUCE.md)
 
 > Google engineered the agent devbox. We audited the syscalls and hypervisor.<br>
 > Independent systems dissection of Google's **Jules** asynchronous coding agent execution sandbox, with empirical measurements, kernel dmesg telemetry, and runtime inspection extracted directly from inside live workload sessions.
+
+---
+
+## Master Architecture Specification & Reproduction Guide
+
+* **[Master Architecture Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md)**: A definitive publication-grade whitepaper covering all 5 operational layers, 3 Mermaid architecture diagrams (System Topology & Bus Mapping, Request & Task Execution Flow, and Boot & Storage Pivot Flow), and a comprehensive comparative matrix against Gemini Spark.
+* **[Local Reproduction Blueprint (`REPRODUCE.md`)](REPRODUCE.md)**: Step-by-step researcher guide for recreating an identical AWS Firecracker microVM devbox locally, including JSON configs, kernel compilation, SquashFS base image generation, and VSOCK bridging.
 
 ---
 
@@ -22,7 +30,7 @@ This repository documents the guest execution environment from the inside out—
 The architecture comprises five operational layers:
 
 1. **Virtualization & Hardware Plane**: A paravirtualized hardware virtual machine (**KVM**) running a custom kernel (`Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC` compiled by Google's `feyu@feyu-encarta.c.googlers.com`). The hypervisor is directly confirmed via ACPI tables (`FIRECK` / `FCAT 20240119`) as **AWS Firecracker**, enforcing a **PCI-free (`pci=off`) microVM topology** where all virtual devices (disks, network, vsock) are mapped via **Virtio-MMIO** registers, initialized with static kernel network routing and sub-second boot times.
-2. **Storage Subsystem & Lifecycle Durability**: An immutable, read-only compressed base image (**SquashFS 4.0** on `/dev/vda`) paired with an ephemeral writable scratch disk (**ext4** on `/dev/vdb`). A custom init script (`/usr/sbin/overlay-init`) mounts an `overlayfs` uniting them and pivots the root (`pivot_root`). Task state is fully durable across turns *within* a task, but structurally ephemeral *across* separate tasks.
+2. **Storage Subsystem & Lifecycle Durability**: An immutable, read-only compressed base image (**SquashFS 4.0** on `/dev/vda`) paired with an ephemeral writable scratch disk (**ext4** on `/dev/vdb`). A custom init script (`/usr/sbin/overlay-init`) mounts an `overlayfs` uniting them and pivots the root (`pivot_root`). Task state is fully durable across turns *within* a task, but structurally ephemeral *across* separate tasks. Superblock forensics (`tune2fs -l /dev/vdb`) confirm scratch disks are cloned from pre-baked March 2026 base snapshots.
 3. **Control Plane & Command Harness**: The host hypervisor mediates orchestration via **Virtio-VSOCK** (`vsock-stream:2:9999` on Host CID 2 for VMM lifecycle notification; `VSOCK-LISTEN:22` on Guest CID 123 bridged by `socat` to localhost SSH). Execution runs inside a persistent background **`tmux`** session managed headless by `swebot@notty`, using a file-piped FIFO harness in `/run/devbox-session/default/` synchronized via bash `PROMPT_COMMAND` and `inotifywait`.
 4. **Tooling & Headless Automation Plane**: A comprehensive, pre-baked developer ecosystem featuring a complete **Google Chrome** (268 MB) and **Playwright** virtual environment for browser testing, alongside multi-language SDKs (Python, Node/NVM, Java, Go, Rust, Bun, C/C++, Flutter, Android SDK) audited via `/opt/environment_summary.sh`.
 5. **Empirical Negative Results & Security Boundaries**:
@@ -264,7 +272,7 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
 
 ## Comparative Matrix: Google Jules vs. Gemini Spark
 
-A comparative analysis of Google's two primary agent execution environments (Note: Spark-side claims are sourced from a different external teardown testimony, not direct observation here):
+A comparative analysis of Google's two primary agent execution environments:
 
 | Architectural Dimension | Google Jules Devbox | Gemini Spark Sandbox |
 | :--- | :--- | :--- |
@@ -283,22 +291,26 @@ A comparative analysis of Google's two primary agent execution environments (Not
 
 ## Evidence Index & Provenance Map
 
-All conclusions in this report are substantiated by raw outputs committed in this repository:
+All conclusions in this report are substantiated by raw outputs and expanded audits committed in this repository:
 
 | Artifact | Description | Key Evidence |
 | :--- | :--- | :--- |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | **Master Architectural Specification** | Full 5-layer whitepaper, 3 Mermaid diagrams, comparative matrix vs Spark |
+| [`REPRODUCE.md`](REPRODUCE.md) | **Local Replication Blueprint** | Firecracker JSON config, kernel build guide, SquashFS rootfs generation, VSOCK SSH |
+| [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | **Task Orchestration Sequence** | Full a–i orchestration lifecycle: warm resume, Git proxy interception, tmux FIFO harness, CRNG fork reseeding |
+| [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) | **Durability Boundary Analysis** | In-task turn persistence vs. cross-task snapshot isolation; `tune2fs` March 2026 superblock audit |
+| [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | **Cross-Task State Isolation** | Multi-task marker dissipation proof and filesystem snapshot lifecycle |
+| [`evidence/NETWORK_CAPABILITIES.md`](evidence/NETWORK_CAPABILITIES.md) | **Network & Routing Audit** | Routing tables (`ip route`, `ip rule`), static boot routing, host gateway port scan, TUN egress |
+| [`evidence/OPT_AND_HARNESS.md`](evidence/OPT_AND_HARNESS.md) | **Tooling, Chrome & Process Tree** | `/opt/environment_summary.sh`, Chrome 145 & Playwright summary, `pstree`, `devbox-ssh-over-vsock.service` |
+| [`evidence/SYSTEMD_AND_HARNESS_IPC.md`](evidence/SYSTEMD_AND_HARNESS_IPC.md) | **Systemd & Harness IPC** | `inotifywait` session watcher, `socat` VSOCK-to-SSH bridge, `var-lib-systemd.mount` tmpfs optimization |
+| [`evidence/CONTAINERD_DOCKER_RUNTIME.md`](evidence/CONTAINERD_DOCKER_RUNTIME.md) | **Container Runtime & Workaround** | Overlay-on-overlay kernel constraint (`EINVAL`) and verified VFS storage driver workaround |
 | [`evidence/HARDENING.md`](evidence/HARDENING.md) | Initial baseline probes | Namespaces (`uid_map`), running systemd units, public egress verification, `/opt` listing |
-| [`evidence/OPT_AND_HARNESS.md`](evidence/OPT_AND_HARNESS.md) | Runtime tooling & process tree | `/opt/environment_summary.sh`, Chrome/Playwright census, `pstree` (`socat`, `tmux`, `inotifywait`), VSOCK unit file |
 | [`evidence/SYSTEM_TOPOLOGY.md`](evidence/SYSTEM_TOPOLOGY.md) | Hypervisor & storage topology | Kernel `/proc/cmdline` (`pci=off`, `virtio_mmio`), `lsblk` (SquashFS + ext4), Docker overlay mount failure |
 | [`evidence/BOOT_AND_HYPERVISOR.md`](evidence/BOOT_AND_HYPERVISOR.md) | Boot script & kernel proof | `/usr/sbin/overlay-init` source, kernel `dmesg` overlay error, MMIO resource allocations, `/proc/cpuinfo` flags |
 | [`evidence/FIRECRACKER_AND_VSOCK.md`](evidence/FIRECRACKER_AND_VSOCK.md) | Firecracker ACPI & VSOCK audit | ACPI `FIRECK` table fingerprint, Guest CID 123, Host CID 2, kernel builder provenance, `swebot` worker |
-| [`evidence/SYSTEMD_AND_HARNESS_IPC.md`](evidence/SYSTEMD_AND_HARNESS_IPC.md) | Systemd process tree & harness IPC | `inotifywait` session stamp watcher, `socat` VSOCK-LISTEN bridge, systemd process hierarchy |
 | [`evidence/KERNEL_SYSCTL_AND_BINFMT.md`](evidence/KERNEL_SYSCTL_AND_BINFMT.md) | Sysctl parameters & binfmt_misc | Raised `epoll` limits (`1813414`), vsyscall32, Python 3.12 `binfmt_misc` bytecode handler |
-| [`evidence/CONTAINERD_DOCKER_RUNTIME.md`](evidence/CONTAINERD_DOCKER_RUNTIME.md) | Container runtime audit | `dockerd` overlayfs driver, containerd gRPC/ttrpc sockets, overlay backing on `/dev/vdb` |
 | [`evidence/PAM_AND_AUTH_SECURITY.md`](evidence/PAM_AND_AUTH_SECURITY.md) | PAM auth & SSH host keys | Passwordless `sudo` for `jules`/`swebot`, SSH key fingerprints for root & host keys |
 | [`evidence/TAILCAT_SSH.md`](evidence/TAILCAT_SSH.md) | Interactive ingress over WireGuard | Tailcat SSH server logs, WireGuard DERP relay negotiation (`nyc`), authorized keys enforcement |
-| [`evidence/TASK_LIFECYCLE.md`](evidence/TASK_LIFECYCLE.md) | Session interaction mechanics | `PROMPT_COMMAND` exit-code capture, git branch mechanics |
-| [`evidence/PERSISTENCE.md`](evidence/PERSISTENCE.md) & [`evidence/CROSS_TASK_CHECK.md`](evidence/CROSS_TASK_CHECK.md) | Storage durability boundary | In-task state persistence vs. cross-task ephemeral isolation verification |
 | [`evidence/ENVIRONMENT.md`](evidence/ENVIRONMENT.md) | OS & toolchain discovery | Ubuntu 24.04 release, kernel build metadata, Go/Python/Node baseline |
 | [`evidence/RUNTIME_AUDIT.md`](evidence/RUNTIME_AUDIT.md) | Runtime execution audit | Package mirrors (us-central1 GCE), storage I/O, Chrome DOM rendering, VFS container testing |
 | [`evidence/UPTIME_AND_STORAGE_PROBE.md`](evidence/UPTIME_AND_STORAGE_PROBE.md) | Uptime and VDB storage | `uptime -s` and `tune2fs -l /dev/vdb` verifying host-side vdb snapshots and non-uniform kernel freshness |

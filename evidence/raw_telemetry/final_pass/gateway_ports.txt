@@ -1,0 +1,6 @@
+Port 22: CLOSED
+Port 53: OPEN
+Port 80: CLOSED
+Port 443: CLOSED
+Port 8080: OPEN
+Port 9999: CLOSED
