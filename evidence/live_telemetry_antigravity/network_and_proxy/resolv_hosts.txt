@@ -1,0 +1,32 @@
+nameserver 192.168.0.1
+--- HOSTS ---
+127.0.0.1	localhost
+192.168.0.1	devbox-gateway.internal
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+192.168.0.2	devbox
+
+--- NSSWITCH ---
+# /etc/nsswitch.conf
+#
+# Example configuration of GNU Name Service Switch functionality.
+# If you have the `glibc-doc-reference' and `info' packages installed, try:
+# `info libc "Name Service Switch"' for information about this file.
+
+passwd:         files
+group:          files
+shadow:         files
+gshadow:        files
+
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis

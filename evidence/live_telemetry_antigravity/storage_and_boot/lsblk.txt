@@ -1,0 +1,11 @@
+NAME  FSTYPE   FSVER LABEL   UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+loop0                                                                            
+loop1                                                                            
+loop2                                                                            
+loop3                                                                            
+loop4                                                                            
+loop5                                                                            
+loop6                                                                            
+loop7                                                                            
+vda   squashfs 4.0                                                      0   100% /rom
+vdb   ext4     1.0   overlay a9893320-d2ab-4aca-98ea-9a5954d46d7d   91.4G     1% /rom/overlay

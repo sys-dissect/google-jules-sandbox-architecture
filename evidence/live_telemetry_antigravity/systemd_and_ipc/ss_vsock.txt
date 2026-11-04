@@ -1,0 +1,2 @@
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+v_str LISTEN 0      0                  *:22              *:*    users:(("socat",pid=876,fd=5))

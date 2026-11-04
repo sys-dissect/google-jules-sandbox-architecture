@@ -1,0 +1,18 @@
+# Forwards VSOCK:22 to localhost:22
+#
+# For systemd > 256 there is also a systemd-ssh-generator(8) that can configure
+# sshd over vsock. We use a somewhat old ubuntu for guest that has systemd 255.
+# So the approach here is slightly more portable. Revisit this in a few years.
+#
+# c.f. https://libvirt.org/ssh-proxy.html#guest-os-requirements
+[Unit]
+After=sshd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

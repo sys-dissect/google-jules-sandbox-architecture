@@ -1,0 +1,22 @@
+00000000-00000fff : Reserved
+00001000-0009fbff : System RAM
+0009fc00-000dffff : Reserved
+000f0000-000fffff : System ROM
+00100000-bfffffff : System RAM
+  01000000-01bfffff : Kernel code
+  01c00000-01e9efff : Kernel rodata
+  02000000-027a0e7f : Kernel data
+  02a19000-02dfffff : Kernel bss
+c0001000-c0001fff : virtio-mmio.0
+  c0001000-c0001fff : LNRO0005:00
+    c0001000-c0001fff : LNRO0005:00 LNRO0005:00
+c0002000-c0002fff : virtio-mmio.1
+  c0002000-c0002fff : LNRO0005:01
+    c0002000-c0002fff : LNRO0005:01 LNRO0005:01
+c0003000-c0003fff : virtio-mmio.2
+  c0003000-c0003fff : LNRO0005:02
+    c0003000-c0003fff : LNRO0005:02 LNRO0005:02
+c0004000-c0004fff : virtio-mmio.3
+  c0004000-c0004fff : LNRO0005:03
+    c0004000-c0004fff : LNRO0005:03 LNRO0005:03
+100000000-23fffffff : System RAM

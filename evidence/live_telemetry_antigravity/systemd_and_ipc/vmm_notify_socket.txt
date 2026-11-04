@@ -1,0 +1,12 @@
+/run/credentials/:
+total 0
+drwxr-xr-x  3 root root  60 Oct  5 20:35 .
+drwxr-xr-x 17 root root 500 Oct  6 04:33 ..
+drwx------  2 root root  60 Mar  6  2026 @system
+
+/run/credentials/@system:
+total 4
+drwx------ 2 root root 60 Mar  6  2026 .
+drwxr-xr-x 3 root root 60 Oct  5 20:35 ..
+-r-------- 1 root root 19 Mar  6  2026 vmm.notify_socket
+---
