@@ -94,6 +94,17 @@ The workspace branch is immediately switched to a task-specific branch:
 git switch -c jules-<task_id>-<hash>
 ```
 
+#### Authentication Persistence Mechanism in Git Remote URL
+Notice that `cleanup_git_config()` removes the global `url.http://git@192.168.0.1:8080/.insteadOf` rewrite rule immediately after cloning. One might wonder how subsequent `git fetch`, `git pull`, or `git push` operations authenticate against the host proxy without this global configuration active.
+
+When `git clone` executes with `insteadOf` active, Git permanently resolves and writes the rewritten proxy URL directly into the local repository's `.git/config`:
+```ini
+[remote "origin"]
+    url = http://git@192.168.0.1:8080/<owner>/<repo>
+    fetch = +refs/heads/*:refs/remotes/origin/*
+```
+Because the destination URL is permanently baked into `/app/.git/config` as `remote.origin.url`, all future repository network interactions automatically route directly to the host reverse proxy at `192.168.0.1:8080`, allowing subsequent turns to authenticate without requiring persistent credentials or long-lived global rewrites in the guest.
+
 ### e. Persistent Tmux Session Setup
 A headless tmux session named `default` is spawned to host execution:
 ```bash

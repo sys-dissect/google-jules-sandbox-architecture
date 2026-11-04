@@ -151,6 +151,7 @@ The control plane avoids heavy agent daemons inside the guest by coupling standa
 2. **VSOCK SSH Proxy (`devbox-ssh-over-vsock.service`)**:
    * A systemd service spawns `socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22`.
    * The host orchestrator connects as user `swebot` without allocating a pseudo-terminal (`sshd: swebot@notty`).
+   * *Forward-Looking Architectural Note*: In Ubuntu 24.04, guest systemd is version 255. In newer distributions (Ubuntu 24.10+ shipping systemd 256+), systemd provides native `systemd-ssh-generator(8)` and socket activation over AF_VSOCK (`ListenStream=vsock:22`). This eliminates the need for an external `socat` forwarding process by binding VSOCK sockets directly to `sshd.socket`. Google opted for the `socat` bridge pattern as a universally portable mechanism across older systemd baselines.
 3. **Headless Tmux Harness**:
    * The host maintains a persistent headless `tmux` session named `default` rooted in `/app`.
    * Environment variables injected: `JULES_SESSION_ID=<task_id>`, `GIT_TERMINAL_PROMPT=0`.

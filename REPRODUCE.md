@@ -184,6 +184,24 @@ EOF
 # Enable units
 sudo chroot /tmp/rootfs-dir systemctl enable devbox-ssh-over-vsock.service
 sudo chroot /tmp/rootfs-dir systemctl enable var-lib-systemd.mount
+
+# 3. Pre-configure Docker Daemon for VFS Storage Driver
+# Crucial: Under an underlying OverlayFS root, containerd/docker's default overlayfs
+# snapshotter fails with EINVAL ("filesystem not supported as upperdir").
+# Pre-configuring the VFS storage driver prevents this failure out-of-the-box.
+sudo mkdir -p /tmp/rootfs-dir/etc/docker
+cat << 'EOF' | sudo tee /tmp/rootfs-dir/etc/docker/daemon.json
+{
+  "storage-driver": "vfs"
+}
+EOF
+
+# Note on Storage Optimization: While VFS works reliably without kernel overlay conflicts,
+# it copies entire filesystem layers, leading to higher disk usage. Systems researchers
+# seeking copy-on-write efficiency can alternatively install fuse-overlayfs:
+#   apt-get install -y fuse-overlayfs
+# and configure daemon.json with:
+#   { "storage-driver": "fuse-overlayfs" }
 ```
 
 ### Compress into SquashFS Golden Image

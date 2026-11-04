@@ -38,3 +38,12 @@
    - The authorized public keys used were provided directly by the developer in the workload session. No unauthorized keys were generated or accepted.
 4. **Architectural Implication**:
    - While the hypervisor enforces a strict inbound VSOCK-only boundary (`pci=off`, private network on `192.168.0.2`), the open outbound egress allows establishing encrypted peer-to-peer user-space tunnels (via WireGuard / Tailcat) to grant authorized developers interactive remote shell access directly into the active devbox microVM.
+
+5. **User-Space Netstack Implementation (No Elevated Privileges Required)**:
+   - Detailed server log examination reveals:
+     ```text
+     [v1] using fake (no-op) tun device
+     [v2] netstack: registered IP fd7a:115c:...
+     ```
+   - **Mechanism**: Rather than creating a Linux kernel network adapter (`tun0`), Tailcat defaults to an in-process, pure user-space TCP/IP stack (**gVisor netstack**).
+   - **Systems Consequence**: By operating netstack directly within user space, Tailcat bypasses the need for `CAP_NET_ADMIN` capabilities, kernel device allocation (`/dev/net/tun`), or root privileges to accept inbound SSH connections. WireGuard packets are decrypted and routed through the in-memory TCP stack directly into user-space listeners.
