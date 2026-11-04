@@ -1,0 +1,4 @@
+--- GLOBAL ---
+file:/home/jules/.gitconfig	user.name=google-labs-jules[bot]
+file:/home/jules/.gitconfig	user.email=161369871+google-labs-jules[bot]@users.noreply.github.com
+file:/home/jules/.gitconfig	core.hookspath=/dev/null

@@ -1,0 +1,23 @@
+UNIT FILE                     STATE   PRESET
+containerd.service            enabled enabled
+devbox-ssh-over-vsock.service enabled enabled
+docker.service                enabled enabled
+e2scrub_reap.service          enabled enabled
+getty@.service                enabled enabled
+ssh.service                   enabled enabled
+sysstat.service               enabled enabled
+systemd-pstore.service        enabled enabled
+docker.socket                 enabled enabled
+ssh.socket                    enabled enabled
+remote-fs.target              enabled enabled
+apt-daily-upgrade.timer       enabled enabled
+apt-daily.timer               enabled enabled
+dpkg-db-backup.timer          enabled enabled
+e2scrub_all.timer             enabled enabled
+fstrim.timer                  enabled enabled
+motd-news.timer               enabled enabled
+phpsessionclean.timer         enabled enabled
+sysstat-collect.timer         enabled enabled
+sysstat-summary.timer         enabled enabled
+
+20 unit files listed.

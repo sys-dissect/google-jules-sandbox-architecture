@@ -1,0 +1,3 @@
+
+--- STDERR (rc=-1) ---
+TIMEOUT

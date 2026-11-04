@@ -1,0 +1,51 @@
+total 8
+drwxr-xr-x  27 root  root   348 Jan  1  1970 .
+drwxr-xr-x   1 root  root  4096 Oct  5 20:20 ..
+lrwxrwxrwx   1 root  root     7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root  root     3 Jul 10  2025 bin.usr-is-merged
+drwxr-xr-x   2 root  root     3 Apr 22  2024 boot
+drwxr-xr-x  12 root  root  2720 Mar  6  2026 dev
+drwxr-xr-x 158 root  root  2553 Mar  6  2026 etc
+drwxrwxrwx   4 jules jules   37 Mar  2  2026 go
+drwxr-xr-x   5 root  root    56 Mar  4  2026 home
+lrwxrwxrwx   1 root  root     7 Apr 22  2024 lib -> usr/lib
+drwxr-xr-x   2 root  root     3 Nov 14  2024 lib.usr-is-merged
+lrwxrwxrwx   1 root  root     9 Apr 22  2024 lib64 -> usr/lib64
+drwxr-xr-x   2 root  root     3 Feb 10  2026 media
+drwxr-xr-x   2 root  root     3 Mar  4  2026 merged
+drwxr-xr-x   2 root  root     3 Feb 10  2026 mnt
+drwxr-xr-x   7 root  root   106 Mar  6  2026 opt
+drwxr-xr-x   5 root  root  4096 Mar  6  2026 overlay
+drwxr-xr-x   2 root  root     3 Apr 22  2024 proc
+drwxr-xr-x  13 root  root   190 Mar  4  2026 root
+drwxr-xr-x  12 root  root   153 Mar  2  2026 run
+lrwxrwxrwx   1 root  root     8 Apr 22  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root  root     3 Jul 10  2025 sbin.usr-is-merged
+drwxr-xr-x   2 root  root     3 Feb 10  2026 srv
+drwxr-xr-x   2 root  root     3 Apr 22  2024 sys
+drwxrwxrwt  11 root  root   260 Mar  6  2026 tmp
+drwxr-xr-x  12 root  root   142 Mar  4  2026 usr
+drwxr-xr-x  13 root  root   148 Feb 10  2026 var
+--- /rom/usr ---
+total 0
+drwxr-xr-x  12 root root   142 Mar  4  2026 .
+drwxr-xr-x  27 root root   348 Jan  1  1970 ..
+drwxr-xr-x 969 root root 16843 Mar  2  2026 bin
+drwxr-xr-x   2 root root     3 Apr 22  2024 games
+drwxr-xr-x 202 root root  3106 Mar  2  2026 include
+drwxr-xr-x  64 root root   966 Mar  2  2026 lib
+drwxr-xr-x   3 root root    43 Mar  2  2026 lib64
+drwxr-xr-x  15 root root   263 Mar  2  2026 libexec
+drwxr-xr-x  13 root root   144 Mar  2  2026 local
+drwxr-xr-x 230 root root  4341 Mar  4  2026 sbin
+drwxr-xr-x 156 root root  2587 Mar  2  2026 share
+drwxr-xr-x   2 root root     3 Apr 22  2024 src
+--- /rom/opt ---
+total 4
+drwxr-xr-x  7 root  root   106 Mar  6  2026 .
+drwxr-xr-x 27 root  root   348 Jan  1  1970 ..
+drwxr-xr-x  9 jules jules  145 Mar  2  2026 android-sdk
+-r-xr-xr-x  1 root  root  3298 Mar  6  2026 environment_summary.sh
+drwxr-xr-x 33 jules jules  585 Mar  2  2026 flutter
+drwxr-xr-x  3 root  root    29 Mar  2  2026 google
+drwxr-xr-x  4 root  root    45 Mar  2  2026 jules
