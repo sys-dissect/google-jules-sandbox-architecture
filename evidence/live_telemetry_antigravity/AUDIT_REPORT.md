@@ -162,11 +162,20 @@ kill -- "-$pane_waiter" || exit 0
 
 ---
 
+### G. Monolithic Kernel Security & Unconstrained Cgroups v2
+Direct probe of `/proc/config.gz` and cgroup v2 sysfs controllers revealed:
+* `# CONFIG_SECCOMP is not set`: Complete absence of kernel seccomp. The agent can invoke any Linux x86_64 system call without filter overhead or interception.
+* `# CONFIG_MODULES is not set`: The kernel is 100% monolithic. Loadable kernel modules cannot be inserted, eliminating LKM persistence.
+* `unprivileged_bpf_disabled = 2`: eBPF is permanently locked against unprivileged execution.
+* Unified Cgroups v2: Both `user.slice` and `system.slice` have `memory.max = max` and `cpu.max = max 100000`, proving zero in-guest CPU throttling or memory capping.
+
+---
+
 ## 2. Directory Index of Harvested Telemetry
 
 | Category Directory | Key Files | Description |
 | :--- | :--- | :--- |
-| [`kernel_and_hypervisor/`](kernel_and_hypervisor/) | `dmesg_full.txt`, `cmdline.txt`, `cpuinfo.txt`, `iomem.txt`, `virtio_devices.txt`, `sysctl_all.txt` | Complete kernel dmesg, boot flags, Virtio-MMIO registers, and kernel sysctls |
+| [`kernel_and_hypervisor/`](kernel_and_hypervisor/) | `dmesg_full.txt`, `cmdline.txt`, `cpuinfo.txt`, `iomem.txt`, `virtio_devices.txt`, `sysctl_all.txt`, `vcpu_topology.txt`, `ebpf_capabilities.txt`, `cgroups_v2_quotas.txt`, `memory_and_hugepages.txt`, `kernel_security_config.txt` | Complete kernel dmesg, boot flags, Virtio-MMIO registers, kernel security config, vCPU topology, eBPF, and cgroups v2 |
 | [`acpi_tables/`](acpi_tables/) | `DSDT.dsl`, `acpi_tables.tar.gz`, `tables_listing.txt` | Disassembled ASL source of Firecracker DSDT and raw ACPI binary tarball |
 | [`storage_and_boot/`](storage_and_boot/) | `mounts_and_mountinfo.txt`, `rom_listing.txt`, `vdb_tune2fs.txt`, `overlay_init.sh` | OverlayFS mount table, `/rom` tree, ext4 `/dev/vdb` filesystem superblock |
 | [`systemd_and_ipc/`](systemd_and_ipc/) | `vmm_notify_socket.txt`, `devbox_session_listing.txt`, `supervisor_processes.txt`, `ss_vsock.txt` | Systemd credentials, tmux FIFO harness files, `swebot` supervisor scripts |

@@ -1,0 +1,47 @@
+=== MONOLITHIC KERNEL SECURITY CONFIG (Empirically Gathered from Live Devbox) ===
+Date: 2026-11-04
+Kernel: Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC
+Builder: feyu@feyu-encarta.c.googlers.com (gcc 15.2.0, GNU ld 2.45) Fri Feb 20 20:38:43 UTC 2026
+
+[Monolithic Nature - Module Subsystem Disabled]
+# CONFIG_MODULES is not set
+lsmod output: (empty, exit 0)
+/proc/modules: (empty)
+(Finding: The kernel is 100% monolithic. Kernel modules cannot be loaded, probed, or inserted by root, eliminating rootkit/LKM attack vectors).
+
+[Syscall Confinement - Seccomp Disabled]
+# CONFIG_SECCOMP is not set
+grep Seccomp /proc/self/status: (not present)
+grep Seccomp /proc/1/status: (not present)
+(Finding: Unlike container runtimes or gVisor, CONFIG_SECCOMP was omitted entirely during kernel compilation. Guest processes have unmitigated access to all Linux 6.8 syscalls).
+
+[Security Modules (LSM) & SecurityFS]
+# CONFIG_SECURITY is not set
+# CONFIG_SECURITYFS is not set
+# CONFIG_SECURITY_DMESG_RESTRICT is not set
+# CONFIG_AUDIT is not set
+(Finding: No in-guest LSM infrastructure [AppArmor, SELinux, Landlock, Smack]. Guest security is non-existent by design, as the hardware boundary provides the containment).
+
+[ASLR & Memory Hardening]
+# CONFIG_RANDOMIZE_BASE is not set (KASLR disabled in kernel build)
+CONFIG_RANDOMIZE_KSTACK_OFFSET=y
+# CONFIG_RANDOMIZE_KSTACK_OFFSET_DEFAULT is not set
+CONFIG_STACKPROTECTOR=y
+CONFIG_STACKPROTECTOR_STRONG=y
+CONFIG_FORTIFY_SOURCE=y
+CONFIG_STRICT_DEVMEM=y
+CONFIG_STRICT_KERNEL_RWX=y
+# CONFIG_HARDENED_USERCOPY is not set
+
+[Runtime Hardening Sysctls]
+/proc/sys/kernel/randomize_va_space: 2 (Full user-space ASLR active)
+/proc/sys/kernel/kptr_restrict: 1 (Kernel pointers restricted for non-root)
+/proc/sys/kernel/dmesg_restrict: 0 (dmesg readable by non-root)
+/proc/sys/kernel/perf_event_paranoid: 2 (Unprivileged perf events disallowed)
+/proc/sys/kernel/yama/ptrace_scope: (Not present / Yama not compiled in)
+
+[Tracing & Debugging Disablement]
+# CONFIG_FTRACE is not set
+# CONFIG_DEBUG_FS is not set
+# CONFIG_DEBUG_KERNEL is not set
+# CONFIG_WATCHDOG is not set

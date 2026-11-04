@@ -7,15 +7,18 @@
 
 ## 1. Prerequisites & Host Environment
 
-Ensure the host machine is running Linux on bare-metal or inside a nested-virtualization-capable VM with KVM access:
+Ensure the host machine is running Linux (Ubuntu 24.04 recommended) on bare-metal or inside a nested-virtualization-capable VM with KVM access:
 
 ```bash
 # Verify KVM availability
 ls -l /dev/kvm
-# Ensure current user has KVM permissions
-sudo chmod 666 /dev/kvm
 
-# Install host utilities
+# Ensure current user has KVM and Docker permissions
+sudo usermod -aG kvm,docker $USER
+# Activate new group memberships in current session (or log out and back in)
+newgrp kvm
+
+# Install host utilities, kernel build toolchain, and debugging tools
 sudo apt-get update && sudo apt-get install -y \
     curl \
     socat \
@@ -23,7 +26,16 @@ sudo apt-get update && sudo apt-get install -y \
     e2fsprogs \
     docker.io \
     bridge-utils \
-    iptables
+    iptables \
+    build-essential \
+    flex \
+    bison \
+    bc \
+    libelf-dev \
+    libssl-dev \
+    dwarves \
+    python3 \
+    inotify-tools
 ```
 
 Download the official AWS Firecracker binary:
@@ -103,8 +115,9 @@ RUN apt-get update && apt-get install -y \
     ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Setup user jules with passwordless sudo
+# Setup user jules with passwordless sudo and local SSH password
 RUN useradd -m -s /bin/bash -u 1001 jules && \
+    echo "jules:jules" | chpasswd && \
     echo "jules ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/jules && \
     chmod 0440 /etc/sudoers.d/jules
 
@@ -112,8 +125,12 @@ RUN useradd -m -s /bin/bash -u 1001 jules && \
 RUN useradd -m -s /bin/bash swebot && \
     echo "swebot ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/jules
 
-# Create application workspace
-RUN mkdir -p /app && chown -R jules:jules /app
+# Create application workspace and overlay mount targets (critical for overlay-init pivot)
+RUN mkdir -p /app /overlay /merged && chown -R jules:jules /app
+
+# Enable SSH password authentication for local testing
+RUN mkdir -p /etc/ssh/sshd_config.d && \
+    echo "PasswordAuthentication yes" > /etc/ssh/sshd_config.d/local.conf
 EOF
 
 # Build and export rootfs filesystem
@@ -181,9 +198,10 @@ Options=rw,nosuid,nodev,size=4G,nr_inodes=10240
 WantedBy=multi-user.target
 EOF
 
-# Enable units
-sudo chroot /tmp/rootfs-dir systemctl enable devbox-ssh-over-vsock.service
-sudo chroot /tmp/rootfs-dir systemctl enable var-lib-systemd.mount
+# Enable units offline via systemd target symlinks (reliable in chroot/exported rootfs)
+sudo mkdir -p /tmp/rootfs-dir/etc/systemd/system/multi-user.target.wants
+sudo ln -sf /etc/systemd/system/devbox-ssh-over-vsock.service /tmp/rootfs-dir/etc/systemd/system/multi-user.target.wants/
+sudo ln -sf /etc/systemd/system/var-lib-systemd.mount /tmp/rootfs-dir/etc/systemd/system/multi-user.target.wants/
 
 # 3. Docker Daemon & Containerd Configuration
 # Crucial: Under an underlying OverlayFS root, containerd/docker's default overlayfs
@@ -224,9 +242,9 @@ mksquashfs /tmp/rootfs-dir /tmp/jules-base.squashfs -comp xz -b 128K -noappend
 Create the sparse copy-on-write overlay disk:
 
 ```bash
-# Create 100 GiB sparse file
+# Create 100 GiB sparse file with volume label 'overlay'
 truncate -s 100G /tmp/jules-scratch.ext4
-mkfs.ext4 -F /tmp/jules-scratch.ext4
+mkfs.ext4 -F -L overlay /tmp/jules-scratch.ext4
 ```
 
 ---
@@ -241,11 +259,15 @@ sudo ip tuntap add dev tap0 mode tap
 sudo ip addr add 192.168.0.1/24 dev tap0
 sudo ip link set tap0 up
 
+# Detect active host outbound network interface (e.g. eth0, enp3s0, or wlan0)
+HOST_IFACE=$(ip route show default | awk '{print $5}')
+echo "Host outbound interface: $HOST_IFACE"
+
 # Enable NAT IP forwarding on host
 sudo sysctl -w net.ipv4.ip_forward=1
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o "$HOST_IFACE" -j MASQUERADE
 sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-sudo iptables -A FORWARD -i tap0 -o eth0 -j ACCEPT
+sudo iptables -A FORWARD -i tap0 -o "$HOST_IFACE" -j ACCEPT
 ```
 
 ### Run Transparent Host Git Proxy (`devbox-gateway.internal:8080`)
@@ -349,7 +371,6 @@ Create the complete Firecracker microVM configuration `vm_config.json`:
     "smt": false
   },
   "vsock": {
-    "vsock_id": "vsock0",
     "guest_cid": 123,
     "uds_path": "/tmp/firecracker-vsock.sock"
   }
@@ -370,14 +391,73 @@ firecracker --api-sock /tmp/firecracker.socket --config-file vm_config.json
 ```
 
 ### Host-Side VSOCK SSH Bridge
-Connect into the guest using `socat` over the Unix domain socket corresponding to Guest CID 123:
 
+Firecracker exposes guest VSOCK streams over a single host Unix Domain Socket (`uds_path`). Unlike standard sockets, connecting to Firecracker's UDS requires an ASCII handshake command (`CONNECT <guest_port>\n`) before data framing begins.
+
+Create and run this host bridge script (`host_vsock_bridge.py`) to map host TCP port 2222 directly to Guest CID 123 port 22:
+
+```python
+#!/usr/bin/env python3
+# host_vsock_bridge.py: Bridge host TCP 2222 -> Firecracker VSOCK Guest Port 22
+import socket, sys, threading
+
+TCP_PORT = 2222
+UDS_PATH = "/tmp/firecracker-vsock.sock"
+GUEST_PORT = 22
+
+def forward(src, dst):
+    try:
+        while True:
+            buf = src.recv(4096)
+            if not buf:
+                break
+            dst.sendall(buf)
+    except Exception:
+        pass
+    finally:
+        src.close()
+        dst.close()
+
+def handle_client(client_sock):
+    vsock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        vsock.connect(UDS_PATH)
+        # Firecracker multiplexer handshake: specify guest destination port
+        vsock.sendall(f"CONNECT {GUEST_PORT}\n".encode())
+        resp = vsock.recv(32).decode()
+        if not resp.startswith("OK"):
+            print(f"Firecracker VSOCK handshake failed: {resp.strip()}")
+            client_sock.close()
+            vsock.close()
+            return
+        threading.Thread(target=forward, args=(client_sock, vsock), daemon=True).start()
+        threading.Thread(target=forward, args=(vsock, client_sock), daemon=True).start()
+    except Exception as e:
+        print(f"Error connecting to Firecracker VSOCK socket: {e}")
+        client_sock.close()
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.bind(('127.0.0.1', TCP_PORT))
+server.listen(5)
+print(f"VSOCK Bridge listening on 127.0.0.1:{TCP_PORT} -> Guest VSOCK Port {GUEST_PORT}")
+try:
+    while True:
+        client, _ = server.accept()
+        threading.Thread(target=handle_client, args=(client,), daemon=True).start()
+except KeyboardInterrupt:
+    server.close()
+```
+
+Launch the bridge in the background:
 ```bash
-# Bridge host TCP port 2222 to guest VSOCK port 22
-socat TCP-LISTEN:2222,fork,reuseaddr UNIX-CONNECT:/tmp/firecracker-vsock.sock &
+python3 host_vsock_bridge.py &
+```
 
-# Connect into the microVM
+Connect into the microVM:
+```bash
 ssh -p 2222 jules@127.0.0.1
+# Password: jules (or via configured SSH key)
 ```
 
 Once inside, you will have a live, authentic Google Jules execution environment with the identical storage overlay, Virtio-MMIO devices, and VSOCK orchestration harness.

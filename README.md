@@ -30,7 +30,7 @@ This repository documents the guest execution environment from the inside out—
 The architecture comprises five operational layers:
 
 1. **Virtualization & Hardware Plane**: A paravirtualized hardware virtual machine (**KVM**) running a custom kernel (`Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC` compiled by Google's `feyu@feyu-encarta.c.googlers.com`). The hypervisor is directly confirmed via ACPI tables (`FIRECK` / `FCAT 20240119`) as **AWS Firecracker**, enforcing a **PCI-free (`pci=off`) microVM topology** where all virtual devices (disks, network, vsock) are mapped via **Virtio-MMIO** registers, initialized with static kernel network routing and sub-second boot times.
-2. **Storage Subsystem & Lifecycle Durability**: An immutable, read-only compressed base image (**SquashFS 4.0** on `/dev/vda`) paired with an ephemeral writable scratch disk (**ext4** on `/dev/vdb`). A custom init script (`/usr/sbin/overlay-init`) mounts an `overlayfs` uniting them and pivots the root (`pivot_root`). Task state is fully durable across turns *within* a task, but structurally ephemeral *across* separate tasks. Superblock forensics (`tune2fs -l /dev/vdb`) confirm scratch disks are cloned from pre-baked March 2026 base snapshots.
+2. **Storage Subsystem & Lifecycle Durability**: An immutable, read-only compressed base image (**SquashFS 4.0** on `/dev/vda`) paired with an ephemeral writable scratch disk (**ext4** on `/dev/vdb`, 92 GiB available out of 98 GiB usable). A custom init script (`/usr/sbin/overlay-init`) mounts an `overlayfs` uniting them and pivots the root (`pivot_root`). Task state is fully durable across turns *within* a task, but structurally ephemeral *across* separate tasks. Superblock forensics (`tune2fs -l /dev/vdb`) confirm scratch disks are cloned from pre-baked March 2026 base snapshots.
 3. **Control Plane & Command Harness**: The host hypervisor mediates orchestration via **Virtio-VSOCK** (`vsock-stream:2:9999` on Host CID 2 for VMM lifecycle notification; `VSOCK-LISTEN:22` on Guest CID 123 bridged by `socat` to localhost SSH). Execution runs inside a persistent background **`tmux`** session managed headless by `swebot@notty`, using a file-piped FIFO harness in `/run/devbox-session/default/` synchronized via bash `PROMPT_COMMAND` and `inotifywait`.
 4. **Tooling & Headless Automation Plane**: A comprehensive, pre-baked developer ecosystem featuring a complete **Google Chrome** (268 MB) and **Playwright** virtual environment for browser testing, alongside multi-language SDKs (Python, Node/NVM, Java, Go, Rust, Bun, C/C++, Flutter, Android SDK) audited via `/opt/environment_summary.sh`.
 5. **Empirical Negative Results & Security Boundaries**:
@@ -129,7 +129,7 @@ All statements, measurements, and logs in this study are categorized according t
   * **Virtio-MMIO**: Device enumeration occurs entirely via 4 fixed memory-mapped I/O windows (`0xc0001000` through `0xc0004000`, IRQs 5-8).
   * **ACPI Table Fingerprint** `[Tier 1]`: Kernel dmesg logs confirm the microVM hypervisor is AWS **Firecracker**:
     * RSDP OEM ID: `FIRECK`
-    * Table Signatures: `FCVMXSDT`, `FCVMFADT`, `FCVMDSDT`, `FCVMMADT`, `FCMVMCFG`
+    * Table Signatures: `FCMVXSDT` (XSDT), `FCVMFADT` (FADT), `FCVMDSDT` (DSDT), `FCVMMADT` (MADT), `FCMVMCFG` (MCFG)
     * Table Creator: `FCAT 20240119` (Firecracker ACPI Tables).
   * **Custom Kernel Build & Provenance** `[Tier 1]`:
     * Kernel Banner: `Linux version 6.8.0 (feyu@feyu-encarta.c.googlers.com) (gcc (Debian 15.2.0-3) 15.2.0, GNU ld (GNU Binutils for Debian) 2.45) #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026`
@@ -158,7 +158,7 @@ The guest storage architecture is decoupled into an immutable golden image and a
 +------------------------------------+   +--------------------------------+
 |      Upper Layer (/overlay/root)   |   |       Lower Layer (/rom)       |
 |  - Writable ext4 (/dev/vdb)        |   |  - Read-Only SquashFS (/dev/vda)
-|  - 100 GiB capacity, 93 GiB free   |   |  - 4.36 GiB compressed golden  |
+|  - 100 GiB capacity, 92 GiB free   |   |  - 4.36 GiB compressed golden  |
 |  - Holds all task session writes   |   |  - Clean Ubuntu 24.04 + tools  |
 +------------------------------------+   +--------------------------------+
 ```
@@ -269,6 +269,14 @@ The base image contains an expansive, pre-installed toolchain matrix verified by
   * Hardware-accelerated nested KVM microVMs or Android QEMU emulators cannot be spawned.
 * **3. Absence of PCI Bus** `[Tier 1]`:
   * `pci=off` disables PCI scanning; `lspci` command fails and PCI sysfs trees are unpopulated.
+* **4. Complete Omission of Kernel Seccomp** `[Tier 1]`:
+  * Kernel configuration proves `# CONFIG_SECCOMP is not set`. Unlike Docker or gVisor, there is zero seccomp BPF filtering overhead or syscall restriction; the agent has raw access to all 450+ x86_64 system calls.
+* **5. Purely Monolithic Kernel Architecture** `[Tier 1]`:
+  * `# CONFIG_MODULES is not set` disables loadable kernel modules completely (`lsmod` is empty). No kernel modules or rootkit drivers can be loaded into ring 0.
+* **6. Unthrottled Guest Cgroups v2 Hierarchy** `[Tier 1]`:
+  * Both `user.slice` and `system.slice` have `memory.max = max` and `cpu.max = max 100000`. Google delegates 100% of resource quotas and isolation to the host Firecracker cgroup boundary.
+* **7. Immutable eBPF Lockout** `[Tier 1]`:
+  * `unprivileged_bpf_disabled = 2` is permanently locked until reboot; direct `bpf(2)` syscall invocation returns `-1` (EPERM), preventing unprivileged kernel tracing.
 
 ---
 
@@ -327,6 +335,7 @@ All conclusions in this report are substantiated by raw outputs and expanded aud
 | [`evidence/live_telemetry_antigravity/network_and_proxy/GIT_PROXY_SPECIFICATION.md`](evidence/live_telemetry_antigravity/network_and_proxy/GIT_PROXY_SPECIFICATION.md) | **Git Reverse Proxy Specification** | Empirical wire analysis of `192.168.0.1:8080`, Smart HTTP pkt-lines, and OAuth token injection |
 | [`evidence/live_telemetry_antigravity/storage_and_boot/BUILD_PROVENANCE.md`](evidence/live_telemetry_antigravity/storage_and_boot/BUILD_PROVENANCE.md) | **Golden Image Build Provenance** | `bootstrap.log` reconstruction, `ftpmaster.internal` mirror, SquashFS 4.0 header offsets |
 | [`evidence/live_telemetry_antigravity/storage_and_boot/DOCKER_OVERLAYFS_ROOT_CAUSE.md`](evidence/live_telemetry_antigravity/storage_and_boot/DOCKER_OVERLAYFS_ROOT_CAUSE.md) | **Native Ext4 Container Breakthrough** | Proof and reproduction of full-speed native Linux kernel overlayfs containers via `/rom/overlay` |
+| [`evidence/KERNEL_SECURITY_AND_HYPERVISOR_PROBES.md`](evidence/KERNEL_SECURITY_AND_HYPERVISOR_PROBES.md) | **Kernel Security & vCPU Topology Probe** | Monolithic kernel build (`CONFIG_MODULES` off), Seccomp compile-out (`CONFIG_SECCOMP` off), eBPF lock, unconstrained cgroups v2 |
 
 ---
 

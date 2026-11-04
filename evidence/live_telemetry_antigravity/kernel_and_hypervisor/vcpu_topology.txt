@@ -1,0 +1,38 @@
+=== vCPU TOPOLOGY & SCHEDULING (Empirically Gathered from Live Devbox) ===
+Date: 2026-11-04
+Kernel: Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC
+Hypervisor: AWS Firecracker (ACPI FIRECK / FCAT 20240119)
+
+[vCPU Count]
+4
+
+[Core IDs (/sys/devices/system/cpu/cpu*/topology/core_id)]
+cpu0: 0
+cpu1: 1
+cpu2: 2
+cpu3: 3
+
+[Physical Package IDs (/sys/devices/system/cpu/cpu*/topology/physical_package_id)]
+cpu0: 0
+cpu1: 0
+cpu2: 0
+cpu3: 0
+
+[Thread Siblings (/sys/devices/system/cpu/cpu*/topology/thread_siblings_list)]
+cpu0: 0
+cpu1: 1
+cpu2: 2
+cpu3: 3
+(Finding: 1 thread per core. SMT/Hyper-Threading is completely disabled inside the microVM; smt=false in Firecracker machine-config).
+
+[Core Siblings (/sys/devices/system/cpu/cpu*/topology/core_siblings_list)]
+cpu0: 0-3
+cpu1: 0-3
+cpu2: 0-3
+cpu3: 0-3
+
+[Scheduler Features & Isolation]
+/sys/kernel/debug/sched/features: Unavailable (debugfs not mounted)
+/proc/sys/kernel/sched_core_enabled: Not exposed
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor: Not present (no virtual cpufreq exposed by Firecracker)
+/sys/devices/system/cpu/isolated: (Empty string - all 4 vCPUs in general scheduling pool)

@@ -1,0 +1,51 @@
+=== MEMORY, HUGEPAGES & BALLOONING (Empirically Gathered from Live Devbox) ===
+Date: 2026-11-04
+Kernel: Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC
+
+[/proc/meminfo Baseline]
+MemTotal:        8150116 kB (~7.77 GiB / 8 GiB physical)
+MemFree:         4834676 kB (~4.61 GiB)
+MemAvailable:    7626512 kB (~7.27 GiB)
+Buffers:           43704 kB
+Cached:          2325724 kB (~2.21 GiB pagecache)
+SwapCached:            0 kB
+Active:           690504 kB
+Inactive:        1792476 kB
+Active(anon):        320 kB
+Inactive(anon):   113792 kB
+Active(file):     690184 kB
+Inactive(file):  1678684 kB
+Unevictable:           4 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB (No swap enabled)
+SwapFree:              0 kB
+Dirty:                20 kB
+Writeback:             0 kB
+AnonPages:        113624 kB
+Mapped:           153856 kB
+Shmem:               560 kB
+KReclaimable:     728596 kB
+Slab:             781096 kB
+SReclaimable:     728596 kB
+SUnreclaim:        52500 kB
+KernelStack:        2256 kB
+PageTables:         3860 kB
+
+[Transparent Huge Pages (THP)]
+/sys/kernel/mm/transparent_hugepage/enabled: always [madvise] never
+/sys/kernel/mm/transparent_hugepage/defrag: always defer defer+madvise [madvise] never
+/sys/kernel/mm/transparent_hugepage/shmem_enabled: always within_size advise [never] deny force
+(Finding: THP is strictly configured to 'madvise' rather than 'always', preventing aggressive 2MB allocation latency spikes while allowing opt-in for high-performance memory allocators).
+
+[Virtio Memory Ballooning]
+sysfs: /sys/bus/virtio/drivers/virtio_balloon/ (driver loaded)
+Attached Devices: 0 (No virtio-balloon device mapped in Firecracker MMIO; virtio0-virtio3 only: 2 blk, 1 net, 1 vsock)
+CONFIG_BALLOON_COMPACTION: Not set
+
+[Kernel Samepage Merging (KSM)]
+/sys/kernel/mm/ksm/run: 0 (Disabled)
+
+[Swap Subsystem]
+/proc/swaps: Empty
+swapon --show: Empty
+(Finding: MicroVM runs without any swapfile or swap partition, enforcing strict OOM-killer semantics at the 8 GiB memory ceiling).

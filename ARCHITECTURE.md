@@ -93,7 +93,7 @@ The compute isolation layer is rooted in Linux KVM paravirtualization orchestrat
 * **MicroVM Hypervisor Identification**:
   * ACPI signature verification extracted from `/sys/firmware/acpi/tables/`:
     * RSDP OEM ID: `FIRECK`
-    * Table Signatures: `FCVMXSDT`, `FCVMFADT`, `FCVMDSDT`, `FCVMMADT`, `FCMVMCFG`
+    * Table Signatures: `FCMVXSDT` (XSDT), `FCVMFADT` (FADT), `FCVMDSDT` (DSDT), `FCVMMADT` (MADT), `FCMVMCFG` (MCFG)
     * Creator ID: `FCAT` (Revision `20240119`).
 * **Kernel Command-Line Parameters**:
   ```text
@@ -107,7 +107,7 @@ The compute isolation layer is rooted in Linux KVM paravirtualization orchestrat
     * `0xc0003000` (IRQ 7): Network device `virtio2` (`eth0`, Virtio-Net).
     * `0xc0004000` (IRQ 8): Socket device `virtio3` (Virtio-VSOCK).
 * **Hardware Compute Allocation**:
-  * 4 vCPUs allocated from host `Intel(R) Xeon(R) CPU @ 2.30GHz`.
+  * 4 vCPUs allocated from host `Intel(R) Xeon(R) Processor @ 2.30GHz` (Haswell-EP microarchitecture, 1 thread per core, SMT disabled in guest).
   * Memory: 8 GiB RAM (7.8 GiB usable).
   * Clocksource: `tsc` (Time Stamp Counter).
   * Absence of nested virtualization (`vmx`/`svm` flags disabled).
@@ -129,7 +129,7 @@ Storage decouples immutable distribution state from per-task ephemeral writes:
 
 1. **Physical Device Mapping**:
    * `/dev/vda`: Read-only SquashFS 4.0 image (4.36 GiB compressed footprint, blocksized at 128 KiB xz compression) containing Ubuntu 24.04 and all pre-baked SDK toolchains.
-   * `/dev/vdb`: 100 GiB ext4 sparse scratch disk (93 GiB available).
+   * `/dev/vdb`: 100 GiB ext4 sparse scratch disk (92 GiB available out of 98 GiB usable capacity on 100 GiB block device; volume label `overlay`).
 2. **Custom Init Pivoting (`/usr/sbin/overlay-init`)**:
    ```sh
    #!/bin/sh
@@ -262,11 +262,15 @@ Networking bypasses conventional dynamic DHCP configuration:
    When a `git push`, `git fetch`, or `git clone` runs inside the devbox, traffic does not go directly to `github.com`. Instead, it talks transparently to the host reverse proxy:
 
    #### Step 1: Guest Initiates Request
-   Global Git config configured during task provisioning intercepts calls to GitHub:
+   During initial task repository provisioning (`setup_git_config`), global Git configuration intercepts calls to GitHub:
    ```bash
    git config --global --add url.http://git@192.168.0.1:8080/.insteadOf https://github.com/
    git config --global --add url.http://git@192.168.0.1:8080/.insteadOf git@github.com:
+   git config --global core.hooksPath /dev/null
    ```
+   When `git clone ... /app` runs under these rules, Git evaluates `insteadOf` and permanently records the resolved proxy endpoint directly into `/app/.git/config` (`[remote "origin"] url = http://git@192.168.0.1:8080/...`).
+   Immediately after the clone succeeds, the host orchestrator executes `cleanup_git_config` (`git config --global --remove url.http://git@192.168.0.1:8080/`), stripping the global rewrite rule. This ensures secondary remotes or user-specified URLs are not accidentally redirected, while all operations within `/app` continue to communicate transparently with the host proxy.
+
    When git executes:
    ```bash
    git fetch origin
@@ -323,13 +327,22 @@ Google Jules implements a **Hardware-Boundary Security Model**:
   * Primary user: `jules` (UID 1001, GID 1001).
   * Passwordless `sudo` (`jules ALL=(ALL) NOPASSWD:ALL`).
   * Unrestricted access to kernel sysctls, network configuration, and root filesystems.
-* **Absence of In-Guest Linux Security Modules (LSM)**:
-  * No AppArmor or SELinux profiles enforced (`apparmor=0`, `selinux=0`).
-  * Seccomp filtering on user bash is inactive (`Seccomp: 0`).
-  * Unthrottled cgroups v2 hierarchy (`/sys/fs/cgroup/user.slice`).
+* **Kernel Syscall Hardening Profile**:
+  * **Complete Omission of Kernel Seccomp**: Kernel configuration forensics (`evidence/live_telemetry_antigravity/kernel_and_hypervisor/kernel_security_config.txt`) prove that `# CONFIG_SECCOMP is not set`. The guest kernel was compiled without seccomp subsystem support; `/proc/self/status` has no Seccomp field. The agent has unrestricted access to all 450+ Linux x86_64 system calls.
+  * **Purely Monolithic Kernel Architecture**: `# CONFIG_MODULES is not set`. Kernel module loading is completely disabled (`/proc/modules` is empty and `lsmod` exits cleanly with zero output). No rootkit or rogue kernel driver can be loaded into ring 0.
+  * **Absence of In-Guest Linux Security Modules (LSM)**: `# CONFIG_SECURITY is not set` and `# CONFIG_SECURITYFS is not set`. AppArmor, SELinux, Landlock, and Smack are absent.
+  * **eBPF Restrictions**: While `CONFIG_BPF=y` and `CONFIG_BPF_SYSCALL=y` are present, `unprivileged_bpf_disabled` is set to `2` (permanently locked off). Direct `bpf(2)` syscall invocation returns `-1` (EPERM), preventing unprivileged kernel tracing or ring 0 inspection.
+* **Unthrottled Cgroups v2 Resource Hierarchy**:
+  * The unified cgroup tree at `/sys/fs/cgroup/` imposes zero bandwidth caps:
+    * `user.slice`: `memory.max = max`, `cpu.max = max 100000` (unlimited).
+    * `system.slice`: `memory.max = max`, `cpu.max = max 100000` (unlimited).
+  * Google delegates 100% of resource quotas, burst control, and OOM handling to the host Firecracker cgroup boundary.
+* **Memory & Hardware Boundary Guarantees**:
+  * 8 GiB RAM, zero swap, Transparent Huge Pages in `[madvise]` mode, and KSM disabled (`run = 0`) to prevent host-level memory deduplication side-channels.
+  * 4 physical vCPUs without SMT (`smt=false`), eliminating hyper-threading side-channel leakage.
 * **Confinement Philosophy**:
   * Instead of attempting to trap or restrict dangerous syscalls inside the guest (which degrades tool compatibility and developer productivity), Google places 100% of the security trust in the **KVM / Firecracker hypervisor hardware boundary**.
-  * Any guest kernel compromise or privilege escalation is contained strictly within the microVM boundary.
+  * Any guest kernel compromise or privilege escalation is contained strictly within the microVM boundary. Escape requires a full KVM or Firecracker hypervisor exploit.
 
 ---
 
@@ -342,7 +355,7 @@ graph TB
     subgraph Host["Host Machine (GCP Bare-Metal / KVM Host)"]
         subgraph VMM["AWS Firecracker MicroVM Process"]
             ACPI["ACPI Tables<br/>FIRECK / FCAT 20240119"]
-            vCPU["4x vCPUs (Intel Xeon @ 2.30GHz)"]
+            vCPU["4x vCPUs (Intel Xeon Processor @ 2.30GHz)"]
             RAM["8 GiB Physical RAM (TSC Clock)"]
 
             subgraph MMIO["Virtio-MMIO Bus (pci=off)"]

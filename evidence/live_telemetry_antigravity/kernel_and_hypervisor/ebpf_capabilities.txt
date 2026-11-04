@@ -1,0 +1,32 @@
+=== eBPF & TRACING CAPABILITIES (Empirically Gathered from Live Devbox) ===
+Date: 2026-11-04
+Kernel: Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC
+
+[bpftool Availability]
+which bpftool: Not found in base image or PATH
+
+[/proc/sys/kernel/unprivileged_bpf_disabled]
+2
+(Finding: unprivileged_bpf_disabled is permanently locked to 2. Unprivileged users cannot invoke bpf() syscall. Once set to 2, it cannot be lowered without system reboot.)
+
+[/sys/kernel/security/lsm]
+(Empty / securityfs unmounted / CONFIG_SECURITY not set)
+
+[/sys/fs/bpf]
+bpf filesystem mounted at /sys/fs/bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+Listing: empty
+
+[Direct bpf(2) Syscall Return Code Test (syscall 321)]
+Invoked via Python ctypes:
+bpf syscall ret: -1
+(Finding: bpf() syscall returns -1 [EPERM/EINVAL], confirming unprivileged tracing/loading is blocked.)
+
+[Kernel Config Tracing & BPF Flags]
+CONFIG_BPF=y
+CONFIG_BPF_SYSCALL=y
+CONFIG_BPF_UNPRIV_DEFAULT_OFF=y
+# CONFIG_BPF_PRELOAD is not set
+CONFIG_CGROUP_BPF=y
+CONFIG_BPF_STREAM_PARSER=y
+# CONFIG_FTRACE is not set
+# CONFIG_KPROBES is not set

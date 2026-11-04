@@ -1,0 +1,53 @@
+=== CGROUPS V2 QUOTAS & LIMITS (Empirically Gathered from Live Devbox) ===
+Date: 2026-11-04
+Kernel: Linux devbox 6.8.0 #1 SMP PREEMPT_DYNAMIC
+
+[Cgroup Filesystem Mount]
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+
+[Available Controllers (/sys/fs/cgroup/cgroup.controllers)]
+cpuset cpu io memory hugetlb pids
+
+[Root Cgroup Limits]
+/sys/fs/cgroup/memory.max: max
+/sys/fs/cgroup/cpu.max: max 100000
+
+[user.slice Limits & Usage (/sys/fs/cgroup/user.slice/)]
+memory.max: max (unlimited)
+cpu.max: max 100000 (unlimited CPU bandwidth quota)
+memory.current: 2796634112 bytes (~2.60 GiB active workload)
+
+[system.slice Limits & Usage (/sys/fs/cgroup/system.slice/)]
+memory.max: max (unlimited)
+cpu.max: max 100000 (unlimited CPU bandwidth quota)
+memory.current: 450564096 bytes (~429 MiB active services)
+
+[Subtree Hierarchy in /sys/fs/cgroup]
+cgroup.controllers
+cgroup.max.depth
+cgroup.max.descendants
+cgroup.procs
+cgroup.stat
+cgroup.subtree_control
+cgroup.threads
+cpu.stat
+cpu.stat.local
+cpuset.cpus.effective
+cpuset.cpus.isolated
+cpuset.mems.effective
+dev-hugepages.mount
+dev-mqueue.mount
+init.scope
+io.stat
+memory.numa_stat
+memory.reclaim
+memory.stat
+proc-sys-fs-binfmt_misc.mount
+sys-fs-fuse-connections.mount
+system.slice
+user.slice
+
+[Finding]
+Neither memory nor CPU bandwidth throttling is imposed inside the guest cgroups v2 hierarchy.
+All limits are set to 'max', confirming Google delegates 100% of resource quotas and isolation
+to the host Firecracker cgroup / KVM boundary rather than constraining guest slices.
