@@ -1,0 +1,387 @@
+        1      0 drwxr-xr-x  17 root     root          520 Nov  5 18:59 /run
+        1      0 drwxrwxrwt   3 root     root           60 Mar  6  2026 /run/lock
+        2      0 drwxr-xr-x   2 root     root           40 Mar  6  2026 /run/lock/subsys
+        3      0 drwxr-xr-x  20 root     root          520 Nov  5 18:59 /run/systemd
+        4      0 drwxr-xr-x   2 root     root           40 Mar  6  2026 /run/systemd/system
+        5      0 dr-xr-xr-x   2 root     root           40 Mar  6  2026 /run/systemd/mount-rootfs
+        7      0 drwxr-xr-x   3 root     root          160 Mar  6  2026 /run/systemd/inaccessible
+        8      0 ----------   1 root     root            0 Mar  6  2026 /run/systemd/inaccessible/reg
+        9      0 d---------   2 root     root           40 Mar  6  2026 /run/systemd/inaccessible/dir
+       10      0 p---------   1 root     root            0 Mar  6  2026 /run/systemd/inaccessible/fifo
+       11      0 s---------   1 root     root            0 Mar  6  2026 /run/systemd/inaccessible/sock
+       12      0 c---------   1 root     root       0,   0 Mar  6  2026 /run/systemd/inaccessible/chr
+       13      0 b---------   1 root     root       0,   0 Mar  6  2026 /run/systemd/inaccessible/blk
+       15      0 drwxr-xr-x   6 root     root          120 Nov  5 18:59 /run/systemd/propagate
+       16      0 drwxr-xr-x   2 root     root           60 Mar  6  2026 /run/systemd/propagate/.os-release-stage
+      105      0 drw-------   2 root     root           40 Mar  6  2026 /run/systemd/propagate/systemd-udevd.service
+      390      0 drw-------   2 root     root           40 Mar  6  2026 /run/systemd/propagate/systemd-logind.service
+      545      0 drw-------   2 root     root           40 Nov  5 18:59 /run/systemd/propagate/polkit.service
+       18      0 drwxr-xr-x   2 root     root          800 Nov  5 19:00 /run/systemd/units
+       43      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:dev-hugepages.mount -> 4ce793162392428c9d1fe96375872249
+       44      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:dev-mqueue.mount -> 5a4efe5a62354003af7c33483b79264c
+       45      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:var-lib-systemd.mount -> 4fa75e0ce00b4d94b0466181878350a6
+       46      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-journald.service -> ea35ad4ece344d47926e4392879f16b1
+       61      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-modules-load.service -> 45b25915d2e14a9f80d4cd55109da471
+       73      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-remount-fs.service -> ba8fdea47cff48c396caccfa920b5f99
+       74      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-tmpfiles-setup-dev-early.service -> 62254e9a0fd7495eac712b5fd804fa64
+       76      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-udev-trigger.service -> d4590449e9734bbebd74afd6070d0e66
+       80      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:sys-fs-fuse-connections.mount -> 2a9b65a60ec946398e491f3fdbf57424
+       82      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-journal-flush.service -> 003335546b754c11b836e9f58769be1a
+       84      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-random-seed.service -> bddf531fc0a04f3d9be8729d4dad74a6
+       85      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-sysctl.service -> ea9a8fff540e45d49eb09c53e8d99b12
+       89      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-sysusers.service -> 456147e2d7af4515834a202208ad985b
+       93      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-tmpfiles-setup-dev.service -> 8d9b25f753e540d3b7964836cf32888e
+       97      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:ldconfig.service -> a3164bb498534c59959d01356655ea30
+       99      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-binfmt.service -> 632dda8fa2e14e229f7d68029e23d98b
+      100      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-tmpfiles-setup.service -> 9832f87fe5da4e7286608b31a2b9baef
+      101      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-udevd.service -> 15aad94f9c8f4ce491ee84880ad505a7
+      108      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:proc-sys-fs-binfmt_misc.mount -> bd48f57bae23491ba32fb170dbe6d54e
+      369      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-journal-catalog-update.service -> f32ed19a95d043b88baf0c59888d2fd6
+      371      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-update-utmp.service -> 9de61f7f660b438884706f5095c200e3
+      373      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-update-done.service -> 40ec7dc7456f4433a14e8f2512198edb
+      377      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:dbus.service -> d6a0a1c9259f46129bddf66618f3772c
+      379      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:ssh.service -> 2f1c6d70654e481d8fb5c9fed69f6581
+      383      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:sysstat.service -> d3afdb94dff64ea98d10e48830353bfb
+      387      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-logind.service -> df66df8a85604981bbfc977953826384
+      388      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:systemd-user-sessions.service -> 70c52c58b12046bfb6508ff2e3622b13
+      395      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:getty@tty1.service -> 2379ba4fab944f70ac27d47d4e27275e
+      396      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:serial-getty@ttyS0.service -> 8bd76ba643fe4039860c2ba45ca56a29
+      414      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:containerd.service -> 4a16e352f02342deb694574534e0be94
+      419      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:devbox-ssh-over-vsock.service -> 1088d70aa1fe4df6aefe8fe4642b2176
+      423      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:user-runtime-dir@1001.service -> e1b98d191efd49839f59fe9a8ea9bd3f
+      430      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:user@1001.service -> 0aa3dfd85f97494c951e3e490fe85361
+      436      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:session-c1.scope -> fc0fef965e1649db84b75bd19183b8a2
+      451      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:docker.service -> 781b2f13c85b4048b2cba746c6330536
+      458      0 lrwxrwxrwx   1 root     root           32 Mar  6  2026 /run/systemd/units/invocation:session-c2.scope -> 97bfe003a5dd494d9a252ecd40f89075
+      541      0 lrwxrwxrwx   1 root     root           32 Nov  5 18:59 /run/systemd/units/invocation:packagekit.service -> 0b3df9a06da8493ca8d643057a03cee7
+      543      0 lrwxrwxrwx   1 root     root           32 Nov  5 18:59 /run/systemd/units/invocation:polkit.service -> 1e5041b790e942e68f71109578ecc58b
+       19      0 -rw-r--r--   1 root     root            0 Mar  6  2026 /run/systemd/show-status
+       20      0 drwxr-xr-x   4 root     root           80 Mar  6  2026 /run/systemd/generator
+       23      0 drwxr-xr-x   2 root     root           60 Mar  6  2026 /run/systemd/generator/local-fs.target.wants
+       25      0 drwxr-xr-x   2 root     root           60 Mar  6  2026 /run/systemd/generator/getty.target.wants
+       29      0 srwxrwxrwx   1 root     root            0 Mar  6  2026 /run/systemd/notify
+       30      0 srwx------   1 root     root            0 Mar  6  2026 /run/systemd/private
+       31      0 drwxr-xr-x   2 root     root           60 Mar  6  2026 /run/systemd/userdb
+       32      0 srw-rw-rw-   1 root     root            0 Mar  6  2026 /run/systemd/userdb/io.systemd.DynamicUser
+       33      0 srw-rw-rw-   1 root     root            0 Mar  6  2026 /run/systemd/io.systemd.ManagedOOM
+       34      0 -r--r--r--   1 root     root            0 Mar  6  2026 /run/systemd/systemd-units-load
+       35      0 drwxr-xr-x   2 root     root           40 Mar  6  2026 /run/systemd/ask-password
+       37      0 drwxr-xr-x   3 root     root          200 Mar  6  2026 /run/systemd/journal
+       38      0 srw-rw-rw-   1 root     root            0 Mar  6  2026 /run/systemd/journal/dev-log
+       39      0 srw-rw-rw-   1 root     root            0 Mar  6  2026 /run/systemd/journal/socket
+       40      0 srw-rw-rw-   1 root     root            0 Mar  6  2026 /run/systemd/journal/stdout
+       54      0 srw-------   1 root     root            0 Mar  6  2026 /run/systemd/journal/io.systemd.journal
+       55      4 -rw-r--r--   1 root     root           24 Mar  6  2026 /run/systemd/journal/seqnum
+       56      4 -rw-r--r--   1 root     root            8 Mar  6  2026 /run/systemd/journal/kernel-seqnum
+       62      0 drwxr-xr-x   2 root     root          220 Nov  5 19:00 /run/systemd/journal/streams
+       91      0 -rw-r--r--   1 root     root            0 Mar  6  2026 /run/systemd/journal/flushed
+       96      0 srw-------   1 root     root            0 Mar  6  2026 /run/systemd/io.systemd.sysext
+      107      0 drwxr-xr-x   2 root     root           40 Mar  6  2026 /run/systemd/incoming
+      357      0 drwxr-xr-x   5 systemd-network systemd-network      100 Mar  6  2026 /run/systemd/netif
+      358      0 drwxr-xr-x   2 systemd-network systemd-network       40 Mar  6  2026 /run/systemd/netif/links
+      359      0 drwxr-xr-x   2 systemd-network systemd-network       40 Mar  6  2026 /run/systemd/netif/leases
+      360      0 drwxr-xr-x   2 systemd-network systemd-network       40 Mar  6  2026 /run/systemd/netif/lldp
+      364      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/systemd/seats
+      398      4 -rw-r--r--   1 root            root                  95 Mar  6  2026 /run/systemd/seats/seat0
+      365      0 drwxr-xr-x   2 root            root                 120 Mar  6  2026 /run/systemd/sessions
+      437      0 prw-------   1 root            root                   0 Mar  6  2026 /run/systemd/sessions/c1.ref
+      439      4 -rw-r--r--   1 root            root                 301 Mar  6  2026 /run/systemd/sessions/c1
+      459      0 prw-------   1 root            root                   0 Mar  6  2026 /run/systemd/sessions/c2.ref
+      461      4 -rw-r--r--   1 root            root                 301 Mar  6  2026 /run/systemd/sessions/c2
+      366      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/systemd/users
+      462      4 -rw-r--r--   1 root            root                 247 Mar  6  2026 /run/systemd/users/1001
+      367      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/systemd/machines
+      368      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/systemd/shutdown
+      389      0 drwxr-xr-x   2 root            root                  40 Nov  5 18:59 /run/systemd/inhibit
+      425      0 drwxr-xr-x   2 root            root                  80 Mar  6  2026 /run/systemd/transient
+      426      4 -rw-r--r--   1 root            root                 443 Mar  6  2026 /run/systemd/transient/session-c1.scope
+      455      4 -rw-r--r--   1 root            root                 443 Mar  6  2026 /run/systemd/transient/session-c2.scope
+        6      0 drwxr-xr-x   3 root            root                  60 Nov  5 18:56 /run/credentials
+        1      0 drwx------   2 root            root                  60 Mar  6  2026 /run/credentials/@system
+        2      4 -r--------   1 root            root                  19 Mar  6  2026 /run/credentials/@system/vmm.notify_socket
+       36      0 prw-------   1 root            root                   0 Mar  6  2026 /run/initctl
+       41      0 drwxr-xr-x   6 root            root                 140 Nov  5 18:56 /run/udev
+       42      0 srw-------   1 root            root                   0 Mar  6  2026 /run/udev/control
+      111      0 drwxr-xr-x  20 root            root                 400 Mar  6  2026 /run/udev/links
+      112      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f2
+      118      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f1
+      130      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f4
+      137      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f5
+      144      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f6
+      151      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f8
+      158      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f7
+      165      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f3
+      294      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/ptp_kvm
+      313      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-path\\x2fplatform-LNRO0005:01
+      316      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-uuid\\x2fa9893320-d2ab-4aca-98ea-9a5954d46d7d
+      319      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-label\\x2foverlay
+      322      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-id\\x2fvirtio-49018697
+      325      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f10
+      332      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-path\\x2fplatform-LNRO0005:00
+      335      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-diskseq\\x2f9
+      338      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/disk\\x2fby-id\\x2fvirtio-49018664
+      345      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/links/input\\x2fby-path\\x2fplatform-i8042-serio-0-event-kbd
+      115      0 drwxr-xr-x   5 root            root                 100 Mar  6  2026 /run/udev/tags
+      116      0 drwxr-xr-x   2 root            root                 340 Nov  5 18:56 /run/udev/tags/systemd
+      308      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/tags/seat
+      348      0 drwxr-xr-x   2 root            root                  60 Mar  6  2026 /run/udev/tags/power-switch
+      120      0 drwxr-xr-x   2 root            root                3220 Nov  5 18:56 /run/udev/data
+      121      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:1
+      127      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:0
+      134      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:3
+      141      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:4
+      148      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:5
+      155      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:7
+      162      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:6
+      169      4 -rw-r--r--   1 root            root                  72 Mar  6  2026 /run/udev/data/b7:2
+      172      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/n1
+      173      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c5:1
+      175      4 -rw-r--r--   1 root            root                 181 Mar  6  2026 /run/udev/data/n3
+      176      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c5:2
+      177      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c5:0
+      178      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:0
+      179      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:1
+      180      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:12
+      181      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:10
+      182      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:14
+      183      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:11
+      184      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:13
+      186      4 -rw-r--r--   1 root            root                  34 Mar  6  2026 /run/udev/data/c4:64
+      187      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:15
+      188      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:18
+      189      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:17
+      190      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:16
+      191      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:19
+      192      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:20
+      193      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:22
+      194      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:21
+      195      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:27
+      196      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:25
+      197      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:28
+      198      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:2
+      199      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:3
+      200      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:29
+      201      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:30
+      202      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:31
+      203      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:32
+      204      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:33
+      205      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:34
+      206      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:35
+      207      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:36
+      208      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:38
+      209      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:42
+      210      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:23
+      211      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:41
+      212      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:43
+      213      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:37
+      214      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:39
+      215      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:40
+      216      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:44
+      217      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:45
+      218      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:4
+      219      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:46
+      220      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:24
+      221      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:47
+      222      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:48
+      223      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:49
+      224      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:50
+      225      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:51
+      226      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:52
+      227      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:53
+      228      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:5
+      229      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:56
+      230      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:57
+      231      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:58
+      232      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:59
+      233      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:6
+      234      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:61
+      235      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:54
+      236      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:63
+      237      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:60
+      238      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:8
+      239      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:55
+      240      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:7
+      241      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:62
+      242      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:9
+      243      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c4:26
+      244      4 -rw-r--r--   1 root            root                  70 Mar  6  2026 /run/udev/data/+platform:pcspkr
+      245      4 -rw-r--r--   1 root            root                  78 Mar  6  2026 /run/udev/data/+platform:serial8250
+      246      4 -rw-r--r--   1 root            root                  74 Mar  6  2026 /run/udev/data/+platform:rtc_cmos
+      247      4 -rw-r--r--   1 root            root                  78 Mar  6  2026 /run/udev/data/+platform:FCVMGID:00
+      248      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:LNXSYSTM:00
+      249      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:LNXSYBUS:00
+      250      4 -rw-r--r--   1 root            root                  68 Mar  6  2026 /run/udev/data/+platform:i8042
+      251      4 -rw-r--r--   1 root            root                  80 Mar  6  2026 /run/udev/data/+platform:ACPI0013:00
+      253      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:ACPI0013:00
+      254      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:PNP0501:00
+      255      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:PNP0501:01
+      256      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:PNP0501:02
+      257      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:PNP0501:03
+      258      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:PNP0303:00
+      259      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:LNXSYBUS:01
+      260      4 -rw-r--r--   1 root            root                 126 Mar  6  2026 /run/udev/data/+platform:LNRO0005:02
+      261      4 -rw-r--r--   1 root            root                 126 Mar  6  2026 /run/udev/data/+platform:LNRO0005:03
+      262      4 -rw-r--r--   1 root            root                  60 Mar  6  2026 /run/udev/data/+acpi:LNRO0005:01
+      263      4 -rw-r--r--   1 root            root                  60 Mar  6  2026 /run/udev/data/+acpi:LNRO0005:03
+      264      4 -rw-r--r--   1 root            root                  60 Mar  6  2026 /run/udev/data/+acpi:LNRO0005:00
+      265      4 -rw-r--r--   1 root            root                 126 Mar  6  2026 /run/udev/data/+platform:LNRO0005:01
+      266      4 -rw-r--r--   1 root            root                 126 Mar  6  2026 /run/udev/data/+platform:LNRO0005:00
+      267      4 -rw-r--r--   1 root            root                  60 Mar  6  2026 /run/udev/data/+acpi:LNRO0005:02
+      268      4 -rw-r--r--   1 root            root                  84 Mar  6  2026 /run/udev/data/+platform:virtio-mmio.3
+      269      4 -rw-r--r--   1 root            root                  84 Mar  6  2026 /run/udev/data/+platform:virtio-mmio.2
+      270      4 -rw-r--r--   1 root            root                  84 Mar  6  2026 /run/udev/data/+platform:virtio-mmio.0
+      271      4 -rw-r--r--   1 root            root                  84 Mar  6  2026 /run/udev/data/+platform:virtio-mmio.1
+      272      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c203:3
+      273      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c203:0
+      274      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:8
+      275      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c203:1
+      276      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:4
+      277      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:5
+      278      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c203:2
+      279      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:9
+      280      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:1
+      281      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:11
+      282      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:235
+      283      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:7
+      284      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c1:3
+      285      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:237
+      286      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:183
+      287      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:231
+      288      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:125
+      289      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:229
+      290      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:0
+      291      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:127
+      292      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:64
+      293      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:200
+      297      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:1
+      299      4 -rw-r--r--   1 root            root                  44 Mar  6  2026 /run/udev/data/c253:0
+      300      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c202:1
+      301      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c202:3
+      302      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:65
+      303      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c10:126
+      304      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c202:0
+      305      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:128
+      306      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:129
+      307      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c202:2
+      310      4 -rw-r--r--   1 root            root                 229 Mar  6  2026 /run/udev/data/+input:input0
+      312      4 -rw-r--r--   1 root            root                 316 Mar  6  2026 /run/udev/data/n2
+      329      4 -rw-r--r--   1 root            root                 574 Mar  6  2026 /run/udev/data/b254:16
+      342      4 -rw-r--r--   1 root            root                 322 Mar  6  2026 /run/udev/data/b254:0
+      350      4 -rw-r--r--   1 root            root                 251 Mar  6  2026 /run/udev/data/c13:64
+      399      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:70
+      400      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:2
+      401      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:66
+      402      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:134
+      403      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:130
+      404      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:6
+      405      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:3
+      406      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:67
+      407      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:131
+      408      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:4
+      409      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:68
+      410      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:132
+      411      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:5
+      412      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:133
+      413      0 -rw-r--r--   1 root            root                   0 Mar  6  2026 /run/udev/data/c7:69
+      454      4 -rw-r--r--   1 root            root                  61 Mar  6  2026 /run/udev/data/+acpi:FCVMGID:00
+      484      4 -rw-r--r--   1 root            root                 219 Nov  5 18:56 /run/udev/data/n4
+      123      0 drwxr-xr-x   2 root            root                 440 Mar  6  2026 /run/udev/watch
+      124      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:1 -> 1
+      125      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/1 -> b7:1
+      128      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:0 -> 2
+      129      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/2 -> b7:0
+      135      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:3 -> 3
+      136      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/3 -> b7:3
+      142      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:4 -> 4
+      143      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/4 -> b7:4
+      149      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:5 -> 5
+      150      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/5 -> b7:5
+      156      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:7 -> 6
+      157      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/6 -> b7:7
+      163      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:6 -> 7
+      164      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/7 -> b7:6
+      170      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b7:2 -> 8
+      171      0 lrwxrwxrwx   1 root            root                   4 Mar  6  2026 /run/udev/watch/8 -> b7:2
+      330      0 lrwxrwxrwx   1 root            root                   1 Mar  6  2026 /run/udev/watch/b254:16 -> 9
+      331      0 lrwxrwxrwx   1 root            root                   7 Mar  6  2026 /run/udev/watch/9 -> b254:16
+      343      0 lrwxrwxrwx   1 root            root                   2 Mar  6  2026 /run/udev/watch/b254:0 -> 10
+      344      0 lrwxrwxrwx   1 root            root                   6 Mar  6  2026 /run/udev/watch/10 -> b254:0
+       47      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/mount
+       57      0 drwxr-xr-x   3 root            root                  60 Mar  6  2026 /run/log
+       58      0 drwxr-sr-x   2 root            systemd-journal       40 Mar  6  2026 /run/log/journal
+      351      0 drwxr-xr-x   3 root            root                  80 Mar  6  2026 /run/dbus
+      352      0 drwxr-xr-x   2 messagebus      root                  40 Mar  6  2026 /run/dbus/containers
+      375      0 srw-rw-rw-   1 root            root                   0 Mar  6  2026 /run/dbus/system_bus_socket
+      353      0 lrwxrwxrwx   1 root            root                   8 Mar  6  2026 /run/shm -> /dev/shm
+      354      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/sendsigs.omit.d
+      355      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/setrans
+      356      0 drwx--x--x   2 root            root                  40 Mar  6  2026 /run/sudo
+      362      0 drwxr-xr-x   3 root            root                  60 Mar  6  2026 /run/user
+        1      0 drwx------   4 jules           jules                120 Mar  6  2026 /run/user/1001
+        2      0 drwxr-xr-x   5 jules           jules                140 Mar  6  2026 /run/user/1001/systemd
+       18      0 srw-rw-rw-   1 jules           jules                  0 Mar  6  2026 /run/user/1001/bus
+       20      0 drwx------   2 jules           jules                160 Mar  6  2026 /run/user/1001/gnupg
+       27      0 srw-rw-rw-   1 jules           jules                  0 Mar  6  2026 /run/user/1001/pk-debconf-socket
+      363      4 -rw-rw-r--   1 root            utmp                3072 Nov  5 19:00 /run/utmp
+      376      0 srw-rw----   1 root            docker                 0 Mar  6  2026 /run/docker.sock
+      386      0 drwxr-xr-x   2 root            root                  40 Mar  6  2026 /run/sshd
+      418      4 -rw-r--r--   1 root            root                   4 Mar  6  2026 /run/sshd.pid
+      442      0 drwx--x--x   6 root            root                 160 Mar  6  2026 /run/containerd
+      443      0 drwx------   3 root            root                  80 Mar  6  2026 /run/containerd/io.containerd.mount-manager.v1.bolt
+      444      0 drwx------   2 root            root                  40 Mar  6  2026 /run/containerd/io.containerd.mount-manager.v1.bolt/t
+      445     20 -rw-------   1 root            root               32768 Nov  5 18:56 /run/containerd/io.containerd.mount-manager.v1.bolt/mounts.db
+      446      0 drwx--x--x   2 root            root                  40 Mar  6  2026 /run/containerd/io.containerd.runtime.v2.task
+      447      0 drwx------   2 root            root                  40 Mar  6  2026 /run/containerd/io.containerd.grpc.v1.cri
+      448      0 drwx------   2 root            root                  40 Mar  6  2026 /run/containerd/io.containerd.sandbox.controller.v1.shim
+      449      0 srw-rw----   1 root            root                   0 Mar  6  2026 /run/containerd/containerd.sock.ttrpc
+      450      0 srw-rw----   1 root            root                   0 Mar  6  2026 /run/containerd/containerd.sock
+      463      4 -rw-r--r--   1 root            root                 192 Mar  6  2026 /run/motd.dynamic
+      475      0 -rw-------   1 root            root                   0 Nov  5 18:56 /run/agetty.reload
+      476      0 drwx------   4 root            root                 100 Nov  5 18:56 /run/docker
+      478      0 srwxr-xr-x   1 root            root                   0 Nov  5 18:56 /run/docker/metrics.sock
+      479      0 drwx------   2 root            root                  40 Nov  5 18:56 /run/docker/plugins
+      480      0 drw-------   2 root            root                  60 Nov  5 18:56 /run/docker/libnetwork
+      481      0 srw-------   1 root            root                   0 Nov  5 18:56 /run/docker/libnetwork/47c97ec6754d.sock
+      477      4 -rw-r--r--   1 root            root                   3 Nov  5 18:56 /run/docker.pid
+      487      0 drwxr-xr-x   3 root            root                  60 Nov  5 18:56 /run/devbox-session
+      488      0 drwxrwxrwx   2 root            root                 120 Nov  5 19:00 /run/devbox-session/default
+      489      4 -rw-r--r--   1 jules           jules                 95 Nov  5 19:00 /run/devbox-session/default/command
+      490      0 -rw-r--r--   1 jules           jules                  0 Nov  5 19:00 /run/devbox-session/default/stdin
+      491      0 -rw-rw-r--   1 jules           jules                  0 Nov  5 19:00 /run/devbox-session/default/stdout
+      492      0 -rw-rw-r--   1 jules           jules                  0 Nov  5 19:00 /run/devbox-session/default/stderr
+      551      0 -rw-r--r--   1 root            root                   0 Nov  5 18:59 /run/adduser
+       29      4 drwxrwxrwt   1 root            root                4096 Nov  5 18:59 /tmp
+      125      4 drwxrwxrwt   2 root            root                4096 Mar  6  2026 /tmp/.XIM-unix
+      124      4 drwxrwxrwt   2 root            root                4096 Mar  6  2026 /tmp/.ICE-unix
+      136      4 drwx------   3 root            root                4096 Mar  6  2026 /tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-systemd-logind.service-WPO75P
+      137      4 drwxrwxrwt   2 root            root                4096 Mar  6  2026 /tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-systemd-logind.service-WPO75P/tmp
+      123      4 drwxrwxrwt   2 root            root                4096 Mar  6  2026 /tmp/.X11-unix
+      126      4 drwxrwxrwt   2 root            root                4096 Mar  6  2026 /tmp/.font-unix
+      415      4 drwx------   3 root            root                4096 Nov  5 18:59 /tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-polkit.service-9ehOog
+      416      4 drwxrwxrwt   2 root            root                4096 Nov  5 18:59 /tmp/systemd-private-368a2f928fdb4f8189931ac81a2e3759-polkit.service-9ehOog/tmp
+      331      4 drwx------   2 jules           jules               4096 Nov  5 18:56 /tmp/tmux-1001
+  4980827      0 srw-rw----   1 jules           jules                  0 Nov  5 18:56 /tmp/tmux-1001/default
+       81      4 drwxr-xr-x   1 root            root                4096 Mar  2  2026 /var/log
+   330866      0 lrwxrwxrwx   1 root            root                  39 Mar  2  2026 /var/log/README -> ../../usr/share/doc/systemd/README.logs
+   330867     41 -rw-r--r--   1 root            root               41487 Mar  2  2026 /var/log/alternatives.log
+      344      4 drwxr-xr-x   1 root            root                4096 Nov  5 18:59 /var/log/apt
+  4980892     44 -rw-r--r--   1 root            root               44276 Nov  5 18:59 /var/log/apt/eipp.log.xz
+   330864    112 -rw-r--r--   1 root            root              111323 Nov  5 18:59 /var/log/apt/history.log
+   330865    444 -rw-r-----   1 root            adm               452252 Nov  5 18:59 /var/log/apt/term.log
+   330869     60 -rw-r--r--   1 root            root               61229 Feb 10  2026 /var/log/bootstrap.log
+   330870      0 -rw-rw----   1 root            utmp                   0 Feb 10  2026 /var/log/btmp
+   330871   1120 -rw-r--r--   1 root            root             1144238 Nov  5 18:59 /var/log/dpkg.log
+   330872      0 -rw-r--r--   1 root            root                   0 Feb 10  2026 /var/log/faillog
+   330873      4 -rw-r--r--   1 root            root                3202 Mar  2  2026 /var/log/fontconfig.log
+       82      8 drwxr-sr-x   1 root            systemd-journal     4096 Mar  6  2026 /var/log/journal
+       83      4 drwxr-sr-x   2 root            systemd-journal     4096 Nov  5 18:56 /var/log/journal/58bffcf38f8d4939bd3e07b2ea187369
+  4980791   8192 -rw-r-----   1 root            systemd-journal  8388608 Nov  5 19:00 /var/log/journal/58bffcf38f8d4939bd3e07b2ea187369/system.journal
+  4980746   3940 -rw-r-----   1 root            systemd-journal  8388608 Nov  5 18:56 /var/log/journal/58bffcf38f8d4939bd3e07b2ea187369/system@e609bfbffcc7410fa8abb37c9ca71458-000000000000014c-00064c5e214a4bc4.journal
+  4980760   3684 -rw-r-----   1 root            systemd-journal  8388608 Nov  5 18:56 /var/log/journal/58bffcf38f8d4939bd3e07b2ea187369/user-1001@e609bfbffcc7410fa8abb37c9ca71458-00000000000002ef-00064c5e21d1ba24.journal
+  4980792   8192 -rw-r-----   1 root            systemd-journal  8388608 Nov  5 19:00 /var/log/journal/58bffcf38f8d4939bd3e07b2ea187369/user-1001.journal
+   330875      0 -rw-rw-r--   1 root            utmp                   0 Feb 10  2026 /var/log/lastlog
+      108      0 drwx------   2 root            root                   3 Mar  2  2026 /var/log/private
+      145      4 drwxr-xr-x   1 root            root                4096 Nov  5 18:56 /var/log/sysstat
+  4980770      4 -rw-r--r--   1 root            root                1052 Mar  6  2026 /var/log/sysstat/sa06
+  4980797      8 -rw-r--r--   1 root            root                4680 Nov  5 19:00 /var/log/sysstat/sa05
+   330878      4 -rw-rw-r--   1 root            utmp                2688 Nov  5 18:56 /var/log/wtmp
