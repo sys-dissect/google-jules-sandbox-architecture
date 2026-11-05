@@ -1,0 +1,21 @@
+=== CPU CACHE TOPOLOGY (/sys/devices/system/cpu/cpu*/cache/) ===
+--- cpu0 Cache ---
+  index0: Level=1 Type=Data Size=32K Ways=8 LineSize=64 SharedCPUs=0
+  index1: Level=1 Type=Instruction Size=32K Ways=8 LineSize=64 SharedCPUs=0
+  index2: Level=2 Type=Unified Size=256K Ways=8 LineSize=64 SharedCPUs=0
+  index3: Level=3 Type=Unified Size=46080K Ways=20 LineSize=64 SharedCPUs=0-3
+--- cpu1 Cache ---
+  index0: Level=1 Type=Data Size=32K Ways=8 LineSize=64 SharedCPUs=1
+  index1: Level=1 Type=Instruction Size=32K Ways=8 LineSize=64 SharedCPUs=1
+  index2: Level=2 Type=Unified Size=256K Ways=8 LineSize=64 SharedCPUs=1
+  index3: Level=3 Type=Unified Size=46080K Ways=20 LineSize=64 SharedCPUs=0-3
+--- cpu2 Cache ---
+  index0: Level=1 Type=Data Size=32K Ways=8 LineSize=64 SharedCPUs=2
+  index1: Level=1 Type=Instruction Size=32K Ways=8 LineSize=64 SharedCPUs=2
+  index2: Level=2 Type=Unified Size=256K Ways=8 LineSize=64 SharedCPUs=2
+  index3: Level=3 Type=Unified Size=46080K Ways=20 LineSize=64 SharedCPUs=0-3
+--- cpu3 Cache ---
+  index0: Level=1 Type=Data Size=32K Ways=8 LineSize=64 SharedCPUs=3
+  index1: Level=1 Type=Instruction Size=32K Ways=8 LineSize=64 SharedCPUs=3
+  index2: Level=2 Type=Unified Size=256K Ways=8 LineSize=64 SharedCPUs=3
+  index3: Level=3 Type=Unified Size=46080K Ways=20 LineSize=64 SharedCPUs=0-3
