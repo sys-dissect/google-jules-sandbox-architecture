@@ -160,6 +160,11 @@ Storage decouples immutable distribution state from per-task ephemeral writes:
    * **Verified Solution 1 (VFS Driver Fallback)**: Starting dockerd with `--storage-driver=vfs` completely bypasses overlay nesting, though it sacrifices copy-on-write deduplication.
    * **Verified Solution 2 (Native Ext4 Direct Mounting)**: Because the raw ext4 scratch disk is directly accessible at `/rom/overlay`, starting containerd pointing directly to the underlying ext4 partition (`containerd --root /rom/overlay/ctrd-root`) allows native Linux kernel `overlayfs` containers to run at 100% full hardware speed with zero I/O performance degradation.
 
+6. **Scratch Storage Exhaustion & OverlayFS Credential Bypass**:
+   * **Ext4 5% Root Reservation Geometry**: Forensic audit of `/dev/vdb` (`tune2fs -l /dev/vdb`) confirms a 100 GiB ext4 partition with 26,214,400 blocks and a 5.0% root reservation (`1,310,720` blocks = 5.016 GiB). At baseline, 91.36 GiB is available to non-root user `jules`, with 96.37 GiB total free blocks.
+   * **Empirical Bypass Discovery (`override_creds`)**: In standard Linux, when disk consumption hits `f_bavail == 0`, non-root writes are blocked with `ENOSPC`. Direct writes to `/rom/overlay` confirm this behavior. However, writes traversing the root OverlayFS (`/`) **completely bypass the 5% root reservation**. Because `/usr/sbin/overlay-init` mounts the overlay as root, `ovl_write_iter()` calls `override_creds(&init_cred)`, executing backing ext4 allocations under UID 0. Consequently, unprivileged user `jules` can consume an extra 5,169 MB down to the physical metadata floor (`Free = 0.02 GiB`). See [`evidence/DISK_FULL_AND_STORAGE_EXHAUSTION.md`](evidence/DISK_FULL_AND_STORAGE_EXHAUSTION.md).
+   * **Fault Isolation via Tmpfs Decoupling**: Under 100% ext4 saturation (where disk writes fail with `errno 28 ENOSPC`), the microVM remains fully stable. Memory-backed tmpfs mounts (`/run` housing the `/run/devbox-session/default/` host FIFO harness, and `/var/lib/systemd` housing journald) operate unaffected in RAM. Firecracker does not pause vCPUs, ext4 remains mounted read-write (`errors=continue`), and Tailcat SSH ingress stays responsive.
+
 ---
 
 ### Layer 3: Control Plane & Command Execution Harness

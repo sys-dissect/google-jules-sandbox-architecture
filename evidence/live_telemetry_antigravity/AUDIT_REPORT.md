@@ -171,6 +171,13 @@ Direct probe of `/proc/config.gz` and cgroup v2 sysfs controllers revealed:
 
 ---
 
+### H. OverlayFS Root Credential Bypass & Disk-Full Saturation Mechanics
+Direct empirical exhaustion of the `/dev/vdb` ext4 scratch partition uncovered:
+* **The Root Reservation Bypass**: Ext4's default 5.0% root reservation (`1,310,720` blocks = 5.016 GiB) strictly blocks direct writes to `/rom/overlay` when `f_bavail == 0`. However, writes traversing the root OverlayFS (`/`) bypass this check entirely because `ovl_write_iter()` calls `override_creds(&init_cred)` using the mounter's root credentials (UID 0). Unprivileged user `jules` successfully consumed an extra 5,169 MB into the reservation pool down to the physical metadata floor (`Free = 0.02 GiB`).
+* **Fault Isolation via Tmpfs Decoupling**: Under 100% ext4 saturation (`errno 28 ENOSPC`), the microVM remains completely stable. Memory-backed tmpfs mounts (`/run` housing the `/run/devbox-session/default/` host FIFO harness, and `/var/lib/systemd` housing journald) operate unaffected in RAM. Firecracker does not pause vCPUs, ext4 remains mounted read-write (`errors=continue`), and Tailcat SSH ingress stays responsive. Full report: [`../../evidence/DISK_FULL_AND_STORAGE_EXHAUSTION.md`](../../evidence/DISK_FULL_AND_STORAGE_EXHAUSTION.md).
+
+---
+
 ## 2. Directory Index of Harvested Telemetry
 
 | Category Directory | Key Files | Description |
