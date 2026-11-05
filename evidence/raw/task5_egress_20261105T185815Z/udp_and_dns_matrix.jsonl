@@ -1,0 +1,4 @@
+{"test": "udp_dns_192.168.0.1", "res": "ok_bytes_61"}
+{"test": "udp_dns_8.8.8.8", "res": "ok_bytes_61"}
+{"test": "udp_dns_1.1.1.1", "res": "ok_bytes_61"}
+{"test": "doh_cloudflare", "res": "ok", "sample": "{\"Status\":0,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"example.com\",\"type\":1}],\"Answer\":[{\"name\":\"example.com\",\"type\":1,\"TTL\":101,"}

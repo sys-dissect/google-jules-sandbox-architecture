@@ -1,0 +1,13 @@
+{"label": "cloudflare_dns_tcp", "host": "1.1.1.1", "port": 53, "status": "open", "latency_ms": 34.1}
+{"label": "google_dns_tcp", "host": "8.8.8.8", "port": 53, "status": "open", "latency_ms": 3.3}
+{"label": "cloudflare_http", "host": "1.1.1.1", "port": 80, "status": "open", "latency_ms": 13.2}
+{"label": "cloudflare_https", "host": "1.1.1.1", "port": 443, "status": "open", "latency_ms": 12.9}
+{"label": "github_ssh_22", "host": "github.com", "port": 22, "status": "open", "latency_ms": 29.8}
+{"label": "smtp_25", "host": "alt1.gmail-smtp-in.l.google.com", "port": 25, "status": "open", "latency_ms": 25.1}
+{"label": "smtps_465", "host": "smtp.gmail.com", "port": 465, "status": "open", "latency_ms": 17.8}
+{"label": "submission_587", "host": "smtp.gmail.com", "port": 587, "status": "open", "latency_ms": 4.2}
+{"label": "high_port_8080", "host": "portquiz.net", "port": 8080, "status": "open", "latency_ms": 118.3}
+{"label": "high_port_8443", "host": "portquiz.net", "port": 8443, "status": "open", "latency_ms": 1124.8}
+{"label": "imds_link_local", "host": "169.254.169.254", "port": 80, "status": "error: ConnectionRefusedError: [Errno 111] Connection refused", "latency_ms": 1.5}
+{"label": "gateway_80", "host": "192.168.0.1", "port": 80, "status": "error: ConnectionRefusedError: [Errno 111] Connection refused", "latency_ms": 1.2}
+{"label": "gateway_8080", "host": "192.168.0.1", "port": 8080, "status": "open", "latency_ms": 1.2}
