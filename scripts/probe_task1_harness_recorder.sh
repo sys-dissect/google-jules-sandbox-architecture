@@ -16,7 +16,7 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 DEFAULT_OUT_DIR="${REPO_ROOT}/evidence/raw/harness_recorder"
 
 DURATION=60
-OUT_DIR="${DEFAULT_OUT_DIR}"
+OUT_DIR="/tmp/task1_capture"
 
 if [[ "${1:-}" =~ ^[0-9]+$ ]]; then
     DURATION="$1"
@@ -209,6 +209,9 @@ with open(out_log, 'a', encoding='utf-8') as log_f, open(out_jsonl, 'a', encodin
     log_f.flush()
 " &
 WATCHER_PID=$!
+echo "${WATCHER_PID}" > "${OUT_DIR}/watcher.pid"
+mkdir -p /tmp/task1_capture
+echo "${WATCHER_PID}" > /tmp/task1_capture/watcher.pid
 echo "  Python watcher running in background (PID: ${WATCHER_PID})"
 
 # ------------------------------------------------------------------------------
@@ -275,6 +278,7 @@ cleanup() {
         kill -TERM "${WATCHER_PID}" 2>/dev/null || true
         wait "${WATCHER_PID}" 2>/dev/null || true
     fi
+    rm -f "${OUT_DIR}/watcher.pid" /tmp/task1_capture/watcher.pid 2>/dev/null || true
 
     echo "[*] Capturing final /run/devbox-session state and process tree..."
     if [ -d /run/devbox-session ]; then
