@@ -19,7 +19,7 @@ EOF
 MON_PID=$!
 NPROC="$(nproc)"
 for _ in $(seq 1 "$NPROC"); do
-    python3 -c 'import time; t=time.time()+30;
+    python3 -c 'import time; t=time.time()+30; 
 while time.time()<t: _=999999*999999' &
 done
 wait "$MON_PID" || true
