@@ -1,0 +1,17 @@
+## GCP with header
+curl: (7) Failed to connect to 169.254.169.254 port 80 after 0 ms: Couldn't connect to server
+
+## GCP token
+curl: (7) Failed to connect to 169.254.169.254 port 80 after 0 ms: Couldn't connect to server
+
+## AWS IMDSv1
+curl: (7) Failed to connect to 169.254.169.254 port 80 after 0 ms: Couldn't connect to server
+
+## AWS IMDSv2 token
+curl: (7) Failed to connect to 169.254.169.254 port 80 after 0 ms: Couldn't connect to server
+
+## names
+169.254.169.254 metadata.goog
+
+## IPv6
+curl: (7) Failed to connect to fd20:ce::254 port 80 after 0 ms: Couldn't connect to server

@@ -1,0 +1,26 @@
+=== custom CA / TLS interception (Muse probe) ===
+total 0
+drwxr-xr-x 2 root root  3 Mar  2  2026 .
+drwxr-xr-x 7 root root 85 Mar  2  2026 ..
+2026-03-02 /etc/ssl/certs/ca-certificates.crt
+
+-- related env --
+none
+
+-- github cert chain --
+issuer=C = GB, O = Sectigo Limited, CN = Sectigo Public Server Authentication CA DV E36
+subject=CN = github.com
+sha256 Fingerprint=7D:C4:D8:5C:F1:E3:10:97:12:25:BC:9A:92:57:67:90:43:A2:43:D7:0A:3C:C2:A9:1C:C5:D3:89:89:2C:27:76
+
+-- direct HTTPS headers --
+HTTP/2 200
+date: Sat, 07 Nov 2026 11:42:41 GMT
+content-type: text/html; charset=utf-8
+
+=== DNS VIP check (Muse RFC2544 198.18/15) ===
+github.com                     140.82.112.4
+pypi.org                       151.101.64.223 151.101.128.223 151.101.192.223 151.101.0.223
+registry.npmjs.org             104.16.9.34 104.16.10.34 104.16.8.34 104.16.11.34 104.16.6.34 104.16.2.34 104.16.0.34 104.16.5.34 104.16.7.34 104.16.4.34 104.16.3.34 104.16.1.34
+proxy.golang.org               142.251.210.113
+google.com                     142.251.32.14
+api.goedelmachines.com         183.82.6.93

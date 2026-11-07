@@ -1,0 +1,35 @@
+NAME FSTYPE   FSVER LABEL   UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+vda  squashfs 4.0                                                      0   100% /rom
+vdb  ext4     1.0   overlay a9893320-d2ab-4aca-98ea-9a5954d46d7d   90.9G     2% /rom/overlay
+
+Filesystem              Type     Size  Used Avail Use% Mounted on
+/dev/vdb                ext4      98G  2.0G   91G   3% /rom/overlay
+overlayfs:/overlay/root overlay   98G  2.0G   91G   3% /
+tmpfs                   tmpfs    3.9G  8.0K  3.9G   1% /dev/shm
+tmpfs                   tmpfs    1.6G  328K  1.6G   1% /run
+tmpfs                   tmpfs    5.0M     0  5.0M   0% /run/lock
+tmpfs                   tmpfs    1.0M  4.0K 1020K   1% /run/credentials/@system
+tmpfs                   tmpfs    3.9G  224K  3.9G   1% /var/lib/systemd
+tmpfs                   tmpfs    796M  4.0K  796M   1% /run/user/1001
+
+/dev/vda on /rom type squashfs (ro,relatime,errors=continue)
+devtmpfs on /rom/dev type devtmpfs (rw,relatime,size=4096k,nr_inodes=1018287,mode=755)
+/dev/vdb on /rom/overlay type ext4 (rw,relatime)
+overlayfs:/overlay/root on / type overlay (rw,noatime,lowerdir=/,upperdir=/overlay/root,workdir=/overlay/work,uuid=on)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+devtmpfs on /dev type devtmpfs (rw,nosuid,size=4096k,nr_inodes=1018287,mode=755)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,size=1630024k,nr_inodes=819200,mode=755)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+tmpfs on /run/credentials/@system type tmpfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=32,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,nosuid,nodev,relatime,pagesize=2M)
+tmpfs on /var/lib/systemd type tmpfs (rw,nosuid,nodev,size=4075060k,nr_inodes=10240)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+binfmt_misc on /proc/sys/fs/binfmt_misc type binfmt_misc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /run/user/1001 type tmpfs (rw,nosuid,nodev,relatime,size=815008k,nr_inodes=203752,mode=700,uid=1001,gid=1001)

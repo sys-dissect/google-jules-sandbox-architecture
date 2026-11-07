@@ -1,0 +1,25 @@
+    296 /usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git add -A)'
+    137 /usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git diff --minimal --binary -U3 984c37df2d061d4c6110da689844fed47890c2b2)'
+     75 /usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app; git show 984c37df2d061d4c6110da689844fed47890c2b2:README.md)'
+     54 \'"\'"\'__CODExx__=$?; echo $__CODExx__ > /run/devbox-session/default/exit_code && touch /run/devbox-session/default/stamp; unset PROMPT_COMMAND;\'"\'"\'; sourc
+     54 /usr/bin/mkdir -m777 -p /run/devbox-session/default
+     54 /usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${pa
+     54 /usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${
+     27 /usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012git diff 984c37df2d061d4c6110da689844fed47890c2b2 --diff-filter=AM --name-only#012echo "---SE
+     10 /usr/bin/bash -l -c 'echo "${BASHPID}"#012#012cd /app || exit 1#012#012for file in README.md evidence/GUEST_HOST_COMMS.md; do#012  [ -z "$file" ] && continue#01
+      9 /usr/bin/dmesg
+      8 /usr/bin/bash -c 'echo "${BASHPID}"#012tmux new-session -d -s \'default\' -c /app && tmux set-option remain-on-exit on'
+      5 /usr/bin/journalctl -b --no-pager
+      5 /usr/bin/bash -c 'echo "${BASHPID}"#012tmux list-panes -f \'#{==:#{session_name},default}\' -F \'#{pane_pid}\''
+      5 /usr/bin/bash -c 'echo "${BASHPID}"#012set -xe#012echo nameserver 192.168.0.1 > /etc/resolv.conf#012timeout 1s socat /dev/null TCP4:devbox-gateway.internal:53#0
+      4 /usr/bin/bash -l -c 'echo "${BASHPID}"#012(cd /app && git rev-parse --is-inside-work-tree)'
+      2 /usr/sbin/tune2fs -l /dev/vdb
+      2 /usr/sbin/sshd -T
+      2 /usr/bin/true
+      2 /usr/bin/journalctl -f -o short-iso
+      2 /usr/bin/journalctl --list-boots --no-pager
+      2 /usr/bin/bash -c 'echo "${BASHPID}"#012tmux new-session -d -s \'default\' -c /app -e JULES_SESSION_ID=7665539030394901769 -e GIT_TERMINAL_PROMPT=0 && tmux set-o
+      1 /usr/sbin/iptables -t nat -S PREROUTING
+      1 /usr/sbin/iptables -t nat -S
+      1 /usr/sbin/iptables -S
+      1 /usr/bin/zcat /proc/config.gz

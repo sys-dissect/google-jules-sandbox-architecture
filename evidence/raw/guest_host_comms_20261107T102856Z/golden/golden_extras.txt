@@ -1,0 +1,205 @@
+=== SHADOW STATE (hashes redacted) ===
+root: LOCKED
+daemon: LOCKED
+bin: LOCKED
+sys: LOCKED
+sync: LOCKED
+games: LOCKED
+man: LOCKED
+lp: LOCKED
+mail: LOCKED
+news: LOCKED
+uucp: LOCKED
+proxy: LOCKED
+www-data: LOCKED
+backup: LOCKED
+list: LOCKED
+irc: LOCKED
+_apt: LOCKED
+nobody: LOCKED
+ubuntu: LOCKED
+systemd-network: LOCKED
+messagebus: LOCKED
+sshd: LOCKED
+polkitd: LOCKED
+jules: SET
+swebot: LOCKED
+
+=== SUDOERS.D ===
+### /rom/etc/sudoers.d/README
+#
+# The default /etc/sudoers file created on installation of the
+# sudo  package now includes the directive:
+#
+# 	@includedir /etc/sudoers.d
+#
+# This will cause sudo to read and parse any files in the /etc/sudoers.d
+# directory that do not end in '~' or contain a '.' character, if it
+# exists. It is not an error if the directory does not exist.
+#
+# Note also, that because sudoers contents can vary widely, no attempt is
+# made to add this directive to existing sudoers files on upgrade.  Feel free
+# to add the above directive to the end of your /etc/sudoers file to enable
+# this functionality for existing installations if you wish!
+# Sudo versions older than 1.9.1 will only support the old syntax
+# #includedir. That means that the sudo versions in Debian bullseye (11)
+# and later will happily accept both @includedir and #includedir.
+#
+# Finally, please note that using the visudo command is the recommended way
+# to update sudoers content, since it protects against many failure modes.
+# See the man page for visudo and sudoers for more information.
+#
+### /rom/etc/sudoers.d/jules
+# allow jules to run any commands as root
+
+jules ALL=(ALL) NOPASSWD: ALL
+### /rom/etc/sudoers.d/swebot
+# allow swebot to run any commands as root
+
+swebot ALL=(ALL) NOPASSWD: ALL
+
+=== .wget-hsts ===
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
+go.dev	0	1	1772469221	31536000
+services.gradle.org	0	1	1772469216	31536000
+github.com	0	1	1772469216	31536000
+golang.org	0	1	1772469221	31536000
+
+=== CLOUD-INIT / SEED ===
+52 /rom/etc/cloud/build.info
+
+=== DOCKER DAEMON CONFIG ===
+absent
+
+=== /opt/jules ===
+drwxr-xr-x root 45 /rom/opt/jules
+drwxr-xr-x root 68 /rom/opt/jules/pipx
+drwxr-xr-x root 35 /rom/opt/jules/pipx/.cache
+-rw-r--r-- root 186 /rom/opt/jules/pipx/.cache/CACHEDIR.TAG
+drwxr-xr-x root 50 /rom/opt/jules/pipx/logs
+-rw-r--r-- root 5223 /rom/opt/jules/pipx/logs/cmd_2026-03-02_16.40.03.log
+drwxr-xr-x root 95 /rom/opt/jules/pipx/shared
+drwxr-xr-x root 177 /rom/opt/jules/pipx/shared/bin
+drwxr-xr-x root 33 /rom/opt/jules/pipx/shared/include
+drwxr-xr-x root 33 /rom/opt/jules/pipx/shared/lib
+lrwxrwxrwx root 3 /rom/opt/jules/pipx/shared/lib64
+-rw-r--r-- root 169 /rom/opt/jules/pipx/shared/pyvenv.cfg
+drwxr-xr-x root 33 /rom/opt/jules/pipx/venvs
+drwxr-xr-x root 109 /rom/opt/jules/pipx/venvs/playwright
+drwxr-xr-x root 37 /rom/opt/jules/playwright
+drwxr-xr-x root 47 /rom/opt/jules/playwright/bin
+-rwxr-xr-x root 98 /rom/opt/jules/playwright/bin/playwright
+-rwxr-xr-x root 94 /rom/opt/jules/playwright/bin/python
+drwxr-xr-x root 3 /rom/opt/jules/playwright/man
+
+=== HOME DOTFILES (top level) ===
+total 6
+drwxr-x--- 18 jules jules  267 Mar  6  2026 .
+drwxr-xr-x  5 root  root    56 Mar  4  2026 ..
+drwxr-xr-x  3 jules jules   28 Mar  6  2026 .android
+-rw-r--r--  1 jules jules  220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 jules jules 3792 Mar  6  2026 .bashrc
+drwxr-xr-x  5 jules jules   59 Mar  6  2026 .cache
+drwxr-xr-x  4 jules jules   37 Mar  6  2026 .cargo
+drwxr-xr-x  7 jules jules  109 Mar  6  2026 .conan2
+drwxr-xr-x  4 jules jules   40 Mar  6  2026 .config
+drwxr-xr-x  4 jules jules   50 Mar  6  2026 .gradle
+drwxr-xr-x  5 jules jules   52 Mar  6  2026 .local
+drwxr-xr-x  5 jules jules   81 Mar  6  2026 .npm
+drwxr-xr-x 32 jules jules  571 Mar  6  2026 .nvm
+-rw-r--r--  1 jules jules 1522 Mar  6  2026 .profile
+drwxr-xr-x 30 jules jules  495 Mar  6  2026 .pyenv
+drwxr-xr-x  7 jules jules  103 Mar  6  2026 .rustup
+drwx------  3 jules jules   38 Mar  4  2026 .ssh
+-rw-r--r--  1 jules jules    0 Mar  4  2026 .sudo_as_admin_successful
+
+=== ENABLED MULTI-USER WANTS ===
+total 0
+drwxr-xr-x  9 root root 194 Mar  4  2026 .
+drwxr-xr-x 12 root root 298 Mar  4  2026 ..
+lrwxrwxrwx  1 root root  42 Mar  2  2026 containerd.service -> /usr/lib/systemd/system/containerd.service
+lrwxrwxrwx  1 root root  49 Mar  4  2026 devbox-ssh-over-vsock.service -> /etc/systemd/system/devbox-ssh-over-vsock.service
+lrwxrwxrwx  1 root root  38 Mar  2  2026 docker.service -> /usr/lib/systemd/system/docker.service
+lrwxrwxrwx  1 root root  40 Feb 10  2026 e2scrub_reap.service -> /lib/systemd/system/e2scrub_reap.service
+lrwxrwxrwx  1 root root  40 Mar  2  2026 remote-fs.target -> /usr/lib/systemd/system/remote-fs.target
+lrwxrwxrwx  1 root root  35 Mar  4  2026 ssh.service -> /usr/lib/systemd/system/ssh.service
+lrwxrwxrwx  1 root root  39 Mar  2  2026 sysstat.service -> /usr/lib/systemd/system/sysstat.service
+   176.8ms (setup:858): 2026-03-02 16:40:03
+   177.0ms (setup:859): /usr/bin/pipx install playwright
+   177.0ms (setup:860): pipx version is 1.4.3
+   177.0ms (setup:861): Default python interpreter is '/usr/bin/python3'
+   177.1ms (mkdir:74): creating directory /opt/jules/pipx/venvs
+   177.2ms (mkdir:74): creating directory /opt/jules/playwright/bin
+   177.3ms (mkdir:74): creating directory /opt/jules/playwright/man
+   177.4ms (mkdir:74): creating directory /opt/jules/pipx/.cache
+   177.5ms (setup:870): Adding CACHEDIR.TAG to cache directory
+   178.5ms (package_name_from_spec:370): Determined package name: playwright
+   178.6ms (package_name_from_spec:371): Package name determined in 0.0s
+   178.9ms (run_subprocess:168): running /usr/bin/python3 -m venv --without-pip /opt/jules/pipx/venvs/playwright
+   249.2ms (run_subprocess:190): stdout:
+   249.3ms (run_subprocess:192): stderr:
+   249.4ms (run_subprocess:193): returncode: 0
+   249.7ms (run_subprocess:168): running /usr/bin/python3 -m venv --clear /opt/jules/pipx/shared
+  4407.1ms (run_subprocess:190): stdout:
+  4407.3ms (run_subprocess:192): stderr:
+  4407.3ms (run_subprocess:193): returncode: 0
+  4407.4ms (run_subprocess:168): running <checking pip's availability>
+  4430.6ms (run_subprocess:190): stdout: ModuleSpec(name='pip', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7f115b09f3e0>, origin='/opt/jules/pipx/shared/lib/python3.12/site-packages/pip/__init__.py', submodule_search_locations=['/opt/jules/pipx/shared/lib/python3.12/site-packages/pip'])
+  4430.7ms (run_subprocess:193): returncode: 0
+  4430.8ms (upgrade:98): Upgrading shared libraries in /opt/jules/pipx/shared
+  4431.0ms (run_subprocess:168): running /opt/jules/pipx/shared/bin/python -m pip --no-input --disable-pip-version-check install --force-reinstall -q --upgrade pip >= 23.1
+  6741.7ms (run_subprocess:190): stdout:
+  6741.8ms (run_subprocess:192): stderr:
+  6741.8ms (run_subprocess:193): returncode: 0
+  6742.0ms (run_subprocess:168): running /opt/jules/pipx/venvs/playwright/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+  6767.6ms (run_subprocess:190): stdout: /opt/jules/pipx/venvs/playwright/lib/python3.12/site-packages
+  6767.7ms (run_subprocess:193): returncode: 0
+  6767.9ms (run_subprocess:168): running /opt/jules/pipx/shared/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+  6792.6ms (run_subprocess:190): stdout: /opt/jules/pipx/shared/lib/python3.12/site-packages
+  6792.7ms (run_subprocess:193): returncode: 0
+  6793.0ms (run_subprocess:168): running /opt/jules/pipx/venvs/playwright/bin/python --version
+  6794.9ms (run_subprocess:190): stdout: Python 3.12.3
+  6795.0ms (run_subprocess:192): stderr:
+  6795.0ms (run_subprocess:193): returncode: 0
+  6795.3ms (_parsed_package_to_package_or_url:137): cleaned package spec: playwright
+  6795.4ms (run_subprocess:168): running /opt/jules/pipx/venvs/playwright/bin/python -m pip --no-input install playwright
+ 10911.6ms (run_subprocess:193): returncode: 0
+ 10912.0ms (run_subprocess:168): running <fetch_info_in_venv commands>
+ 10941.3ms (run_subprocess:190): stdout: {"sys_path": ["/usr/lib/python312.zip", "/usr/lib/python3.12", "/usr/lib/python3.12/lib-dynload", "/opt/jules/pipx/venvs/playwright/lib/python3.12/site-packages", "/opt/jules/pipx/shared/lib/python3.12/site-packages"], "python_version": "3.12.3", "environment": {"implementation_name": "cpython", "implementation_version": "3.12.3", "os_name": "posix", "platform_machine": "x86_64", "platform_release": "5.10.0-32-cloud-amd64", "platform_system": "Linux", "platform_version": "#1 SMP Debian 5.10.223-1 (2024-08-10)", "python_full_version": "3.12.3", "platform_python_implementation": "CPython", "python_version": "3.12", "sys_platform": "linux"}}
+ 10941.4ms (run_subprocess:193): returncode: 0
+ 10970.0ms (get_venv_metadata_for_package:339): get_venv_metadata_for_package: 58ms
+ 10970.2ms (_parsed_package_to_package_or_url:137): cleaned package spec: playwright
+ 10972.0ms (run_subprocess:168): running <checking pip's availability>
+ 10995.2ms (run_subprocess:190): stdout: ModuleSpec(name='pip', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7f75fe61f3e0>, origin='/opt/jules/pipx/shared/lib/python3.12/site-packages/pip/__init__.py', submodule_search_locations=['/opt/jules/pipx/shared/lib/python3.12/site-packages/pip'])
+ 10995.3ms (run_subprocess:193): returncode: 0
+ 10995.5ms (run_subprocess:168): running <checking pip's availability>
+ 11018.5ms (run_subprocess:190): stdout: ModuleSpec(name='pip', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7f6595a93410>, origin='/opt/jules/pipx/shared/lib/python3.12/site-packages/pip/__init__.py', submodule_search_locations=['/opt/jules/pipx/shared/lib/python3.12/site-packages/pip'])
+ 11018.7ms (run_subprocess:193): returncode: 0
+ 11020.0ms (warn_if_not_on_path:466): ⚠️  Note: '/opt/jules/playwright/bin' is not on your PATH environment
+    variable. These apps will not be globally accessible until your PATH is
+    updated. Run `pipx ensurepath` to automatically add it, or manually modify
+    your PATH in your shell's config file (i.e. ~/.bashrc).
+ 11020.2ms (cli:932): pipx finished.
+
+=== HOME LISTING ===
+total 6
+drwxr-x--- 18 jules jules  267 Mar  6  2026 .
+drwxr-xr-x  5 root  root    56 Mar  4  2026 ..
+drwxr-xr-x  3 jules jules   28 Mar  6  2026 .android
+-rw-r--r--  1 jules jules  220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 jules jules 3792 Mar  6  2026 .bashrc
+drwxr-xr-x  5 jules jules   59 Mar  6  2026 .cache
+drwxr-xr-x  4 jules jules   37 Mar  6  2026 .cargo
+drwxr-xr-x  7 jules jules  109 Mar  6  2026 .conan2
+drwxr-xr-x  4 jules jules   40 Mar  6  2026 .config
+drwxr-xr-x  4 jules jules   50 Mar  6  2026 .gradle
+drwxr-xr-x  5 jules jules   52 Mar  6  2026 .local
+drwxr-xr-x  5 jules jules   81 Mar  6  2026 .npm
+drwxr-xr-x 32 jules jules  571 Mar  6  2026 .nvm
+-rw-r--r--  1 jules jules 1522 Mar  6  2026 .profile
+drwxr-xr-x 30 jules jules  495 Mar  6  2026 .pyenv
+drwxr-xr-x  7 jules jules  103 Mar  6  2026 .rustup
+drwx------  3 jules jules   38 Mar  4  2026 .ssh
+-rw-r--r--  1 jules jules    0 Mar  4  2026 .sudo_as_admin_successful

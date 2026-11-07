@@ -267,6 +267,8 @@ systemd(1)
 
 These findings do not change the core physical architecture (Firecracker, `pci=off`, Virtio-MMIO, SquashFS + ext4 overlay, guest CID 123); they correct the transport used by the control plane.
 
+> **See also:** [`GOLDEN_IMAGE_AND_HOST_SURFACE.md`](GOLDEN_IMAGE_AND_HOST_SURFACE.md) for the host gateway service surface (dnsmasq 2.91, `:8080` reverse-proxy semantics), the definitive full-range VSOCK sweep (CID 2 = 0/65535), and the golden-image build chain / baked-key inventory extracted on 2026-11-07.
+
 ---
 
 ## 6. Reproduction

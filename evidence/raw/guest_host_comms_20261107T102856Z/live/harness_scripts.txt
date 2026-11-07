@@ -1,0 +1,2 @@
+/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/command)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/command || exit 1#012#012'
+/usr/bin/bash -c 'echo "${BASHPID}"#012#012parent_dir=$(dirname /run/devbox-session/default/stdin)#012if [ ! -d "${parent_dir}" ]; then#012  sudo mkdir -p "${parent_dir}"#012  sudo chown swebot ${parent_dir}#012fi#012cat > /run/devbox-session/default/stdin || exit 1#012#012'

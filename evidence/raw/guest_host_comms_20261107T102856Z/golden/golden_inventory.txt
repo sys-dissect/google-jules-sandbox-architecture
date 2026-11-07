@@ -1,0 +1,1030 @@
+===== TOP-LEVEL GOLDEN DIRS =====
+lrwxrwxrwx  1 root   root    11 Mar  4  2026 /rom/home/swebot -> /home/jules
+
+/rom/etc/ssh:
+total 618
+drwxr-xr-x  13 root root    275 Mar  2  2026 .
+drwxr-xr-x 158 root root   2553 Mar  6  2026 ..
+-rw-r--r--   1 root root 620042 Aug 26  2025 moduli
+-rw-r--r--   1 root root   1649 Aug 26  2025 ssh_config
+drwxr-xr-x   2 root root      3 Aug 26  2025 ssh_config.d
+-rw-------   1 root root    513 Mar  2  2026 ssh_host_ecdsa_key
+-rw-r--r--   1 root root    182 Mar  2  2026 ssh_host_ecdsa_key.pub
+-rw-------   1 root root    411 Mar  2  2026 ssh_host_ed25519_key
+-rw-r--r--   1 root root    102 Mar  2  2026 ssh_host_ed25519_key.pub
+-rw-------   1 root root   2610 Mar  2  2026 ssh_host_rsa_key
+-rw-r--r--   1 root root    574 Mar  2  2026 ssh_host_rsa_key.pub
+-rw-r--r--   1 root root   3517 Aug 26  2025 sshd_config
+drwxr-xr-x   2 root root      3 Aug 26  2025 sshd_config.d
+
+/rom/home:
+total 0
+drwxr-xr-x  5 root   root    56 Mar  4  2026 .
+drwxr-xr-x 27 root   root   348 Jan  1  1970 ..
+drwxr-x--- 18 jules  jules  267 Mar  6  2026 jules
+lrwxrwxrwx  1 root   root    11 Mar  4  2026 swebot -> /home/jules
+drwxr-x---  5 ubuntu ubuntu  66 Feb 10  2026 ubuntu
+
+/rom/home/jules:
+total 6
+drwxr-x--- 18 jules jules  267 Mar  6  2026 .
+drwxr-xr-x  5 root  root    56 Mar  4  2026 ..
+drwxr-xr-x  3 jules jules   28 Mar  6  2026 .android
+-rw-r--r--  1 jules jules  220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 jules jules 3792 Mar  6  2026 .bashrc
+drwxr-xr-x  5 jules jules   59 Mar  6  2026 .cache
+drwxr-xr-x  4 jules jules   37 Mar  6  2026 .cargo
+drwxr-xr-x  7 jules jules  109 Mar  6  2026 .conan2
+drwxr-xr-x  4 jules jules   40 Mar  6  2026 .config
+drwxr-xr-x  4 jules jules   50 Mar  6  2026 .gradle
+drwxr-xr-x  5 jules jules   52 Mar  6  2026 .local
+drwxr-xr-x  5 jules jules   81 Mar  6  2026 .npm
+drwxr-xr-x 32 jules jules  571 Mar  6  2026 .nvm
+-rw-r--r--  1 jules jules 1522 Mar  6  2026 .profile
+drwxr-xr-x 30 jules jules  495 Mar  6  2026 .pyenv
+drwxr-xr-x  7 jules jules  103 Mar  6  2026 .rustup
+drwx------  3 jules jules   38 Mar  4  2026 .ssh
+-rw-r--r--  1 jules jules    0 Mar  4  2026 .sudo_as_admin_successful
+
+/rom/home/ubuntu:
+total 6
+drwxr-x--- 5 ubuntu ubuntu   66 Feb 10  2026 .
+drwxr-xr-x 5 root   root     56 Mar  4  2026 ..
+-rw-r--r-- 1 ubuntu ubuntu  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Mar 31  2024 .bashrc
+-rw-r--r-- 1 ubuntu ubuntu  807 Mar 31  2024 .profile
+
+/rom/root:
+total 5
+drwxr-xr-x 13 root root  190 Mar  4  2026 .
+drwxr-xr-x 27 root root  348 Jan  1  1970 ..
+drwxr-xr-x  6 root root   76 Mar  2  2026 .android
+-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc
+drwxr-xr-x  3 root root   26 Mar  2  2026 .cache
+drwxr-xr-x  3 root root   30 Mar  2  2026 .config
+-rw-r--r--  1 root root    0 Mar  2  2026 .flutter
+drwx------  3 root root   40 Mar  2  2026 .launchpadlib
+drwxr-xr-x  3 root root   28 Mar  2  2026 .local
+-rw-r--r--  1 root root  161 Apr 22  2024 .profile
+drwxr-xr-x  7 root root  100 Mar  2  2026 .pub-cache
+dr-x------  3 root root   38 Mar  4  2026 .ssh
+-rw-r--r--  1 root root  275 Mar  2  2026 .wget-hsts
+
+/rom/root/.ssh:
+total 1
+dr-x------  3 root root  38 Mar  4  2026 .
+drwxr-xr-x 13 root root 190 Mar  4  2026 ..
+-r--------  1 root root 740 Mar  4  2026 authorized_keys
+
+/rom/var/log:
+total 1222
+drwxr-xr-x 15 root root                222 Mar  2  2026 .
+drwxr-xr-x 13 root root                148 Feb 10  2026 ..
+lrwxrwxrwx  1 root root                 39 Mar  2  2026 README -> ../../usr/share/doc/systemd/README.logs
+-rw-r--r--  1 root root              41487 Mar  2  2026 alternatives.log
+drwxr-xr-x  5 root root                 69 Mar  6  2026 apt
+-rw-r--r--  1 root root              61229 Feb 10  2026 bootstrap.log
+-rw-rw----  1 root utmp                  0 Feb 10  2026 btmp
+-rw-r--r--  1 root root            1143615 Mar  6  2026 dpkg.log
+-rw-r--r--  1 root root                  0 Feb 10  2026 faillog
+-rw-r--r--  1 root root               3202 Mar  2  2026 fontconfig.log
+drwxr-sr-x  2 root systemd-journal       3 Mar  2  2026 journal
+-rw-rw-r--  1 root utmp                  0 Feb 10  2026 lastlog
+drwx------  2 root root                  3 Mar  2  2026 private
+drwxr-xr-x  2 root root                  3 Jan  9  2024 sysstat
+-rw-rw-r--  1 root utmp                  0 Feb 10  2026 wtmp
+
+/rom/var/log/apt:
+total 594
+drwxr-xr-x  5 root root     69 Mar  6  2026 .
+drwxr-xr-x 15 root root    222 Mar  2  2026 ..
+-rw-r--r--  1 root root  44320 Mar  6  2026 eipp.log.xz
+-rw-r--r--  1 root root 111142 Mar  6  2026 history.log
+-rw-r-----  1 root adm  451348 Mar  6  2026 term.log
+
+===== DEVBOX PROVENANCE =====
+### /rom/etc/devbox-version-info
+rootfs-20260306-162806.img
+### /rom/etc/devbox-rebuild-hash
+202610
+### /rom/etc/hostname
+devbox
+### /rom/etc/machine-id
+58bffcf38f8d4939bd3e07b2ea187369
+
+===== SSH KEY COMPARE (golden vs live) =====
+31a44563cdb3b403d7d07aa6e68a775b977cdefccab6582dde3376dd3d249a57  /rom/etc/ssh/ssh_host_ecdsa_key
+23d44212cc5f8ff4ad75f1f1b48dd9749daab19658f9b2e81236863cb6a04c5b  /rom/etc/ssh/ssh_host_ed25519_key
+725eaf2f3f46f5b087ff5697a53f09609ae9b57d949ba23a4977bf022831ec1d  /rom/etc/ssh/ssh_host_rsa_key
+31a44563cdb3b403d7d07aa6e68a775b977cdefccab6582dde3376dd3d249a57  /etc/ssh/ssh_host_ecdsa_key
+23d44212cc5f8ff4ad75f1f1b48dd9749daab19658f9b2e81236863cb6a04c5b  /etc/ssh/ssh_host_ed25519_key
+725eaf2f3f46f5b087ff5697a53f09609ae9b57d949ba23a4977bf022831ec1d  /etc/ssh/ssh_host_rsa_key
+
+===== PRIVATE KEYS / PEM IN GOLDEN =====
+/rom/home/jules/.local/share/pipx/shared/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem
+/rom/home/jules/.local/share/pipx/venvs/conan/lib/python3.12/site-packages/certifi/cacert.pem
+/rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/certifi/cacert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/site-packages/pip/_vendor/certifi/cacert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/allsans.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/badcert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/badkey.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/ffdh3072.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/idnsans.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycert.passwd.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycert2.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycert3.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycert4.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/keycertecc.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/nokia.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/nosan.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/nullbytecert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/nullcert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/pycacert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/pycakey.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/secp384r1.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/selfsigned_pythontestdotnet.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/ssl_cert.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/ssl_key.passwd.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/ssl_key.pem
+/rom/home/jules/.pyenv/versions/3.10.20/lib/python3.10/test/talos-2019-0758.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/allsans.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/badcert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/badkey.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/ffdh3072.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/idnsans.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycert.passwd.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycert2.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycert3.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycert4.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/keycertecc.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/nokia.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/nosan.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/nullbytecert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/nullcert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/pycacert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/pycakey.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/secp384r1.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/selfsigned_pythontestdotnet.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/ssl_cert.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/ssl_key.passwd.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/ssl_key.pem
+/rom/home/jules/.pyenv/versions/3.12.13/lib/python3.12/test/certdata/talos-2019-0758.pem
+/rom/opt/flutter/packages/flutter_tools/test/data/asset_test/tls_cert/dummy-cert.pem
+/rom/opt/flutter/packages/flutter_tools/test/data/asset_test/tls_cert/dummy-key.pem
+/rom/opt/jules/pipx/shared/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/platform_root_cert.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/platform_root_key.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_require1.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_oid3.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_require.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_require2.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_require1.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_oid5.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_oid1.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_duplicate.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_oid2.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_invalid.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_root.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_root_cross_inhibit_mapping.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_mapped_any.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_require_duplicate.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_any.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_mapped.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_none.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_any.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_invalid.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_mapped_oid3.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_oid4.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_root2.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_intermediate_require_no_policies.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_require.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/x509/testdata/policy_leaf_duplicate.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/tls/testdata/example-key.pem
+/rom/overlay/root/home/jules/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.linux-amd64/src/crypto/tls/testdata/example-cert.pem
+/rom/overlay/root/home/jules/go/pkg/mod/github.com/u-root/u-root@v0.14.0/pkg/crypto/tests/private_key.pem
+/rom/overlay/root/home/jules/go/pkg/mod/github.com/u-root/u-root@v0.14.0/pkg/crypto/tests/public_key.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/feature/acme/testdata/rootCA.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/feature/acme/testdata/example.com.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/feature/acme/testdata/example.com-key.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/clientupdate/distsign/roots/distsign-prod-root-1-pub.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/clientupdate/distsign/roots/crawshaw-root.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/cmd/k8s-operator/e2e/certs/letsencrypt-stg-root-x1.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/ipn/ipnlocal/testdata/rootCA.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/ipn/ipnlocal/testdata/example.com.pem
+/rom/overlay/root/home/jules/go/pkg/mod/tailscale.com@v1.103.0-pre.0.20260916030321-a2263542f260/ipn/ipnlocal/testdata/example.com-key.pem
+/rom/root/.pub-cache/hosted/pub.dev/flutter_template_images-5.0.0/templates/app/winuwp.tmpl/runner_uwp/Windows_TemporaryKey.pfx
+/rom/usr/lib/dotnet/sdk/10.0.103/trustedroots/codesignctl.pem
+/rom/usr/lib/dotnet/sdk/10.0.103/trustedroots/timestampctl.pem
+/rom/usr/lib/dotnet/sdk/8.0.124/trustedroots/codesignctl.pem
+/rom/usr/lib/dotnet/sdk/8.0.124/trustedroots/timestampctl.pem
+/rom/usr/lib/ruby/vendor_ruby/rubygems/ssl_certs/rubygems.org/GlobalSignRootCA.pem
+/rom/usr/lib/ruby/vendor_ruby/rubygems/ssl_certs/rubygems.org/GlobalSignRootCA_R3.pem
+/rom/usr/local/go/src/crypto/tls/testdata/example-cert.pem
+/rom/usr/local/go/src/crypto/tls/testdata/example-key.pem
+/rom/usr/local/go/src/crypto/x509/platform_root_cert.pem
+/rom/usr/local/go/src/crypto/x509/platform_root_key.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_any.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_duplicate.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_invalid.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_mapped.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_mapped_any.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_mapped_oid3.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_require.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_require1.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_require2.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_require_duplicate.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_intermediate_require_no_policies.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_any.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_duplicate.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_invalid.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_none.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_oid1.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_oid2.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_oid3.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_oid4.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_oid5.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_require.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_leaf_require1.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_root.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_root2.pem
+/rom/usr/local/go/src/crypto/x509/testdata/policy_root_cross_inhibit_mapping.pem
+/rom/usr/share/cmake-3.28/Templates/Windows/Windows_TemporaryKey.pfx
+/rom/usr/share/gnupg/sks-keyservers.netCA.pem
+
+===== BASH / TOOL HISTORIES =====
+### /rom/root/.*history
+
+### /rom/home/*/.*history
+
+
+===== CUSTOM SYSTEMD UNITS =====
+total 2
+drwxr-xr-x 12 root root 298 Mar  4  2026 .
+drwxr-xr-x 13 root root 215 Mar  4  2026 ..
+-rw-rw-r--  1 root root 513 Jul  8  2025 devbox-ssh-over-vsock.service
+drwxr-xr-x  3 root root  41 Mar  2  2026 getty.target.wants
+drwxr-xr-x  9 root root 194 Mar  4  2026 multi-user.target.wants
+drwxr-xr-x  4 root root  54 Mar  2  2026 sockets.target.wants
+drwxr-xr-x  3 root root  33 Mar  2  2026 ssh.service.requires
+lrwxrwxrwx  1 root root  35 Mar  4  2026 sshd.service -> /usr/lib/systemd/system/ssh.service
+drwxr-xr-x  3 root root  45 Mar  2  2026 sysinit.target.wants
+drwxr-xr-x  4 root root  73 Mar  2  2026 sysstat.service.wants
+drwxr-xr-x  9 root root 194 Mar  2  2026 timers.target.wants
+-rw-rw-r--  1 root root 322 Jun 28  2024 var-lib-systemd.mount
+---
+### /rom/etc/systemd/system/devbox-ssh-over-vsock.service
+# Forwards VSOCK:22 to localhost:22
+#
+# For systemd > 256 there is also a systemd-ssh-generator(8) that can configure
+# sshd over vsock. We use a somewhat old ubuntu for guest that has systemd 255.
+# So the approach here is slightly more portable. Revisit this in a few years.
+#
+# c.f. https://libvirt.org/ssh-proxy.html#guest-os-requirements
+[Unit]
+After=sshd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+### /rom/etc/systemd/system/sshd.service
+[Unit]
+Description=OpenBSD Secure Shell server
+Documentation=man:sshd(8) man:sshd_config(5)
+After=network.target auditd.service
+ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
+
+[Service]
+EnvironmentFile=-/etc/default/ssh
+ExecStartPre=/usr/sbin/sshd -t
+ExecStart=/usr/sbin/sshd -D $SSHD_OPTS
+ExecReload=/usr/sbin/sshd -t
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+Type=notify
+RuntimeDirectory=sshd
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target
+Alias=sshd.service
+
+### /rom/etc/systemd/system/var-lib-systemd.mount
+#
+# Mount /var/lib/systemd as a temporary filesystem
+#
+
+[Unit]
+DefaultDependencies=no
+Conflicts=umount.target
+Before=local-fs.target umount.target
+After=swap.target
+
+[Mount]
+What=tmpfs
+Where=/var/lib/systemd
+Type=tmpfs
+Options=mode=1777,strictatime,nosuid,nodev,size=50%%,nr_inodes=10k
+
+[Install]
+WantedBy=local-fs.target
+
+
+===== PROFILE / CRON / LOCAL =====
+ls: cannot access '/rom/var/spool/cron': No such file or directory
+/rom/etc/cron.d:
+total 2
+drwxr-xr-x   5 root root   60 Mar  2  2026 .
+drwxr-xr-x 158 root root 2553 Mar  6  2026 ..
+-rw-r--r--   1 root root  201 Apr  8  2024 e2scrub_all
+-rw-r--r--   1 root root  712 Jan 19  2024 php
+-rw-r--r--   1 root root  396 Jan  9  2024 sysstat
+
+/rom/etc/cron.daily:
+total 3
+drwxr-xr-x   6 root root   81 Mar  2  2026 .
+drwxr-xr-x 158 root root 2553 Mar  6  2026 ..
+-rwxr-xr-x   1 root root 1478 Mar 22  2024 apt-compat
+-rwxr-xr-x   1 root root  123 Feb  5  2024 dpkg
+lrwxrwxrwx   1 root root   37 Feb 20  2026 google-chrome -> /opt/google/chrome/cron/google-chrome
+-rwxr-xr-x   1 root root  518 Jan  9  2024 sysstat
+
+/rom/etc/profile.d:
+total 4
+drwxr-xr-x   9 root root  144 Mar  2  2026 .
+drwxr-xr-x 158 root root 2553 Mar  6  2026 ..
+-rw-r--r--   1 root root   96 Apr 22  2024 01-locale-fix.sh
+-rw-r--r--   1 root root   73 Mar  2  2026 bun.sh
+lrwxrwxrwx   1 root root   46 Mar  2  2026 debuginfod.csh -> /usr/share/libdebuginfod-common/debuginfod.csh
+lrwxrwxrwx   1 root root   45 Mar  2  2026 debuginfod.sh -> /usr/share/libdebuginfod-common/debuginfod.sh
+-rw-r--r--   1 root root  431 Jul 26  2024 dotnet.sh
+-rw-r--r--   1 root root 1107 Mar 31  2024 gawk.csh
+-rw-r--r--   1 root root  757 Mar 31  2024 gawk.sh
+
+/rom/usr/local/bin:
+total 3214
+drwxr-xr-x  5 root root      60 Mar  2  2026 .
+drwxr-xr-x 13 root root     144 Mar  2  2026 ..
+-rwxr-xr-x  1 root root     563 Mar  2  2026 bundle
+-rwxr-xr-x  1 root root     565 Mar  2  2026 bundler
+-rwxr-xr-x  1 root root 3288946 Feb 13  2026 composer
+
+/rom/usr/local/sbin:
+total 0
+drwxr-xr-x  2 root root   3 Feb 10  2026 .
+drwxr-xr-x 13 root root 144 Mar  2  2026 ..
+### /rom/etc/profile.d/01-locale-fix.sh
+# Make sure the locale variables are set to valid values.
+eval $(/usr/bin/locale-check C.UTF-8)
+
+### /rom/etc/profile.d/bun.sh
+export BUN_INSTALL=/usr/local/bun
+export PATH="/usr/local/bun/bin:$PATH"
+
+### /rom/etc/profile.d/debuginfod.csh
+# $HOME/.login* or similar files may first set $DEBUGINFOD_URLS.
+# If $DEBUGINFOD_URLS is not set there, we set it from system *.url files.
+# $HOME/.*rc or similar files may then amend $DEBUGINFOD_URLS.
+# See also [man debuginfod-client-config] for other environment variables
+# such as $DEBUGINFOD_MAXSIZE, $DEBUGINFOD_MAXTIME, $DEBUGINFOD_PROGRESS.
+
+if (! $?DEBUGINFOD_URLS) then
+    set prefix="/usr"
+    set DEBUGINFOD_URLS=`sh -c 'cat /dev/null "$0"/*.urls 2>/dev/null; :' "/etc/debuginfod" | tr '\n' ' '`
+    if ( "$DEBUGINFOD_URLS" != "" ) then
+        setenv DEBUGINFOD_URLS "$DEBUGINFOD_URLS"
+    else
+        unset DEBUGINFOD_URLS
+    endif
+    unset prefix
+endif
+
+### /rom/etc/profile.d/debuginfod.sh
+# $HOME/.profile* or similar files may first set $DEBUGINFOD_URLS.
+# If $DEBUGINFOD_URLS is not set there, we set it from system *.url files.
+# $HOME/.*rc or similar files may then amend $DEBUGINFOD_URLS.
+# See also [man debuginfod-client-config] for other environment variables
+# such as $DEBUGINFOD_MAXSIZE, $DEBUGINFOD_MAXTIME, $DEBUGINFOD_PROGRESS.
+
+if [ -z "$DEBUGINFOD_URLS" ]; then
+    prefix="/usr"
+    DEBUGINFOD_URLS=$(cat /dev/null "/etc/debuginfod"/*.urls 2>/dev/null | tr '\n' ' ')
+    [ -n "$DEBUGINFOD_URLS" ] && export DEBUGINFOD_URLS || unset DEBUGINFOD_URLS
+    unset prefix
+fi
+
+### /rom/etc/profile.d/dotnet.sh
+# Add dotnet tools directory to PATH
+DOTNET_TOOLS_PATH="$HOME/.dotnet/tools"
+case "$PATH" in
+    *"$DOTNET_TOOLS_PATH"* ) true ;;
+    * ) PATH="$PATH:$DOTNET_TOOLS_PATH" ;;
+esac
+
+# Extract self-contained executables under HOME
+# to avoid multi-user issues from using the default '/var/tmp'.
+[ -z "$DOTNET_BUNDLE_EXTRACT_BASE_DIR" ] && export DOTNET_BUNDLE_EXTRACT_BASE_DIR="${XDG_CACHE_HOME:-"$HOME"/.cache}/dotnet_bundle_extract"
+
+### /rom/etc/profile.d/gawk.csh
+alias gawkpath_default 'unsetenv AWKPATH; setenv AWKPATH `gawk -v x=AWKPATH "BEGIN {print ENVIRON[x]}"`'
+
+alias gawkpath_prepend 'if (! $?AWKPATH) setenv AWKPATH ""; if ($AWKPATH == "") then; unsetenv AWKPATH; setenv AWKPATH `gawk -v x=AWKPATH "BEGIN {print ENVIRON[x]}"`; endif; setenv AWKPATH "\!*"":$AWKPATH"'
+
+alias gawkpath_append 'if (! $?AWKPATH) setenv AWKPATH ""; if ($AWKPATH == "") then; unsetenv AWKPATH; setenv AWKPATH `gawk -v x=AWKPATH "BEGIN {print ENVIRON[x]}"`; endif; setenv AWKPATH "$AWKPATH"":\!*"'
+
+alias gawklibpath_default 'unsetenv AWKLIBPATH; setenv AWKLIBPATH `gawk -v x=AWKLIBPATH "BEGIN {print ENVIRON[x]}"`'
+
+alias gawklibpath_prepend 'if (! $?AWKLIBPATH) setenv AWKLIBPATH ""; if ($AWKLIBPATH == "") then; unsetenv AWKLIBPATH; setenv AWKLIBPATH `gawk -v x=AWKLIBPATH "BEGIN {print ENVIRON[x]}"`; endif; setenv AWKLIBPATH "\!*"":$AWKLIBPATH"'
+
+alias gawklibpath_append 'if (! $?AWKLIBPATH) setenv AWKLIBPATH ""; if ($AWKLIBPATH == "") then; unsetenv AWKLIBPATH; setenv AWKLIBPATH `gawk -v x=AWKLIBPATH "BEGIN {print ENVIRON[x]}"`; endif; setenv AWKLIBPATH "$AWKLIBPATH"":\!*"'
+
+### /rom/etc/profile.d/gawk.sh
+gawkpath_default () {
+	unset AWKPATH
+	export AWKPATH=`gawk 'BEGIN {print ENVIRON["AWKPATH"]}'`
+}
+
+gawkpath_prepend () {
+	[ -z "$AWKPATH" ] && AWKPATH=`gawk 'BEGIN {print ENVIRON["AWKPATH"]}'`
+	export AWKPATH="$*:$AWKPATH"
+}
+
+gawkpath_append () {
+	[ -z "$AWKPATH" ] && AWKPATH=`gawk 'BEGIN {print ENVIRON["AWKPATH"]}'`
+	export AWKPATH="$AWKPATH:$*"
+}
+
+gawklibpath_default () {
+	unset AWKLIBPATH
+	export AWKLIBPATH=`gawk 'BEGIN {print ENVIRON["AWKLIBPATH"]}'`
+}
+
+gawklibpath_prepend () {
+	[ -z "$AWKLIBPATH" ] && \
+		AWKLIBPATH=`gawk 'BEGIN {print ENVIRON["AWKLIBPATH"]}'`
+	export AWKLIBPATH="$*:$AWKLIBPATH"
+}
+
+gawklibpath_append () {
+	[ -z "$AWKLIBPATH" ] && \
+		AWKLIBPATH=`gawk 'BEGIN {print ENVIRON["AWKLIBPATH"]}'`
+	export AWKLIBPATH="$AWKLIBPATH:$*"
+}
+
+### /rom/etc/cron.d/e2scrub_all
+30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron
+10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r
+
+### /rom/etc/cron.d/php
+# /etc/cron.d/php@PHP_VERSION@: crontab fragment for PHP
+#  This purges session files in session.save_path older than X,
+#  where X is defined in seconds as the largest value of
+#  session.gc_maxlifetime from all your SAPI php.ini files
+#  or 24 minutes if not defined.  The script triggers only
+#  when session.save_handler=files.
+#
+#  WARNING: The scripts tries hard to honour all relevant
+#  session PHP options, but if you do something unusual
+#  you have to disable this script and take care of your
+#  sessions yourself.
+
+# Look for and purge old sessions every 30 minutes
+09,39 *     * * *     root   [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi
+
+### /rom/etc/cron.d/sysstat
+# The first element of the path is a directory where the debian-sa1
+# script is located
+PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Activity reports every 10 minutes everyday
+5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+
+# Additional run at 23:59 to rotate the statistics file
+59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
+
+### /rom/etc/cron.daily/apt-compat
+#!/bin/sh
+
+set -e
+
+# Systemd systems use a systemd timer unit which is preferable to
+# run. We want to randomize the apt update and unattended-upgrade
+# runs as much as possible to avoid hitting the mirrors all at the
+# same time. The systemd time is better at this than the fixed
+# cron.daily time
+if [ -d /run/systemd/system ]; then
+    exit 0
+fi
+
+check_power()
+{
+    # laptop check, on_ac_power returns:
+    #       0 (true)    System is on main power
+    #       1 (false)   System is not on main power
+    #       255 (false) Power status could not be determined
+    # Desktop systems always return 255 it seems
+    if command -v on_ac_power >/dev/null; then
+        if on_ac_power; then
+            :
+        elif [ $? -eq 1 ]; then
+            return 1
+        fi
+    fi
+    return 0
+}
+
+# sleep for a random interval of time (default 30min)
+# (some code taken from cron-apt, thanks)
+random_sleep()
+{
+    RandomSleep=1800
+    eval $(apt-config shell RandomSleep APT::Periodic::RandomSleep)
+    if [ $RandomSleep -eq 0 ]; then
+	return
+    fi
+    if [ -z "$RANDOM" ] ; then
+        # A fix for shells that do not have this bash feature.
+	RANDOM=$(( $(dd if=/dev/urandom bs=2 count=1 2> /dev/null | cksum | cut -d' ' -f1) % 32767 ))
+    fi
+    TIME=$(($RANDOM % $RandomSleep))
+    sleep $TIME
+}
+
+# delay the job execution by a random amount of time
+random_sleep
+
+# ensure we don't do this on battery
+check_power || exit 0
+
+# run daily job
+exec /usr/lib/apt/apt.systemd.daily
+
+### /rom/etc/cron.daily/dpkg
+#!/bin/sh
+
+# Skip if systemd is running.
+if [ -d /run/systemd/system ]; then
+  exit 0
+fi
+
+/usr/libexec/dpkg/dpkg-db-backup
+
+### /rom/etc/cron.daily/google-chrome
+#!/bin/sh
+#
+# Copyright 2009 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# This script is part of the google-chrome package.
+#
+# It creates the repository configuration file for package updates, and it
+# monitors that config to see if it has been disabled by the overly aggressive
+# distro upgrade process (e.g.  intrepid -> jaunty). When this situation is
+# detected, the respository will be re-enabled. If the respository is disabled
+# for any other reason, this won't re-enable it.
+#
+# This functionality can be controlled by creating the $DEFAULTS_FILE and
+# setting "repo_add_once" and/or "repo_reenable_on_distupgrade" to "true" or
+# "false" as desired. An empty $DEFAULTS_FILE is the same as setting both values
+# to "false".
+
+# System-wide package configuration.
+DEFAULTS_FILE="/etc/default/google-chrome"
+
+# sources.list setting for google-chrome updates.
+REPOCONFIG="deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+REPOCONFIGREGEX="deb (\[arch=[^]]*\bamd64\b[^]]*\][[:space:]]*) https?://dl.google.com/linux/chrome/deb/ stable main"
+PGP_KEY_CHECKSUM="=+PQZ"
+
+# Be sure to update PGP_KEY_CHECKSUM when updating PGP_KEY_DATA.
+#
+# pub   rsa4096 2016-04-12 [SC]
+#       EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+# uid           Google Inc. (Linux Packages Signing Authority)
+#                           <linux-packages-keymaster@google.com>
+# sub   rsa4096 2023-02-15 [S] [expires: 2026-02-14]
+# sub   rsa4096 2024-01-30 [S] [expires: 2027-01-29]
+# sub   rsa4096 2025-01-07 [S] [expires: 2028-01-07]
+PGP_KEY_DATA=$(cat <<KEYDATA
+mQINBFcMjNMBEAC6Wr5QuLIFgz1V1EFPlg8ty2TsjQEl4VWftUAqWlMevJFWvYEx
+BOsOZ6kNFfBfjAxgJNWTkxZrHzDl74R7KW/nUx6X57bpFjUyRaB8F3/NpWKSeIGS
+pJT+0m2SgUNhLAn1WY/iNJGNaMl7lgUnaP+/ZsSNT9hyTBiH3Ev5VvAtMGhVI/u8
+P0EtTjXp4o2U+VqFTBGmZ6PJVhCFjZUeRByloHw8dGOshfXKgriebpioHvU8iQ2U
+GV3WNIirB2Rq1wkKxXJ/9Iw+4l5m4GmXMs7n3XaYQoBj28H86YA1cYWSm5LR5iU2
+TneI1fJ3vwF2vpSXVBUUDk67PZhg6ZwGRT7GFWskC0z8PsWd5jwK20mA8EVKq0vN
+BFmMK6i4fJU+ux17Rgvnc9tDSCzFZ1/4f43EZ41uTmmNXIDsaPCqwjvSS5ICadt2
+xeqTWDlzONUpOs5yBjF1cfJSdVxsfshvln2JXUwgIdKl4DLbZybuNFXnPffNLb2v
+PtRJHO48O2UbeXS8n27PcuMoLRd7+r7TsqG2vBH4t/cB/1vsvWMbqnQlaJ5VsjeW
+Tp8Gv9FJiKuU8PKiWsF4EGR/kAFyCB8QbJeQ6HrOT0CXLOaYHRu2TvJ4taY9doXn
+98TgU03XTLcYoSp49cdkkis4K+9hd2dUqARVCG7UVd9PY60VVCKi47BVKQARAQAB
+tFRHb29nbGUgSW5jLiAoTGludXggUGFja2FnZXMgU2lnbmluZyBBdXRob3JpdHkp
+IDxsaW51eC1wYWNrYWdlcy1rZXltYXN0ZXJAZ29vZ2xlLmNvbT6JAk4EEwEIADgC
+GwMCHgECF4AWIQTrTBv9TwQvbd3M7JF3IfY704tHlgUCVwyM0wULCQgHAgYVCgkI
+CwIEFgIDAQAKCRB3IfY704tHlkGrD/9aIOPxoABbhHDa+GbM1XHSeV99q2UOIsYc
+A5Jg3k2+Vbjr/006cL9Kk+rdbruZJtERo2z+HVVhkJisvySbsd0UbWfiY5AdHzNP
+azpitbX9cNYi0ghDZsD5UgP3cWdx21BJPO0v9PBG9U4z1TQ+pmsQphtNzMC4tK+A
+H/7WTXnVPzKXTYziIEIPgHeassSj7Yfwa8kLiBR5tAehHDNNMi/mMf4d6a+wO46x
+hhRx/BLjoaIxsZw9f5VxDAqGbCrW8IccwJX8vTc89y+6vpzSurdqYrplZWGpcnfT
+3SPBxodLhS7wMehdy6NKNO14vDGR/GP43+6oZ91Cyv2CYHSPpZM6+qMwMmGVkHS2
+6PrCVPhPoDywf/7UeFsC4KZMI6LIGD2YI9UEOlcCAEbRwWVjXCSwRZ9vRkxOxK4Q
+xNMLAIf3YmUZPnqGVcvNssgsapvjmI3CAWpAPWlP5GTcHxrVGiYz7hNZcA0PfgxF
+pmB0QXNxr/x737I9Q8FCZasSlNqocaiKF6gKBxFOKfiKx5DRZ63EZ07Z3HE6y+w3
+
+### /rom/etc/cron.daily/sysstat
+#!/bin/sh
+# Generate a daily summary of process accounting.  Since this will probably
+# get kicked off in the morning, it is run against the previous day data.
+
+set -e
+
+# Our configuration file
+DEFAULT=/etc/default/sysstat
+# Default settings, overridden in the above file
+ENABLED=false
+
+# Skip in favour of systemd timer
+[ ! -d /run/systemd/system ] || exit 0
+
+[ -x /usr/lib/sysstat/sa2 ] || exit 0
+
+# Read our config
+[ -r "$DEFAULT" ] && . "$DEFAULT"
+
+[ "$ENABLED" = "true" ]  || exit 0
+
+exec /usr/lib/sysstat/sa2 -A
+
+
+===== SHADOW (account names + lock state only) =====
+root:LOCKED:uid?
+daemon:LOCKED:uid?
+bin:LOCKED:uid?
+sys:LOCKED:uid?
+sync:LOCKED:uid?
+games:LOCKED:uid?
+man:LOCKED:uid?
+lp:LOCKED:uid?
+mail:LOCKED:uid?
+news:LOCKED:uid?
+uucp:LOCKED:uid?
+proxy:LOCKED:uid?
+www-data:LOCKED:uid?
+backup:LOCKED:uid?
+list:LOCKED:uid?
+irc:LOCKED:uid?
+_apt:LOCKED:uid?
+nobody:LOCKED:uid?
+ubuntu:LOCKED:uid?
+systemd-network:LOCKED:uid?
+messagebus:LOCKED:uid?
+sshd:LOCKED:uid?
+polkitd:LOCKED:uid?
+jules:SET:uid?
+swebot:LOCKED:uid?
+
+===== APT SOURCES =====
+# Ubuntu sources have moved to the /etc/apt/sources.list.d/ubuntu.sources
+# file, which uses the deb822 format. Use deb822-formatted .sources files
+# to manage package sources in the /etc/apt/sources.list.d/ directory.
+# See the sources.list(5) manual page for details.
+total 4
+drwxr-xr-x 6 root root  123 Mar  4  2026 .
+drwxr-xr-x 9 root root  152 Mar  4  2026 ..
+-rw-r--r-- 1 root root  116 Mar  2  2026 docker.list
+-rw-r--r-- 1 root root 1800 Mar  2  2026 git-core-ubuntu-ppa-noble.sources
+-rw-r--r-- 1 root root  190 Mar  2  2026 google-chrome.list
+-rw-rw-r-- 1 root root  531 Sep 20  2024 ubuntu.sources
+### /rom/etc/apt/sources.list.d/docker.list
+deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu       noble stable
+### /rom/etc/apt/sources.list.d/git-core-ubuntu-ppa-noble.sources
+Types: deb
+URIs: https://ppa.launchpadcontent.net/git-core/ppa/ubuntu/
+Suites: noble
+Components: main
+Signed-By:
+ -----BEGIN PGP PUBLIC KEY BLOCK-----
+ .
+ mQINBGYo2OYBEADVRjI+o29u9izslaVr0Xqj8hpmo/2su/Iey1PgoS6A3hMxR4R4
+ eZ3u9dRh/gRHXNjxqRMfKj88G6ciqa/7ty8Vfc1eKl3z7yjL1pWOEzcGLKaSB8qd
+ MmsxCw31nFNEbzlymgK0+KPubQ5OrIzeSikpfDVGT4HLgO42ppGY+cVy2/bbNv6O
+ mmPXcw8gkxRCWFiGAO5jJYG1SyGbhr9Krbf6o+LDUJeDYPTQRMf702IYZ8Bp00ix
+ HyK2YOUNM14rr7092o2dw9GKxnJszF4cET+LxRddrREuB3sBlAZav/I0hZtQsKZ3
+ QTvpStf2MwIy8Ymj94+BsZaktP0d36wigGn8RWJHrhSVyjujS8YxWRWdjrLUI1ra
+ 42pyIYZi39IXtsTM71rihQVrsEHbMQ7a5HGRK6eYyHVPrtsXXykNqhVPekLNiFWm
+ IekoSH1EwMsQv8y+k3nkCwTCkTHJaueB7awee0Zs5QBwbCm+qPyqCXoVDLEwdQOr
+ CHKAfNADtsFQsk/yiTC/+Lmtur/okp38VpJWXg8DphHFjd1KwqQ5E9qZi+tXs/JD
+ UXd93VBUdoGGaHK9fj/URxUBOVopGaOXGVYtGFWPn9q8MaNcrESZ48sXDfsVgUVD
+ RJ4puKLHjIUtDlCnMQO6lekIhEo4sxtbDnwIUmQp7B9l+U99u+uzBI96cQARAQAB
+ tChMYXVuY2hwYWQgUFBBIGZvciBVYnVudHUgR2l0IE1haW50YWluZXJziQJOBBMB
+ CgA4FiEE+RGrGEMXYwxZlwlz42PJD48bYhcFAmYo2OYCGwMFCwkIBwIGFQoJCAsC
+ BBYCAwECHgECF4AACgkQ42PJD48bYhdwUQ//UFR3i/6zpizJMTA9mpz7hGC9IJV8
+ UDoWoaVgl+OR1Ldfz+jvr3K55LZyIMU1o6bbLqbEnoWa2VpRv2za/SCbPqo1igio
+ p97EJ2irGytFOhCDd+o3s0djfsXpA7jygAK6COnMx3ejnPhaBA194HbYDhp7KA5b
+ gZcqvYeRN1qk9QL99voFYeUWAPnqkLLrNuAcq9qTotmyYZQI61rdAH8P4odgMtU7
+ UiS4yLirkAiNCqT+TK07EXvaWSXcqZhgt1HmP+BZhrx/vLT4FlH52CCjamQWeFA2
+ mLKX/RSx/JTux1UDroX6L9JdUyMzOrLk22Zz9Tb3FK2ysHy72jRKmUv87ctIMcgD
+ u8BY3Mfe/Rw8vPMuBEaAsVfvWl7uYSt81dzjkxtt6ZvIFF5PBR2IhFJVosDbpSnk
+ g9/b22Ipjta3ULW8oOaNZjdcRNQ5StpApzZIUoZoP83ZWafwQoSrW7Rz3KvwYAdL
+ d3OAfuiW9i7YdLCkvaujBt6KA4tn56fcsp14FzLZrgcj+7XUpW4/yEJFHCCu5f2l
+ NWvN37suUTfzbMLZVS6rC1s3qrjOD+C3dvL/dCUlcTfrrsTcs/UnaVXFq0V6NLhA
+ ZZxOIVUedn7nGKbaecwTt6taIjpxj0jCBxWy6RcysIkv2xluRcl2UY+HapB8x1Dx
+ 8giHUSvkXHr4c7I=
+ =yxbG
+ -----END PGP PUBLIC KEY BLOCK-----
+### /rom/etc/apt/sources.list.d/google-chrome.list
+### THIS FILE IS AUTOMATICALLY CONFIGURED ###
+# You may comment out this entry, but any other modifications may be lost.
+deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+### /rom/etc/apt/sources.list.d/ubuntu.sources
+Types: deb
+URIs: http://us-central1.gce.archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main universe restricted multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+## Ubuntu security updates. Aside from URIs and Suites,
+## this should mirror your choices in the previous section.
+Types: deb
+URIs: http://us-central1.gce.archive.ubuntu.com/ubuntu/
+Suites: noble-security
+Components: main universe restricted multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+
+===== BUILD / INSTALL LOGS =====
+total 1222
+drwxr-xr-x 15 root root                222 Mar  2  2026 .
+drwxr-xr-x 13 root root                148 Feb 10  2026 ..
+lrwxrwxrwx  1 root root                 39 Mar  2  2026 README -> ../../usr/share/doc/systemd/README.logs
+-rw-r--r--  1 root root              41487 Mar  2  2026 alternatives.log
+drwxr-xr-x  5 root root                 69 Mar  6  2026 apt
+-rw-r--r--  1 root root              61229 Feb 10  2026 bootstrap.log
+-rw-rw----  1 root utmp                  0 Feb 10  2026 btmp
+-rw-r--r--  1 root root            1143615 Mar  6  2026 dpkg.log
+-rw-r--r--  1 root root                  0 Feb 10  2026 faillog
+-rw-r--r--  1 root root               3202 Mar  2  2026 fontconfig.log
+drwxr-sr-x  2 root systemd-journal       3 Mar  2  2026 journal
+-rw-rw-r--  1 root utmp                  0 Feb 10  2026 lastlog
+drwx------  2 root root                  3 Mar  2  2026 private
+drwxr-xr-x  2 root root                  3 Jan  9  2024 sysstat
+-rw-rw-r--  1 root utmp                  0 Feb 10  2026 wtmp
+### /rom/var/log/apt/history.log
+
+Start-Date: 2026-02-10  14:05:44
+Commandline: apt-get install --reinstall apt
+Reinstall: apt:amd64 (2.7.14build2)
+End-Date: 2026-02-10  14:05:46
+
+Start-Date: 2026-02-10  14:05:48
+Commandline: apt-get install --reinstall base-files
+Reinstall: base-files:amd64 (13ubuntu10)
+End-Date: 2026-02-10  14:05:50
+
+Start-Date: 2026-02-10  14:05:53
+Commandline: apt-get install --reinstall base-passwd
+Reinstall: base-passwd:amd64 (3.6.3build1)
+End-Date: 2026-02-10  14:05:54
+
+Start-Date: 2026-02-10  14:05:57
+Commandline: apt-get install --reinstall bash
+Reinstall: bash:amd64 (5.2.21-2ubuntu4)
+End-Date: 2026-02-10  14:05:59
+
+Start-Date: 2026-02-10  14:06:02
+Commandline: apt-get install --reinstall bsdutils
+Reinstall: bsdutils:amd64 (1:2.39.3-9ubuntu6)
+End-Date: 2026-02-10  14:06:03
+
+Start-Date: 2026-02-10  14:06:06
+Commandline: apt-get install --reinstall coreutils
+Reinstall: coreutils:amd64 (9.4-3ubuntu6)
+End-Date: 2026-02-10  14:06:07
+
+Start-Date: 2026-02-10  14:06:10
+Commandline: apt-get install --reinstall dash
+Reinstall: dash:amd64 (0.5.12-6ubuntu5)
+End-Date: 2026-02-10  14:06:12
+
+Start-Date: 2026-02-10  14:06:15
+Commandline: apt-get install --reinstall debconf
+Reinstall: debconf:amd64 (1.5.86ubuntu1)
+End-Date: 2026-02-10  14:06:16
+
+Start-Date: 2026-02-10  14:06:19
+Commandline: apt-get install --reinstall debianutils
+Reinstall: debianutils:amd64 (5.17build1)
+End-Date: 2026-02-10  14:06:20
+
+Start-Date: 2026-02-10  14:06:23
+Commandline: apt-get install --reinstall diffutils
+Reinstall: diffutils:amd64 (1:3.10-1build1)
+End-Date: 2026-02-10  14:06:25
+
+Start-Date: 2026-02-10  14:06:28
+Commandline: apt-get install --reinstall dpkg
+Reinstall: dpkg:amd64 (1.22.6ubuntu6)
+End-Date: 2026-02-10  14:06:29
+
+Start-Date: 2026-02-10  14:06:32
+Commandline: apt-get install --reinstall e2fsprogs
+Reinstall: e2fsprogs:amd64 (1.47.0-2.4~exp1ubuntu4)
+End-Date: 2026-02-10  14:06:34
+
+Start-Date: 2026-02-10  14:06:36
+Commandline: apt-get install --reinstall findutils
+Reinstall: findutils:amd64 (4.9.0-5build1)
+End-Date: 2026-02-10  14:06:38
+
+Start-Date: 2026-02-10  14:06:40
+Commandline: apt-get install --reinstall gcc-14-base:amd64
+Reinstall: gcc-14-base:amd64 (14-20240412-0ubuntu1)
+End-Date: 2026-02-10  14:06:42
+
+Start-Date: 2026-02-10  14:06:45
+Commandline: apt-get install --reinstall gpgv
+Reinstall: gpgv:amd64 (2.4.4-2ubuntu17)
+End-Date: 2026-02-10  14:06:46
+
+Start-Date: 2026-02-10  14:06:49
+Commandline: apt-get install --reinstall grep
+Reinstall: grep:amd64 (3.11-4build1)
+End-Date: 2026-02-10  14:06:50
+
+Start-Date: 2026-02-10  14:06:53
+Commandline: apt-get install --reinstall gzip
+Reinstall: gzip:amd64 (1.12-1ubuntu3)
+End-Date: 2026-02-10  14:06:55
+
+Start-Date: 2026-02-10  14:06:58
+Commandline: apt-get install --reinstall hostname
+Reinstall: hostname:amd64 (3.23+nmu2ubuntu2)
+End-Date: 2026-02-10  14:06:59
+
+Start-Date: 2026-02-10  14:07:02
+Commandline: apt-get install --reinstall init-system-helpers
+Reinstall: init-system-helpers:amd64 (1.66ubuntu1)
+End-Date: 2026-02-10  14:07:03
+
+Start-Date: 2026-02-10  14:07:06
+Commandline: apt-get install --reinstall libacl1:amd64
+Reinstall: libacl1:amd64 (2.3.2-1build1)
+End-Date: 2026-02-10  14:07:08
+
+Start-Date: 2026-02-10  14:07:11
+Commandline: apt-get install --reinstall libapt-pkg6.0t64:amd64
+Reinstall: libapt-pkg6.0t64:amd64 (2.7.14build2)
+End-Date: 2026-02-10  14:07:12
+
+Start-Date: 2026-02-10  14:07:15
+Commandline: apt-get install --reinstall libassuan0:amd64
+Reinstall: libassuan0:amd64 (2.5.6-1build1)
+End-Date: 2026-02-10  14:07:16
+
+Start-Date: 2026-02-10  14:07:19
+Commandline: apt-get install --reinstall libattr1:amd64
+Reinstall: libattr1:amd64 (1:2.5.2-1build1)
+End-Date: 2026-02-10  14:07:20
+
+Start-Date: 2026-02-10  14:07:23
+Commandline: apt-get install --reinstall libaudit-common
+Reinstall: libaudit-common:amd64 (1:3.1.2-2.1build1)
+End-Date: 2026-02-10  14:07:25
+
+### /rom/var/log/dpkg.log
+2026-02-10 14:05:33 startup archives install
+2026-02-10 14:05:33 install base-passwd:amd64 <none> 3.6.3build1
+2026-02-10 14:05:33 status half-installed base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:33 status unpacked base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:33 configure base-passwd:amd64 3.6.3build1 3.6.3build1
+2026-02-10 14:05:33 status half-configured base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:33 status installed base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:33 startup archives install
+2026-02-10 14:05:33 install base-files:amd64 <none> 13ubuntu10
+2026-02-10 14:05:33 status half-installed base-files:amd64 13ubuntu10
+2026-02-10 14:05:33 status unpacked base-files:amd64 13ubuntu10
+2026-02-10 14:05:33 configure base-files:amd64 13ubuntu10 13ubuntu10
+2026-02-10 14:05:33 status half-configured base-files:amd64 13ubuntu10
+2026-02-10 14:05:33 status installed base-files:amd64 13ubuntu10
+2026-02-10 14:05:33 startup archives install
+2026-02-10 14:05:33 upgrade dpkg 1.22.6ubuntu6 1.22.6ubuntu6
+2026-02-10 14:05:33 status half-configured dpkg 1.22.6ubuntu6
+2026-02-10 14:05:33 status unpacked dpkg 1.22.6ubuntu6
+2026-02-10 14:05:33 status half-installed dpkg 1.22.6ubuntu6
+2026-02-10 14:05:33 status unpacked dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:33 configure dpkg:amd64 1.22.6ubuntu6 1.22.6ubuntu6
+2026-02-10 14:05:34 status half-configured dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:34 status installed dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:34 startup archives install
+2026-02-10 14:05:34 install libc6:amd64 <none> 2.39-0ubuntu8
+2026-02-10 14:05:34 status half-installed libc6:amd64 2.39-0ubuntu8
+2026-02-10 14:05:34 status unpacked libc6:amd64 2.39-0ubuntu8
+2026-02-10 14:05:34 configure libc6:amd64 2.39-0ubuntu8 2.39-0ubuntu8
+2026-02-10 14:05:34 status half-configured libc6:amd64 2.39-0ubuntu8
+2026-02-10 14:05:34 status installed libc6:amd64 2.39-0ubuntu8
+2026-02-10 14:05:34 startup archives install
+2026-02-10 14:05:34 install perl-base:amd64 <none> 5.38.2-3.2build2
+2026-02-10 14:05:34 status half-installed perl-base:amd64 5.38.2-3.2build2
+2026-02-10 14:05:34 status unpacked perl-base:amd64 5.38.2-3.2build2
+2026-02-10 14:05:34 configure perl-base:amd64 5.38.2-3.2build2 5.38.2-3.2build2
+2026-02-10 14:05:34 status half-configured perl-base:amd64 5.38.2-3.2build2
+2026-02-10 14:05:34 status installed perl-base:amd64 5.38.2-3.2build2
+2026-02-10 14:05:34 startup archives install
+2026-02-10 14:05:34 install mawk:amd64 <none> 1.3.4.20240123-1build1
+2026-02-10 14:05:34 status half-installed mawk:amd64 1.3.4.20240123-1build1
+2026-02-10 14:05:34 status unpacked mawk:amd64 1.3.4.20240123-1build1
+2026-02-10 14:05:34 configure mawk:amd64 1.3.4.20240123-1build1 1.3.4.20240123-1build1
+2026-02-10 14:05:34 status half-configured mawk:amd64 1.3.4.20240123-1build1
+2026-02-10 14:05:34 status installed mawk:amd64 1.3.4.20240123-1build1
+2026-02-10 14:05:34 startup archives unpack
+2026-02-10 14:05:34 upgrade base-files:amd64 13ubuntu10 13ubuntu10
+2026-02-10 14:05:34 status half-configured base-files:amd64 13ubuntu10
+2026-02-10 14:05:34 status unpacked base-files:amd64 13ubuntu10
+2026-02-10 14:05:34 status half-installed base-files:amd64 13ubuntu10
+2026-02-10 14:05:34 status unpacked base-files:amd64 13ubuntu10
+2026-02-10 14:05:34 upgrade base-passwd:amd64 3.6.3build1 3.6.3build1
+2026-02-10 14:05:34 status half-configured base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:34 status unpacked base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:34 status half-installed base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:34 status unpacked base-passwd:amd64 3.6.3build1
+2026-02-10 14:05:34 install bash:amd64 <none> 5.2.21-2ubuntu4
+2026-02-10 14:05:34 status half-installed bash:amd64 5.2.21-2ubuntu4
+2026-02-10 14:05:34 status unpacked bash:amd64 5.2.21-2ubuntu4
+2026-02-10 14:05:35 install bsdutils:amd64 <none> 1:2.39.3-9ubuntu6
+2026-02-10 14:05:35 status half-installed bsdutils:amd64 1:2.39.3-9ubuntu6
+2026-02-10 14:05:35 status unpacked bsdutils:amd64 1:2.39.3-9ubuntu6
+2026-02-10 14:05:35 install coreutils:amd64 <none> 9.4-3ubuntu6
+2026-02-10 14:05:35 status half-installed coreutils:amd64 9.4-3ubuntu6
+2026-02-10 14:05:35 status unpacked coreutils:amd64 9.4-3ubuntu6
+2026-02-10 14:05:35 install dash:amd64 <none> 0.5.12-6ubuntu5
+2026-02-10 14:05:35 status half-installed dash:amd64 0.5.12-6ubuntu5
+2026-02-10 14:05:35 status unpacked dash:amd64 0.5.12-6ubuntu5
+2026-02-10 14:05:35 install debconf:all <none> 1.5.86ubuntu1
+2026-02-10 14:05:35 status half-installed debconf:all 1.5.86ubuntu1
+2026-02-10 14:05:35 status unpacked debconf:all 1.5.86ubuntu1
+2026-02-10 14:05:35 install debianutils:amd64 <none> 5.17build1
+2026-02-10 14:05:35 status half-installed debianutils:amd64 5.17build1
+2026-02-10 14:05:35 status unpacked debianutils:amd64 5.17build1
+2026-02-10 14:05:35 install diffutils:amd64 <none> 1:3.10-1build1
+2026-02-10 14:05:35 status half-installed diffutils:amd64 1:3.10-1build1
+2026-02-10 14:05:35 status unpacked diffutils:amd64 1:3.10-1build1
+2026-02-10 14:05:35 upgrade dpkg:amd64 1.22.6ubuntu6 1.22.6ubuntu6
+2026-02-10 14:05:35 status half-configured dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:35 status unpacked dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:35 status half-installed dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:35 status unpacked dpkg:amd64 1.22.6ubuntu6
+2026-02-10 14:05:35 install e2fsprogs:amd64 <none> 1.47.0-2.4~exp1ubuntu4
+2026-02-10 14:05:35 status half-installed e2fsprogs:amd64 1.47.0-2.4~exp1ubuntu4
+2026-02-10 14:05:35 status unpacked e2fsprogs:amd64 1.47.0-2.4~exp1ubuntu4
+2026-02-10 14:05:35 install findutils:amd64 <none> 4.9.0-5build1
+2026-02-10 14:05:35 status half-installed findutils:amd64 4.9.0-5build1
+2026-02-10 14:05:35 status unpacked findutils:amd64 4.9.0-5build1
+2026-02-10 14:05:35 install gcc-14-base:amd64 <none> 14-20240412-0ubuntu1
+2026-02-10 14:05:35 status half-installed gcc-14-base:amd64 14-20240412-0ubuntu1
+2026-02-10 14:05:35 status unpacked gcc-14-base:amd64 14-20240412-0ubuntu1
+2026-02-10 14:05:35 install grep:amd64 <none> 3.11-4build1
+2026-02-10 14:05:35 status half-installed grep:amd64 3.11-4build1
+2026-02-10 14:05:35 status unpacked grep:amd64 3.11-4build1
+2026-02-10 14:05:35 install gzip:amd64 <none> 1.12-1ubuntu3
+2026-02-10 14:05:35 status half-installed gzip:amd64 1.12-1ubuntu3
+2026-02-10 14:05:35 status unpacked gzip:amd64 1.12-1ubuntu3
+2026-02-10 14:05:35 install hostname:amd64 <none> 3.23+nmu2ubuntu2
+2026-02-10 14:05:35 status half-installed hostname:amd64 3.23+nmu2ubuntu2
+2026-02-10 14:05:35 status unpacked hostname:amd64 3.23+nmu2ubuntu2
+2026-02-10 14:05:35 install init-system-helpers:all <none> 1.66ubuntu1
+2026-02-10 14:05:35 status half-installed init-system-helpers:all 1.66ubuntu1
+2026-02-10 14:05:35 status unpacked init-system-helpers:all 1.66ubuntu1
+2026-02-10 14:05:35 install libacl1:amd64 <none> 2.3.2-1build1
+2026-02-10 14:05:35 status half-installed libacl1:amd64 2.3.2-1build1
+2026-02-10 14:05:35 status unpacked libacl1:amd64 2.3.2-1build1
+2026-02-10 14:05:35 install libattr1:amd64 <none> 1:2.5.2-1build1
+2026-02-10 14:05:35 status half-installed libattr1:amd64 1:2.5.2-1build1
+2026-02-10 14:05:35 status unpacked libattr1:amd64 1:2.5.2-1build1
+2026-02-10 14:05:35 install libaudit-common:all <none> 1:3.1.2-2.1build1
+2026-02-10 14:05:35 status half-installed libaudit-common:all 1:3.1.2-2.1build1
+2026-02-10 14:05:35 status unpacked libaudit-common:all 1:3.1.2-2.1build1
+2026-02-10 14:05:35 install libaudit1:amd64 <none> 1:3.1.2-2.1build1
+2026-02-10 14:05:35 status half-installed libaudit1:amd64 1:3.1.2-2.1build1
+2026-02-10 14:05:35 status unpacked libaudit1:amd64 1:3.1.2-2.1build1
+2026-02-10 14:05:35 install libblkid1:amd64 <none> 2.39.3-9ubuntu6
+2026-02-10 14:05:35 status half-installed libblkid1:amd64 2.39.3-9ubuntu6
+2026-02-10 14:05:35 status unpacked libblkid1:amd64 2.39.3-9ubuntu6
+2026-02-10 14:05:35 install libbz2-1.0:amd64 <none> 1.0.8-5.1
+2026-02-10 14:05:35 status half-installed libbz2-1.0:amd64 1.0.8-5.1
+2026-02-10 14:05:35 status unpacked libbz2-1.0:amd64 1.0.8-5.1
+
+### /rom/var/log/installer/*
