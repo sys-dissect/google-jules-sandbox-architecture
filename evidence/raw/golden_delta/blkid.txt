@@ -1,0 +1,2 @@
+/dev/vdb: LABEL="overlay" UUID="a9893320-d2ab-4aca-98ea-9a5954d46d7d" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/vda: BLOCK_SIZE="131072" TYPE="squashfs"
