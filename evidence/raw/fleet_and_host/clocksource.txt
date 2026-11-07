@@ -1,0 +1,5 @@
+=== CLOCKSOURCE TELEMETRY (/sys/devices/system/clocksource/clocksource0/) ===
+available_clocksource: tsc kvm-clock
+current_clocksource: tsc
+uevent:
+unbind_clocksource: UNREADABLE
