@@ -1,0 +1,40 @@
+  File: /app
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 0,16	Inode: 275         Links: 7
+Access: (0755/drwxr-xr-x)  Uid: ( 1001/   jules)   Gid: (    0/    root)
+Access: 2026-11-05 18:56:33.791669554 +0000
+Modify: 2026-11-05 18:56:35.783669532 +0000
+Change: 2026-11-05 18:56:35.783669532 +0000
+ Birth: 2026-11-05 18:56:33.791669554 +0000
+  File: /app/.git
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 0,16	Inode: 276         Links: 7
+Access: (0775/drwxrwxr-x)  Uid: ( 1001/   jules)   Gid: ( 1001/   jules)
+Access: 2026-11-05 18:56:34.271669549 +0000
+Modify: 2026-11-05 19:00:14.599667068 +0000
+Change: 2026-11-05 19:00:14.599667068 +0000
+ Birth: 2026-11-05 18:56:34.271669549 +0000
+  File: /app/.git/HEAD
+  Size: 51        	Blocks: 8          IO Block: 4096   regular file
+Device: 0,17	Inode: 2883806     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1001/   jules)   Gid: ( 1001/   jules)
+Access: 2026-11-05 18:56:38.579669500 +0000
+Modify: 2026-11-05 18:56:38.579669500 +0000
+Change: 2026-11-05 18:56:38.579669500 +0000
+ Birth: 2026-11-05 18:56:38.579669500 +0000
+  File: /app/.git/index
+  Size: 19514     	Blocks: 40         IO Block: 4096   regular file
+Device: 0,17	Inode: 2883819     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1001/   jules)   Gid: ( 1001/   jules)
+Access: 2026-11-05 18:58:46.883668056 +0000
+Modify: 2026-11-05 18:58:46.907668055 +0000
+Change: 2026-11-05 18:58:46.907668055 +0000
+ Birth: 2026-11-05 18:58:46.883668056 +0000
+  File: /app/.git/config
+  Size: 309       	Blocks: 8          IO Block: 4096   regular file
+Device: 0,17	Inode: 2883615     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1001/   jules)   Gid: ( 1001/   jules)
+Access: 2026-11-05 18:56:35.747669532 +0000
+Modify: 2026-11-05 18:56:35.747669532 +0000
+Change: 2026-11-05 18:56:35.747669532 +0000
+ Birth: 2026-11-05 18:56:35.747669532 +0000

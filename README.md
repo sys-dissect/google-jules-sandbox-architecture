@@ -207,6 +207,8 @@ Firecracker Host (CID 2)
   └───────────────────► devbox runner (/app)
 ```
 
+> **Live re-audit update (2026-11-07):** The observed orchestrator sessions do **not** traverse this VSOCK bridge. They arrive as plain TCP over virtio-net (`192.168.0.1 → 192.168.0.2:22`) and are socket-activated by `ssh.socket`; the `socat VSOCK-LISTEN:22` bridge is provisioned but idle, and the guest→host `CID 2:9999` notify socket resets at runtime. See [`evidence/GUEST_HOST_COMMS.md`](evidence/GUEST_HOST_COMMS.md) for the transport-level proof and corrections.
+
 * **VSOCK Addressing & Topography** `[Tier 1]`:
   * **Host Hypervisor CID:** `2` (listening on port `9999` for VMM lifecycle notification: `systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999`).
   * **Guest Workload CID:** `123` (empirically queried from `/dev/vsock` via `IOCTL_VM_SOCKETS_GET_LOCAL_CID` `0x7b9`).
@@ -313,6 +315,7 @@ All conclusions in this report are substantiated by raw outputs and expanded aud
 | [`evidence/NETWORK_CAPABILITIES.md`](evidence/NETWORK_CAPABILITIES.md) | **Network & Routing Audit** | Routing tables (`ip route`, `ip rule`), static boot routing, host gateway port scan, TUN egress |
 | [`evidence/OPT_AND_HARNESS.md`](evidence/OPT_AND_HARNESS.md) | **Tooling, Chrome & Process Tree** | `/opt/environment_summary.sh`, Chrome 145 & Playwright summary, `pstree`, `devbox-ssh-over-vsock.service` |
 | [`evidence/SYSTEMD_AND_HARNESS_IPC.md`](evidence/SYSTEMD_AND_HARNESS_IPC.md) | **Systemd & Harness IPC** | `inotifywait` session watcher, `socat` VSOCK-to-SSH bridge, `var-lib-systemd.mount` tmpfs optimization |
+| [`evidence/GUEST_HOST_COMMS.md`](evidence/GUEST_HOST_COMMS.md) | **Guest ↔ Host Communication Plane** | Live orchestration sessions arrive over TCP from `192.168.0.1` (not VSOCK); idle vsock bridge; dead `CID 2:9999` notify path; DNS/`:8080` reverse proxy; Tailcat ingress |
 | [`evidence/CONTAINERD_DOCKER_RUNTIME.md`](evidence/CONTAINERD_DOCKER_RUNTIME.md) | **Container Runtime & Workaround** | Overlay-on-overlay kernel constraint (`EINVAL`) and verified VFS storage driver workaround |
 | [`evidence/HARDENING.md`](evidence/HARDENING.md) | Initial baseline probes | Namespaces (`uid_map`), running systemd units, public egress verification, `/opt` listing |
 | [`evidence/SYSTEM_TOPOLOGY.md`](evidence/SYSTEM_TOPOLOGY.md) | Hypervisor & storage topology | Kernel `/proc/cmdline` (`pci=off`, `virtio_mmio`), `lsblk` (SquashFS + ext4), Docker overlay mount failure |

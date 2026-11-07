@@ -1,0 +1,100 @@
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+[Thu Nov  5 18:56:40 2026] systemd-journald[439]: Collecting audit messages is disabled.
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[Thu Nov  5 18:56:40 2026] systemd[1]: systemd-pcrmachine.service - TPM2 PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+[Thu Nov  5 18:56:40 2026] systemd[1]: systemd-tpm2-setup-early.service - TPM2 SRK Setup (Early) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[Thu Nov  5 18:56:40 2026] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[Thu Nov  5 18:56:40 2026] systemd[1]: Started systemd-journald.service - Journal Service.
+[Thu Nov  5 18:56:40 2026] systemd-journald[439]: Received client request to flush runtime journal.
+[Wed Jul  7 20:43:01 2027] random: crng reseeded due to virtual machine fork
+[Wed Jul  7 20:47:46 2027] python3 invoked oom-killer: gfp_mask=0x140dca(GFP_HIGHUSER_MOVABLE|__GFP_COMP|__GFP_ZERO), order=0, oom_score_adj=0
+[Wed Jul  7 20:47:46 2027] CPU: 0 PID: 11940 Comm: python3 Not tainted 6.8.0 #1
+[Wed Jul  7 20:47:46 2027] Call Trace:
+[Wed Jul  7 20:47:46 2027]  <TASK>
+[Wed Jul  7 20:47:46 2027]  dump_stack_lvl+0x3b/0x50
+[Wed Jul  7 20:47:46 2027]  dump_stack+0x14/0x20
+[Wed Jul  7 20:47:46 2027]  dump_header+0x42/0x1b0
+[Wed Jul  7 20:47:46 2027]  oom_kill_process+0xff/0x220
+[Wed Jul  7 20:47:46 2027]  out_of_memory+0x24a/0x570
+[Wed Jul  7 20:47:46 2027]  __alloc_pages_slowpath.constprop.0+0xa1e/0xd40
+[Wed Jul  7 20:47:46 2027]  ? obj_cgroup_charge_pages+0x75/0xf0
+[Wed Jul  7 20:47:46 2027]  __alloc_pages+0x277/0x2c0
+[Wed Jul  7 20:47:46 2027]  alloc_pages_mpol+0x8e/0x1f0
+[Wed Jul  7 20:47:46 2027]  ? __pfx_lru_add_fn+0x10/0x10
+[Wed Jul  7 20:47:46 2027]  vma_alloc_folio+0x59/0xd0
+[Wed Jul  7 20:47:46 2027]  __handle_mm_fault+0x75f/0x1a90
+[Wed Jul  7 20:47:46 2027]  ? tick_sched_handle+0x3c/0x50
+[Wed Jul  7 20:47:46 2027]  handle_mm_fault+0x70/0x2b0
+[Wed Jul  7 20:47:46 2027]  exc_page_fault+0x349/0x680
+[Wed Jul  7 20:47:46 2027]  asm_exc_page_fault+0x2b/0x30
+[Wed Jul  7 20:47:46 2027] RIP: 0033:0x7f7ae7ab854a
+[Wed Jul  7 20:47:46 2027] Code: Unable to access opcode bytes at 0x7f7ae7ab8520.
+[Wed Jul  7 20:47:46 2027] RSP: 002b:00007ffc767da3e8 EFLAGS: 00010206
+[Wed Jul  7 20:47:46 2027] RAX: 0000000000000000 RBX: 00007f7ae73acd70 RCX: 00000000044e8010
+[Wed Jul  7 20:47:46 2027] RDX: 00007f78f7a00010 RSI: 0000000000000000 RDI: 00007f78fb518000
+[Wed Jul  7 20:47:46 2027] RBP: 00007ffc767da4b0 R08: 00000000ffffffff R09: 0000000000000000
+[Wed Jul  7 20:47:46 2027] R10: 0000000000000022 R11: 0000000000000246 R12: 0000000008000000
+[Wed Jul  7 20:47:46 2027] R13: 00007f7ae75d7c88 R14: 0000000000000000 R15: 0000000000000001
+[Wed Jul  7 20:47:46 2027]  </TASK>
+[Wed Jul  7 20:47:46 2027] Mem-Info:
+[Wed Jul  7 20:47:46 2027] active_anon:59 inactive_anon:1997484 isolated_anon:0
+                            active_file:80 inactive_file:24 isolated_file:0
+                            unevictable:1 dirty:1 writeback:0
+                            slab_reclaimable:1811 slab_unreclaimable:5077
+                            mapped:0 shmem:130 pagetables:4570
+                            sec_pagetables:0 bounce:0
+                            kernel_misc_reclaimable:0
+                            free:25644 free_pcp:64 free_cma:0
+[Wed Jul  7 20:47:46 2027] Node 0 active_anon:236kB inactive_anon:7989936kB active_file:320kB inactive_file:96kB unevictable:4kB isolated(anon):0kB isolated(file):0kB mapped:0kB dirty:4kB writeback:0kB shmem:520kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1904kB pagetables:18280kB sec_pagetables:0kB all_unreclaimable? no
+[Wed Jul  7 20:47:46 2027] Node 0 DMA free:15360kB boost:0kB min:124kB low:152kB high:180kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[Wed Jul  7 20:47:46 2027] lowmem_reserve[]: 0 2962 7940 7940
+[Wed Jul  7 20:47:46 2027] Node 0 DMA32 free:45280kB boost:0kB min:25160kB low:31448kB high:37736kB reserved_highatomic:0KB active_anon:0kB inactive_anon:2984740kB active_file:64kB inactive_file:588kB unevictable:0kB writepending:0kB present:3129344kB managed:3036916kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:0kB free_cma:0kB
+[Wed Jul  7 20:47:46 2027] lowmem_reserve[]: 0 0 4978 4978
+[Wed Jul  7 20:47:46 2027] Node 0 Normal free:41936kB boost:0kB min:42292kB low:52864kB high:63436kB reserved_highatomic:0KB active_anon:236kB inactive_anon:5004620kB active_file:280kB inactive_file:216kB unevictable:4kB writepending:4kB present:5242880kB managed:5097840kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[Wed Jul  7 20:47:46 2027] lowmem_reserve[]: 0 0 0 0
+[Wed Jul  7 20:47:46 2027] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 1*1024kB (U) 1*2048kB (M) 3*4096kB (M) = 15360kB
+[Wed Jul  7 20:47:46 2027] Node 0 DMA32: 3*4kB (U) 6*8kB (U) 3*16kB (U) 6*32kB (UM) 6*64kB (U) 6*128kB (UM) 3*256kB (U) 2*512kB (U) 3*1024kB (U) 1*2048kB (M) 9*4096kB (UM) = 45228kB
+[Wed Jul  7 20:47:46 2027] Node 0 Normal: 1405*4kB (UME) 707*8kB (UME) 325*16kB (UE) 132*32kB (UME) 58*64kB (UME) 22*128kB (UME) 9*256kB (UE) 3*512kB (UE) 5*1024kB (UE) 3*2048kB (M) 0*4096kB = 42332kB
+[Wed Jul  7 20:47:46 2027] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[Wed Jul  7 20:47:46 2027] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[Wed Jul  7 20:47:46 2027] 352 total pagecache pages
+[Wed Jul  7 20:47:46 2027] 0 pages in swap cache
+[Wed Jul  7 20:47:46 2027] Free swap  = 0kB
+[Wed Jul  7 20:47:46 2027] Total swap = 0kB
+[Wed Jul  7 20:47:46 2027] 2097054 pages RAM
+[Wed Jul  7 20:47:46 2027] 0 pages HighMem/MovableOnly
+[Wed Jul  7 20:47:46 2027] 59525 pages reserved
+[Wed Jul  7 20:47:46 2027] Tasks state (memory values in pages):
+[Wed Jul  7 20:47:46 2027] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Wed Jul  7 20:47:46 2027] [    439]     0   439    12687      224      224        0         0   110592        0          -250 systemd-journal
+[Wed Jul  7 20:47:46 2027] [    790]     0   790     5966      288      256       32         0    69632        0         -1000 systemd-udevd
+[Wed Jul  7 20:47:46 2027] [    833]   100   833     2033       96       64       32         0    57344        0          -900 dbus-daemon
+[Wed Jul  7 20:47:46 2027] [    841]     0   841     4418      192      192        0         0    77824        0             0 systemd-logind
+[Wed Jul  7 20:47:46 2027] [    844]     0   844     1526       32       32        0         0    49152        0             0 agetty
+[Wed Jul  7 20:47:46 2027] [    845]     0   845     1537       32        0       32         0    45056        0             0 agetty
+[Wed Jul  7 20:47:46 2027] [    872]     0   872   466720     3392     3392        0         0   303104        0          -999 containerd
+[Wed Jul  7 20:47:46 2027] [    874]     0   874     3006      256      256        0         0    61440        0         -1000 sshd
+[Wed Jul  7 20:47:46 2027] [    876]     0   876     2323      160      128       32         0    61440        0             0 socat
+[Wed Jul  7 20:47:46 2027] [    877]     0   877     3555      320      320        0         0    61440        0             0 sshd
+[Wed Jul  7 20:47:46 2027] [    887]  1001   887     5025      448      448        0         0    81920        0           100 systemd
+[Wed Jul  7 20:47:46 2027] [    888]  1001   888     5098      373      341       32         0    73728        0           100 (sd-pam)
+[Wed Jul  7 20:47:46 2027] [    907]  1001   907     3620      390      390        0         0    61440        0             0 sshd
+[Wed Jul  7 20:47:46 2027] [    911]     0   911   497013     5882     5850       32         0   417792        0          -500 dockerd
+[Wed Jul  7 20:47:46 2027] [    918]     0   918     3547      320      320        0         0    69632        0             0 sshd
+[Wed Jul  7 20:47:46 2027] [    929]  1001   929     3612      424      424        0         0    69632        0             0 sshd
+[Wed Jul  7 20:47:46 2027] [   3462]  1001  3462     3186      337      305       32         0    65536        0             0 tmux: server
+[Wed Jul  7 20:47:46 2027] [   3463]  1001  3463     3023     1216     1184       32         0    57344        0             0 bash
+[Wed Jul  7 20:47:46 2027] [  11901]  1001 11901     1935       96       64       32         0    45056        0             0 bash
+[Wed Jul  7 20:47:46 2027] [  11907]  1001 11907      724       32       32        0         0    49152        0             0 inotifywait
+[Wed Jul  7 20:47:46 2027] [  11908]  1001 11908     1935       70       38       32         0    45056        0             0 bash
+[Wed Jul  7 20:47:46 2027] [  11910]  1001 11910     1536        0        0        0         0    45056        0             0 tail
+[Wed Jul  7 20:47:46 2027] [  11921]  1001 11921     4093      224      224        0         0    65536        0             0 sudo
+[Wed Jul  7 20:47:46 2027] [  11922]  1001 11922     4093      214      214        0         0    57344        0             0 sudo
+[Wed Jul  7 20:47:46 2027] [  11923]     0 11923     1935      103       71       32         0    57344        0             0 bash
+[Wed Jul  7 20:47:46 2027] [  11940]     0 11940  2003462  1982016  1981984       32         0 16203776        0             0 python3
+[Wed Jul  7 20:47:46 2027] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1001.slice/session-c2.scope,task=python3,pid=11940,uid=0
+[Wed Jul  7 20:47:46 2027] Out of memory: Killed process 11940 (python3) total-vm:8013848kB, anon-rss:7927936kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:15824kB oom_score_adj:0

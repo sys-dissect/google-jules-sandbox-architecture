@@ -1,0 +1,4 @@
+=== ACTIVE LSMs (securityfs / sysfs) ===
+LSM sysfs entry not present (/sys/kernel/security/lsm missing or securityfs unmounted)
+=== Kernel Command Line Security Flags ===
+No security module flags in /proc/cmdline

@@ -1,0 +1,30 @@
+/app/.git:
+total 76
+drwxrwxr-x  7 jules jules  4096 2026-11-05 19:00:14.599667068 +0000 .
+drwxr-xr-x  7 jules root   4096 2026-11-05 18:56:35.783669532 +0000 ..
+-rw-rw-r--  1 jules jules   124 2026-11-05 18:58:29.999668246 +0000 FETCH_HEAD
+-rw-rw-r--  1 jules jules    51 2026-11-05 18:56:38.579669500 +0000 HEAD
+-rw-rw-r--  1 jules jules    41 2026-11-05 18:57:28.223668941 +0000 ORIG_HEAD
+-rw-rw-r--  1 jules jules   309 2026-11-05 18:56:35.747669532 +0000 config
+-rw-rw-r--  1 jules jules    73 2026-11-05 18:56:34.283669548 +0000 description
+drwxrwxr-x  2 jules jules  4096 2026-11-05 18:56:34.299669548 +0000 hooks
+-rw-rw-r--  1 jules jules 19514 2026-11-05 18:58:46.907668055 +0000 index
+drwxrwxr-x  2 jules jules  4096 2026-11-05 18:56:34.299669548 +0000 info
+drwxrwxr-x  3 jules jules  4096 2026-11-05 18:56:35.743669532 +0000 logs
+drwxrwxr-x 13 jules jules  4096 2026-11-05 18:58:46.907668055 +0000 objects
+-rw-rw-r--  1 jules jules  1327 2026-11-05 18:56:35.743669532 +0000 packed-refs
+drwxrwxr-x  5 jules jules  4096 2026-11-05 18:56:35.743669532 +0000 refs
+-rw-rw-r--  1 jules jules   533 2026-11-05 18:56:35.411669536 +0000 shallow
+
+/app/.git/logs:
+total 16
+drwxrwxr-x 3 jules jules 4096 2026-11-05 18:56:35.743669532 +0000 .
+drwxrwxr-x 7 jules jules 4096 2026-11-05 19:00:14.599667068 +0000 ..
+-rw-rw-r-- 1 jules jules  506 2026-11-05 18:56:38.579669500 +0000 HEAD
+drwxrwxr-x 4 jules jules 4096 2026-11-05 18:56:35.743669532 +0000 refs
+
+/app/.git/refs/remotes/origin:
+total 12
+drwxrwxr-x 2 jules jules 4096 2026-11-05 18:56:35.743669532 +0000 .
+drwxrwxr-x 3 jules jules 4096 2026-11-05 18:56:35.743669532 +0000 ..
+-rw-rw-r-- 1 jules jules   30 2026-11-05 18:56:35.743669532 +0000 HEAD
