@@ -1,0 +1,61 @@
+=== sysfs vmgenid matches ===
+/sys/bus/acpi/drivers/vmgenid
+
+=== FCVMGID device tree ===
+/sys/devices/LNXSYSTM:00/LNXSYBUS:00/FCVMGID:00/:
+total 0
+drwxr-xr-x  3 root root    0 Nov  7 11:04 .
+drwxr-xr-x 10 root root    0 Mar  6  2026 ..
+lrwxrwxrwx  1 root root    0 Nov  7 11:04 driver -> ../../../../bus/acpi/drivers/vmgenid
+-r--r--r--  1 root root 4096 Nov  7 11:04 hid
+-r--r--r--  1 root root 4096 Nov  7 11:04 modalias
+-r--r--r--  1 root root 4096 Nov  7 11:04 path
+lrwxrwxrwx  1 root root    0 Nov  7 11:04 physical_node -> ../../../platform/FCVMGID:00
+drwxr-xr-x  2 root root    0 Nov  7 11:04 power
+lrwxrwxrwx  1 root root    0 Mar  6  2026 subsystem -> ../../../../bus/acpi
+-rw-r--r--  1 root root 4096 Mar  6  2026 uevent
+
+/sys/devices/LNXSYSTM:00/LNXSYBUS:00/FCVMGID:00/power:
+total 0
+drwxr-xr-x 2 root root    0 Nov  7 11:04 .
+drwxr-xr-x 3 root root    0 Nov  7 11:04 ..
+-rw-r--r-- 1 root root 4096 Nov  7 11:04 autosuspend_delay_ms
+-rw-r--r-- 1 root root 4096 Nov  7 11:04 control
+-r--r--r-- 1 root root 4096 Nov  7 11:04 runtime_active_time
+-r--r--r-- 1 root root 4096 Nov  7 11:04 runtime_status
+-r--r--r-- 1 root root 4096 Nov  7 11:04 runtime_suspended_time
+
+=== acpi driver vmgenid ===
+total 0
+drwxr-xr-x 2 root root    0 Nov  7 11:04 .
+drwxr-xr-x 7 root root    0 Mar  6  2026 ..
+lrwxrwxrwx 1 root root    0 Nov  7 11:04 FCVMGID:00 -> ../../../../devices/LNXSYSTM:00/LNXSYBUS:00/FCVMGID:00
+--w------- 1 root root 4096 Nov  7 11:04 bind
+--w------- 1 root root 4096 Mar  6  2026 uevent
+--w------- 1 root root 4096 Nov  7 11:04 unbind
+## /sys/bus/acpi/drivers/vmgenid/FCVMGID:00/uevent
+DRIVER=vmgenid
+MODALIAS=acpi:FCVMGID:VM_GEN_COUNTER:
+## /sys/bus/acpi/drivers/vmgenid/FCVMGID:00/modalias
+acpi:FCVMGID:VM_GEN_COUNTER:
+
+=== dmesg vmgen/generation/fork ===
+[    0.777127] random: crng init done
+[21225104.888382] random: crng reseeded due to virtual machine fork
+[21225960.027544] random: crng reseeded due to virtual machine fork
+[21228123.970586] random: crng reseeded due to virtual machine fork
+[21229712.931897] random: crng reseeded due to virtual machine fork
+[21230839.163730] random: crng reseeded due to virtual machine fork
+
+=== kernel config vmgenid ===
+CONFIG_HAVE_ARCH_SECCOMP=y
+CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
+# CONFIG_SECCOMP is not set
+CONFIG_MODULES_USE_ELF_RELA=y
+# CONFIG_MODULES is not set
+# Xtables combined modules
+CONFIG_VIRTIO_VSOCKETS=y
+CONFIG_VIRTIO_VSOCKETS_COMMON=y
+CONFIG_VMGENID=y
+
+=== module info ===

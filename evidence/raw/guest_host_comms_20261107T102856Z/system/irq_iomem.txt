@@ -1,0 +1,47 @@
+           CPU0       CPU1       CPU2       CPU3
+ 24:          5          0          0          0   IO-APIC   9-edge      ACPI:Ged
+ 25:          0     159500          0          0   IO-APIC   5-edge      virtio0
+ 26:          0          0      27064          0   IO-APIC   6-edge      virtio1
+ 27:          0          0          0     297398   IO-APIC   7-edge      virtio2
+ 28:          0        672          0          0   IO-APIC   8-edge      virtio3
+ 29:          0          0        319          0   IO-APIC   4-edge      ttyS0
+ 31:          8          0          0          0   IO-APIC   1-edge      i8042
+NMI:          0          0          0          0   Non-maskable interrupts
+LOC:    1137865    1189040    1216973    1194482   Local timer interrupts
+SPU:          0          0          0          0   Spurious interrupts
+PMI:          0          0          0          0   Performance monitoring interrupts
+IWI:          0          0          0          0   IRQ work interrupts
+RTR:          0          0          0          0   APIC ICR read retries
+RES:      57522      55414      53172      56773   Rescheduling interrupts
+CAL:     607133     526844     533206     484906   Function call interrupts
+TLB:     136770     128051     131878     131429   TLB shootdowns
+TRM:          0          0          0          0   Thermal event interrupts
+HYP:         19         16         11         10   Hypervisor callback interrupts
+ERR:          0
+MIS:          0
+PIN:          0          0          0          0   Posted-interrupt notification event
+NPI:          0          0          0          0   Nested posted-interrupt event
+PIW:          0          0          0          0   Posted-interrupt wakeup event
+
+00000000-00000000 : Reserved
+00000000-00000000 : System RAM
+00000000-00000000 : Reserved
+00000000-00000000 : System ROM
+00000000-00000000 : System RAM
+  00000000-00000000 : Kernel code
+  00000000-00000000 : Kernel rodata
+  00000000-00000000 : Kernel data
+  00000000-00000000 : Kernel bss
+00000000-00000000 : virtio-mmio.0
+  00000000-00000000 : LNRO0005:00
+    00000000-00000000 : LNRO0005:00 LNRO0005:00
+00000000-00000000 : virtio-mmio.1
+  00000000-00000000 : LNRO0005:01
+    00000000-00000000 : LNRO0005:01 LNRO0005:01
+00000000-00000000 : virtio-mmio.2
+  00000000-00000000 : LNRO0005:02
+    00000000-00000000 : LNRO0005:02 LNRO0005:02
+00000000-00000000 : virtio-mmio.3
+  00000000-00000000 : LNRO0005:03
+    00000000-00000000 : LNRO0005:03 LNRO0005:03
+00000000-00000000 : System RAM

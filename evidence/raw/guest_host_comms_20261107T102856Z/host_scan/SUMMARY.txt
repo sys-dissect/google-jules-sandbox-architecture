@@ -1,0 +1,8 @@
+TCP scan (1-65535):
+53
+
+Note: 8080 confirmed open by sequential curl/connect; missed by concurrent scanner (single-threaded proxy drops bursts).
+
+UDP confirmed: 53 (dnsmasq)
+DNS banner: dnsmasq-2.91
+TTL: 64 (Linux)

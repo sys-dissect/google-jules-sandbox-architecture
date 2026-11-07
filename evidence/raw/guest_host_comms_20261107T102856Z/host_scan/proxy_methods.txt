@@ -1,0 +1,7 @@
+GET /healthz -> 200
+POST /healthz -> 200
+PUT /healthz -> 501
+DELETE /healthz -> 501
+OPTIONS /healthz -> 501
+HEAD /healthz -> 501
+PATCH /healthz -> 501

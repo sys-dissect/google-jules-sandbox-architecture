@@ -1,0 +1,197 @@
+=== all unix domain sockets (ss -xap) ===
+Netid State  Recv-Q Send-Q                                Local Address:Port   Peer Address:PortProcess
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 233               * 0    users:(("systemd-journal",pid=439,fd=16),("systemd",pid=1,fd=73))
+u_str ESTAB  0      0                                                 * 277               * 0    users:(("dbus-daemon",pid=833,fd=6))
+u_str ESTAB  0      0                                                 * 278               * 0    users:(("dbus-daemon",pid=833,fd=7))
+u_str ESTAB  0      0                       /run/dbus/system_bus_socket 280               * 0    users:(("dbus-daemon",pid=833,fd=8))
+u_str ESTAB  0      0                       /run/dbus/system_bus_socket 284               * 0    users:(("dbus-daemon",pid=833,fd=9))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 297               * 0    users:(("systemd-journal",pid=439,fd=22),("systemd",pid=1,fd=75))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 327               * 0    users:(("systemd-journal",pid=439,fd=23),("systemd",pid=1,fd=81))
+u_str LISTEN 0      0                    /run/user/1001/systemd/private 351               * 0    users:(("systemd",pid=887,fd=20))
+u_str ESTAB  0      0          @6149058a8c79b9c5/bus/systemd/bus-system 352               * 0    users:(("systemd",pid=887,fd=21))
+u_str LISTEN 0      0                                /run/user/1001/bus 358               * 0    users:(("systemd",pid=887,fd=12))
+u_str LISTEN 0      0                    /run/user/1001/gnupg/S.dirmngr 360               * 0    users:(("systemd",pid=887,fd=29))
+u_str LISTEN 0      0          /run/user/1001/gnupg/S.gpg-agent.browser 362               * 0    users:(("systemd",pid=887,fd=30))
+u_str LISTEN 0      0            /run/user/1001/gnupg/S.gpg-agent.extra 364               * 0    users:(("systemd",pid=887,fd=31))
+u_str LISTEN 0      0                  /run/user/1001/gnupg/S.gpg-agent 369               * 0    users:(("systemd",pid=887,fd=34))
+u_str LISTEN 0      0                    /run/user/1001/gnupg/S.keyboxd 371               * 0    users:(("systemd",pid=887,fd=35))
+u_str LISTEN 0      0                  /run/user/1001/pk-debconf-socket 373               * 0    users:(("systemd",pid=887,fd=36))
+u_str LISTEN 0      0              /run/user/1001/gnupg/S.gpg-agent.ssh 381               * 0    users:(("systemd",pid=887,fd=27))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 418               * 0    users:(("systemd-journal",pid=439,fd=25),("systemd",pid=1,fd=84))
+u_str ESTAB  0      0                   /run/containerd/containerd.sock 598               * 0    users:(("containerd",pid=872,fd=11))
+u_str LISTEN 0      0                            /tmp/tmux-1001/default 978               * 0    users:(("tmux: server",pid=2799,fd=6))
+u_str LISTEN 0      0                              /run/systemd/private 1059              * 0    users:(("systemd",pid=1,fd=20))
+u_str LISTEN 0      0        /run/systemd/userdb/io.systemd.DynamicUser 1061              * 0    users:(("systemd",pid=1,fd=21))
+u_str LISTEN 0      0                /run/systemd/io.systemd.ManagedOOM 1062              * 0    users:(("systemd",pid=1,fd=22))
+u_str LISTEN 0      0                       /run/systemd/journal/stdout 1083              * 0    users:(("systemd-journal",pid=439,fd=4),("systemd",pid=1,fd=36))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 1214              * 0    users:(("systemd-journal",pid=439,fd=19),("systemd",pid=1,fd=58))
+u_str LISTEN 0      0                       /run/dbus/system_bus_socket 1259              * 0    users:(("dbus-daemon",pid=833,fd=3),("systemd",pid=1,fd=41))
+u_str LISTEN 0      0                                  /run/docker.sock 1260              * 0    users:(("dockerd",pid=911,fd=5),("systemd",pid=1,fd=42))
+u_str ESTAB  0      0                                                 * 1280              * 0    users:(("dbus-daemon",pid=833,fd=2),("dbus-daemon",pid=833,fd=1))
+u_str ESTAB  0      0       @e924de78a9153b6b/bus/systemd-logind/system 1347              * 0    users:(("systemd-logind",pid=841,fd=14))
+u_str ESTAB  0      0                                                 * 1372              * 0    users:(("sshd",pid=874,fd=2),("sshd",pid=874,fd=1))
+u_str ESTAB  0      0                                                 * 1416              * 0    users:(("(sd-pam",pid=888,fd=2),("(sd-pam",pid=888,fd=1),("systemd",pid=887,fd=2),("systemd",pid=887,fd=1))
+u_str LISTEN 0      0             /run/containerd/containerd.sock.ttrpc 1448              * 0    users:(("containerd",pid=872,fd=9))
+u_str LISTEN 0      0                   /run/containerd/containerd.sock 1450              * 0    users:(("containerd",pid=872,fd=10))
+u_str ESTAB  0      0                                                 * 1465              * 0    users:(("dockerd",pid=911,fd=2),("dockerd",pid=911,fd=1))
+u_str ESTAB  0      0                                                 * 1483              * 0    users:(("sshd",pid=929,fd=6),("sshd",pid=918,fd=6))
+u_str ESTAB  0      0                                                 * 1507              * 0    users:(("sshd",pid=929,fd=5))
+u_str ESTAB  0      0                                                 * 1508              * 0    users:(("sshd",pid=918,fd=7))
+u_str LISTEN 0      0           /run/systemd/journal/io.systemd.journal 2271              * 0    users:(("systemd-journal",pid=439,fd=9))
+u_str ESTAB  0      0                                                 * 2551              * 0    users:(("containerd",pid=872,fd=2),("containerd",pid=872,fd=1))
+u_str ESTAB  0      0                       /run/dbus/system_bus_socket 2567              * 0    users:(("dbus-daemon",pid=833,fd=12))
+u_str LISTEN 0      0                      /var/run/docker/metrics.sock 2726              * 0    users:(("dockerd",pid=911,fd=8))
+u_str ESTAB  0      0                                                 * 2730              * 0    users:(("dockerd",pid=911,fd=11))
+u_str ESTAB  0      0                   /run/containerd/containerd.sock 2731              * 0    users:(("containerd",pid=872,fd=12))
+u_str LISTEN 0      0      /var/run/docker/libnetwork/4ca64ca6afee.sock 2845              * 0    users:(("dockerd",pid=911,fd=16))
+u_str LISTEN 0      0                    /run/systemd/io.systemd.sysext 3206              * 0    users:(("systemd",pid=1,fd=39))
+u_str ESTAB  0      0                                                 * 3223              * 0    users:(("systemd-udevd",pid=790,fd=2),("systemd-udevd",pid=790,fd=1))
+u_str ESTAB  0      0                                                 * 3415              * 0    users:(("systemd-logind",pid=841,fd=2),("systemd-logind",pid=841,fd=1))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 3417              * 0    users:(("systemd-journal",pid=439,fd=20),("systemd",pid=1,fd=76))
+u_str ESTAB  0      0      @ad4f13ea987e5b70/bus/systemd/bus-api-system 3460              * 0    users:(("systemd",pid=1,fd=50))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 3476              * 0    users:(("systemd-journal",pid=439,fd=17),("systemd",pid=1,fd=60))
+u_str ESTAB  0      0                       /run/systemd/journal/stdout 3477              * 0    users:(("systemd-journal",pid=439,fd=18),("systemd",pid=1,fd=63))
+u_str ESTAB  0      0                                                 * 3493              * 0    users:(("socat",pid=876,fd=2),("socat",pid=876,fd=1))
+u_str ESTAB  0      0                                                 * 3807              * 0    users:(("dockerd",pid=911,fd=10))
+u_str ESTAB  0      0                                                 * 22910             * 0    users:(("sshd",pid=17721,fd=6),("sshd",pid=17710,fd=6))
+u_str ESTAB  0      0                                                 * 23602             * 0    users:(("sshd",pid=17721,fd=5))
+u_str ESTAB  0      0                                                 * 23603             * 0    users:(("sshd",pid=17710,fd=7))
+u_str ESTAB  0      0                                                 * 53727             * 0    users:(("sshd",pid=41982,fd=6),("sshd",pid=41971,fd=6))
+u_str ESTAB  0      0                                                 * 53734             * 0    users:(("sshd",pid=41982,fd=5))
+u_str ESTAB  0      0                                                 * 53735             * 0    users:(("sshd",pid=41971,fd=7))
+u_str ESTAB  0      0                                                 * 89768             * 0    users:(("sshd",pid=76075,fd=6),("sshd",pid=76063,fd=6))
+u_str ESTAB  0      0                                                 * 90530             * 0    users:(("sshd",pid=76075,fd=5))
+u_str ESTAB  0      0                                                 * 90531             * 0    users:(("sshd",pid=76063,fd=7))
+u_str ESTAB  0      0                                                 * 108717            * 0    users:(("sshd",pid=89585,fd=6),("sshd",pid=89574,fd=6))
+u_str ESTAB  0      0                                                 * 108735            * 0    users:(("sshd",pid=89585,fd=5))
+u_str ESTAB  0      0                                                 * 108736            * 0    users:(("sshd",pid=89574,fd=7))
+u_str ESTAB  0      0                                                 * 550168            * 0    users:(("opencode",pid=127537,fd=22))
+u_str ESTAB  0      0                                                 * 550169            * 0    users:(("bash",pid=236428,fd=10))
+u_str ESTAB  0      0                                                 * 550170            * 0    users:(("opencode",pid=127537,fd=24))
+u_str ESTAB  0      0                                                 * 550171            * 0    users:(("bash",pid=236428,fd=11))
+u_dgr ESTAB  0      0                                                 * 76                * 0    users:(("systemd",pid=1,fd=70))
+u_dgr ESTAB  0      0                                                 * 285               * 0    users:(("dbus-daemon",pid=833,fd=10))
+u_dgr ESTAB  0      0                     /run/user/1001/systemd/notify 348               * 0    users:(("systemd",pid=887,fd=17))
+u_dgr ESTAB  0      0                                                 * 349               * 0    users:(("systemd",pid=887,fd=18))
+u_dgr ESTAB  0      0                                                 * 350               * 0    users:(("systemd",pid=887,fd=19))
+u_dgr ESTAB  0      0                               /run/systemd/notify 1056              * 0    users:(("systemd",pid=1,fd=17))
+u_dgr ESTAB  0      0                                                 * 1057              * 0    users:(("systemd",pid=1,fd=18))
+u_dgr ESTAB  0      0                                                 * 1058              * 0    users:(("systemd",pid=1,fd=19))
+u_dgr ESTAB  0      0                      /run/systemd/journal/dev-log 1079              * 0    users:(("systemd-journal",pid=439,fd=5),("systemd",pid=1,fd=34))
+u_dgr ESTAB  0      0                       /run/systemd/journal/socket 1081              * 0    users:(("systemd-journal",pid=439,fd=3),("systemd",pid=1,fd=35))
+u_dgr ESTAB  0      0                                                 * 1423              * 0    users:(("(sd-pam",pid=888,fd=7))
+u_dgr ESTAB  0      0                                                 * 1430              * 0    users:(("systemd",pid=887,fd=3))
+u_dgr ESTAB  0      0                                                 * 1491              * 0    users:(("sshd",pid=929,fd=3),("sshd",pid=918,fd=3))
+u_dgr ESTAB  0      0                                                 * 2275              * 0    users:(("systemd-journal",pid=439,fd=14))
+u_dgr ESTAB  0      0                                                 * 3229              * 0    users:(("systemd-udevd",pid=790,fd=5))
+u_dgr ESTAB  0      0                                                 * 3233              * 0    users:(("systemd-udevd",pid=790,fd=6))
+u_dgr ESTAB  0      0                                                 * 3234              * 0    users:(("systemd-udevd",pid=790,fd=7))
+u_dgr ESTAB  0      0                                                 * 3434              * 0    users:(("systemd-logind",pid=841,fd=3))
+u_dgr ESTAB  0      0                                                 * 3494              * 0    users:(("socat",pid=876,fd=3))
+u_dgr ESTAB  0      0                                                 * 3495              * 0    users:(("socat",pid=876,fd=4))
+u_dgr ESTAB  0      0                                                 * 22918             * 0    users:(("sshd",pid=17721,fd=3),("sshd",pid=17710,fd=3))
+u_dgr ESTAB  0      0                                                 * 54595             * 0    users:(("sshd",pid=41982,fd=3),("sshd",pid=41971,fd=3))
+u_dgr ESTAB  0      0                                                 * 90521             * 0    users:(("sshd",pid=76075,fd=3),("sshd",pid=76063,fd=3))
+u_dgr ESTAB  0      0                                                 * 108725            * 0    users:(("sshd",pid=89585,fd=3),("sshd",pid=89574,fd=3))
+u_dgr ESTAB  0      0                                                 * 412399            * 0    users:(("sudo",pid=139458,fd=6))
+u_dgr ESTAB  0      0                                                 * 547704            * 0    users:(("sudo",pid=236430,fd=6))
+u_seq LISTEN 0      0                                 /run/udev/control 1085              * 0    users:(("systemd-udevd",pid=790,fd=4),("systemd",pid=1,fd=37))
+
+=== systemd socket units ===
+LISTEN                         UNIT                            ACTIVATES
+0.0.0.0:22                     ssh.socket                      ssh.service
+[::]:22                        ssh.socket                      ssh.service
+kobject-uevent 1               systemd-udevd-kernel.socket     systemd-udevd.service
+/run/dbus/system_bus_socket    dbus.socket                     dbus.service
+/run/docker.sock               docker.socket                   docker.service
+/run/initctl                   systemd-initctl.socket          systemd-initctl.service
+/run/systemd/io.systemd.sysext systemd-sysext.socket           -
+/run/systemd/journal/dev-log   systemd-journald-dev-log.socket systemd-journald.service
+/run/systemd/journal/socket    systemd-journald.socket         systemd-journald.service
+/run/systemd/journal/stdout    systemd-journald.socket         systemd-journald.service
+/run/udev/control              systemd-udevd-control.socket    systemd-udevd.service
+
+11 sockets listed.
+Pass --all to see loaded but inactive sockets, too.
+
+=== /proc/net/unix (unique paths, sorted) ===
+      9 /run/systemd/journal/stdout
+      4 /run/dbus/system_bus_socket
+      3 /run/containerd/containerd.sock
+      1 @e924de78a9153b6b/bus/systemd-logind/system
+      1 @ad4f13ea987e5b70/bus/systemd/bus-api-system
+      1 @6149058a8c79b9c5/bus/systemd/bus-system
+      1 90531
+      1 90530
+      1 90521
+      1 89768
+      1 76
+      1 550171
+      1 550170
+      1 550169
+      1 550168
+      1 54595
+      1 53735
+      1 53734
+      1 53727
+      1 412399
+      1 3807
+      1 350
+      1 3495
+      1 3494
+      1 3493
+      1 349
+      1 3434
+      1 3415
+      1 3234
+      1 3233
+      1 3229
+      1 3223
+      1 285
+      1 278
+      1 277
+      1 2730
+      1 2551
+      1 23603
+      1 23602
+      1 22918
+      1 22910
+      1 2275
+      1 1508
+      1 1507
+      1 1491
+      1 1483
+      1 1465
+      1 1430
+      1 1423
+      1 1416
+      1 1372
+      1 1280
+      1 108736
+      1 108735
+      1 108725
+      1 108717
+      1 1058
+      1 1057
+      1 /var/run/docker/metrics.sock
+      1 /var/run/docker/libnetwork/4ca64ca6afee.sock
+      1 /tmp/tmux-1001/default
+      1 /run/user/1001/systemd/private
+      1 /run/user/1001/systemd/notify
+      1 /run/user/1001/pk-debconf-socket
+      1 /run/user/1001/gnupg/S.keyboxd
+      1 /run/user/1001/gnupg/S.gpg-agent.ssh
+      1 /run/user/1001/gnupg/S.gpg-agent.extra
+      1 /run/user/1001/gnupg/S.gpg-agent.browser
+      1 /run/user/1001/gnupg/S.gpg-agent
+      1 /run/user/1001/gnupg/S.dirmngr
+      1 /run/user/1001/bus
+      1 /run/udev/control
+      1 /run/systemd/userdb/io.systemd.DynamicUser
+      1 /run/systemd/private
+      1 /run/systemd/notify
+      1 /run/systemd/journal/socket
+      1 /run/systemd/journal/io.systemd.journal
+      1 /run/systemd/journal/dev-log
+      1 /run/systemd/io.systemd.sysext
+      1 /run/systemd/io.systemd.ManagedOOM

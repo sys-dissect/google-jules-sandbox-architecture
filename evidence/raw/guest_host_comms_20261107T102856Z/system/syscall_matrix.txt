@@ -1,0 +1,40 @@
+=== syscall matrix as jules (uid=1001) ===
+### probes as user ###
+memfd_create            : OK fd
+io_uring_setup          : OK fd
+bpf(BPF_MAP_CREATE)     : EINVAL
+perf_event_open         : E2BIG
+userfaultfd             : ENOSYS
+open_by_handle_at       : EPERM
+kexec_load              : ENOSYS
+mount(NULL)             : EFAULT
+pivot_root(NULL)        : EPERM
+setns(-1)               : EBADF
+pidfd_open              : OK fd
+memfd_secret            : OK fd
+landlock version query  : ENOSYS
+fsopen('tmpfs')         : EPERM
+open_tree('/')          : EPERM
+mount_setattr           : EINVAL
+klogctl(SYSLOG_ACTION_SIZE): EINVAL
+
+
+=== syscall matrix as root (sudo) ===
+### probes as root ###
+memfd_create            : OK fd
+io_uring_setup          : OK fd
+bpf(BPF_MAP_CREATE)     : EINVAL
+perf_event_open         : E2BIG
+userfaultfd             : ENOSYS
+open_by_handle_at       : EFAULT
+kexec_load              : ENOSYS
+mount(NULL)             : EFAULT
+pivot_root(NULL)        : EFAULT
+setns(-1)               : EBADF
+pidfd_open              : OK fd
+memfd_secret            : OK fd
+landlock version query  : ENOSYS
+fsopen('tmpfs')         : OK fd
+open_tree('/')          : OK fd
+mount_setattr           : EINVAL
+klogctl(SYSLOG_ACTION_SIZE): EINVAL

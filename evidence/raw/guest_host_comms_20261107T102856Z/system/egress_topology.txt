@@ -1,0 +1,23 @@
+=== subnet scan ===
+Nmap scan report for 192.168.0.1
+Host is up (0.00035s latency).
+MAC Address: 42:D0:D9:5B:D3:31 (Unknown)
+Nmap scan report for 192.168.0.2
+Host is up.
+
+=== routes ===
+8.8.8.8 via 192.168.0.1 dev eth0 src 192.168.0.2 uid 1001
+    cache
+1.1.1.1 via 192.168.0.1 dev eth0 src 192.168.0.2 uid 1001
+    cache
+
+=== external TCP/HTTPS ===
+HTTP/2 200
+content-type: text/html; charset=ISO-8859-1
+content-security-policy-report-only: object-src 'none';base-uri 'self';script-src 'nonce-Qt3gV5EvWidmq3UYosjk6Q' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+
+=== external DNS (UDP 53) ===
+140.82.114.4
+
+=== traceroute ===
+no traceroute/tracepath

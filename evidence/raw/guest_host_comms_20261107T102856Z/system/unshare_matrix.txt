@@ -1,0 +1,12 @@
+jules unshare --user           : OK
+jules unshare --mount          : FAIL(1) Operation not permitted
+jules unshare --pid --fork     : FAIL(1) Operation not permitted
+jules unshare --net            : FAIL(1) Operation not permitted
+jules unshare --uts            : FAIL(1) Operation not permitted
+jules unshare --ipc            : FAIL(1) Operation not permitted
+jules unshare --cgroup         : FAIL(1) Operation not permitted
+jules unshare --time           : FAIL(1) Operation not permitted
+
+root  unshare --user           : OK
+root  unshare --mount          : OK
+root  unshare --net            : OK

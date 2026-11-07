@@ -1,0 +1,112 @@
+  UNIT                                                      LOAD   ACTIVE SUB       DESCRIPTION
+  proc-sys-fs-binfmt_misc.automount                         loaded active running   Arbitrary Executable File Formats File System Automount Point
+  sys-devices-platform-LNRO0005:00-virtio0-block-vda.device loaded active plugged   /sys/devices/platform/LNRO0005:00/virtio0/block/vda
+  sys-devices-platform-LNRO0005:01-virtio1-block-vdb.device loaded active plugged   /sys/devices/platform/LNRO0005:01/virtio1/block/vdb
+  sys-devices-platform-LNRO0005:02-virtio2-net-eth0.device  loaded active plugged   /sys/devices/platform/LNRO0005:02/virtio2/net/eth0
+  sys-devices-pnp0-00:00-00:00:0-00:00:0.0-tty-ttyS0.device loaded active plugged   /sys/devices/pnp0/00:00/00:00:0/00:00:0.0/tty/ttyS0
+  sys-devices-virtual-net-docker0.device                    loaded active plugged   /sys/devices/virtual/net/docker0
+  sys-devices-virtual-net-sit0.device                       loaded active plugged   /sys/devices/virtual/net/sit0
+  sys-devices-virtual-ptp-ptp0.device                       loaded active plugged   /sys/devices/virtual/ptp/ptp0
+  sys-subsystem-net-devices-docker0.device                  loaded active plugged   /sys/subsystem/net/devices/docker0
+  sys-subsystem-net-devices-eth0.device                     loaded active plugged   /sys/subsystem/net/devices/eth0
+  sys-subsystem-net-devices-sit0.device                     loaded active plugged   /sys/subsystem/net/devices/sit0
+  -.mount                                                   loaded active mounted   Root Mount
+  dev-hugepages.mount                                       loaded active mounted   Huge Pages File System
+  dev-mqueue.mount                                          loaded active mounted   POSIX Message Queue File System
+  proc-sys-fs-binfmt_misc.mount                             loaded active mounted   Arbitrary Executable File Formats File System
+  rom-dev.mount                                             loaded active mounted   /rom/dev
+  rom-overlay.mount                                         loaded active mounted   /rom/overlay
+  rom.mount                                                 loaded active mounted   /rom
+  run-credentials-\x40system.mount                          loaded active mounted   /run/credentials/@system
+  run-user-1001.mount                                       loaded active mounted   /run/user/1001
+  sys-fs-fuse-connections.mount                             loaded active mounted   FUSE Control File System
+  var-lib-systemd.mount                                     loaded active mounted   /var/lib/systemd
+  systemd-ask-password-console.path                         loaded active waiting   Dispatch Password Requests to Console Directory Watch
+  systemd-ask-password-wall.path                            loaded active waiting   Forward Password Requests to Wall Directory Watch
+  init.scope                                                loaded active running   System and Service Manager
+  session-c1.scope                                          loaded active running   Session c1 of User jules
+  session-c2.scope                                          loaded active running   Session c2 of User jules
+  session-c3.scope                                          loaded active running   Session c3 of User jules
+  session-c4.scope                                          loaded active running   Session c4 of User jules
+  session-c5.scope                                          loaded active running   Session c5 of User jules
+  session-c6.scope                                          loaded active running   Session c6 of User jules
+  containerd.service                                        loaded active running   containerd container runtime
+  dbus.service                                              loaded active running   D-Bus System Message Bus
+  devbox-ssh-over-vsock.service                             loaded active running   devbox-ssh-over-vsock.service
+  docker.service                                            loaded active running   Docker Application Container Engine
+  getty@tty1.service                                        loaded active running   Getty on tty1
+  ldconfig.service                                          loaded active exited    Rebuild Dynamic Linker Cache
+  serial-getty@ttyS0.service                                loaded active running   Serial Getty on ttyS0
+  ssh.service                                               loaded active running   OpenBSD Secure Shell server
+  sysstat.service                                           loaded active exited    Resets System Activity Logs
+  systemd-binfmt.service                                    loaded active exited    Set Up Additional Binary Formats
+  systemd-hostnamed.service                                 loaded active running   Hostname Service
+  systemd-journal-catalog-update.service                    loaded active exited    Rebuild Journal Catalog
+  systemd-journal-flush.service                             loaded active exited    Flush Journal to Persistent Storage
+  systemd-journald.service                                  loaded active running   Journal Service
+  systemd-logind.service                                    loaded active running   User Login Management
+  systemd-modules-load.service                              loaded active exited    Load Kernel Modules
+  systemd-random-seed.service                               loaded active exited    Load/Save OS Random Seed
+  systemd-remount-fs.service                                loaded active exited    Remount Root and Kernel File Systems
+  systemd-sysctl.service                                    loaded active exited    Apply Kernel Variables
+  systemd-sysusers.service                                  loaded active exited    Create System Users
+  systemd-tmpfiles-setup-dev-early.service                  loaded active exited    Create Static Device Nodes in /dev gracefully
+  systemd-tmpfiles-setup-dev.service                        loaded active exited    Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service                            loaded active exited    Create Volatile Files and Directories
+  systemd-udev-trigger.service                              loaded active exited    Coldplug All udev Devices
+  systemd-udevd.service                                     loaded active running   Rule-based Manager for Device Events and Files
+  systemd-update-done.service                               loaded active exited    Update is Completed
+  systemd-update-utmp.service                               loaded active exited    Record System Boot/Shutdown in UTMP
+  systemd-user-sessions.service                             loaded active exited    Permit User Sessions
+  user-runtime-dir@1001.service                             loaded active exited    User Runtime Directory /run/user/1001
+  user@1001.service                                         loaded active running   User Manager for UID 1001
+  -.slice                                                   loaded active active    Root Slice
+  system-getty.slice                                        loaded active active    Slice /system/getty
+  system-modprobe.slice                                     loaded active active    Slice /system/modprobe
+  system-serial\x2dgetty.slice                              loaded active active    Slice /system/serial-getty
+  system.slice                                              loaded active active    System Slice
+  user-1001.slice                                           loaded active active    User Slice of UID 1001
+  user.slice                                                loaded active active    User and Session Slice
+  dbus.socket                                               loaded active running   D-Bus System Message Bus Socket
+  docker.socket                                             loaded active running   Docker Socket for the API
+  ssh.socket                                                loaded active running   OpenBSD Secure Shell server socket
+  systemd-initctl.socket                                    loaded active listening initctl Compatibility Named Pipe
+  systemd-journald-dev-log.socket                           loaded active running   Journal Socket (/dev/log)
+  systemd-journald.socket                                   loaded active running   Journal Socket
+  systemd-sysext.socket                                     loaded active listening System Extension Image Management (Varlink)
+  systemd-udevd-control.socket                              loaded active running   udev Control Socket
+  systemd-udevd-kernel.socket                               loaded active running   udev Kernel Socket
+  basic.target                                              loaded active active    Basic System
+  cryptsetup.target                                         loaded active active    Local Encrypted Volumes
+  getty.target                                              loaded active active    Login Prompts
+  graphical.target                                          loaded active active    Graphical Interface
+  integritysetup.target                                     loaded active active    Local Integrity Protected Volumes
+  local-fs-pre.target                                       loaded active active    Preparation for Local File Systems
+  local-fs.target                                           loaded active active    Local File Systems
+  multi-user.target                                         loaded active active    Multi-User System
+  network-online.target                                     loaded active active    Network is Online
+  paths.target                                              loaded active active    Path Units
+  remote-fs.target                                          loaded active active    Remote File Systems
+  slices.target                                             loaded active active    Slice Units
+  sockets.target                                            loaded active active    Socket Units
+  swap.target                                               loaded active active    Swaps
+  sysinit.target                                            loaded active active    System Initialization
+  timers.target                                             loaded active active    Timer Units
+  veritysetup.target                                        loaded active active    Local Verity Protected Volumes
+  apt-daily-upgrade.timer                                   loaded active waiting   Daily apt upgrade and clean activities
+  apt-daily.timer                                           loaded active waiting   Daily apt download activities
+  dpkg-db-backup.timer                                      loaded active waiting   Daily dpkg database backup timer
+  e2scrub_all.timer                                         loaded active waiting   Periodic ext4 Online Metadata Check for All Filesystems
+  fstrim.timer                                              loaded active waiting   Discard unused filesystem blocks once a week
+  motd-news.timer                                           loaded active waiting   Message of the Day
+  phpsessionclean.timer                                     loaded active waiting   Clean PHP session files every 30 mins
+  sysstat-collect.timer                                     loaded active waiting   Run system activity accounting tool every 10 minutes
+  sysstat-summary.timer                                     loaded active waiting   Generate summary of yesterday's process accounting
+  systemd-tmpfiles-clean.timer                              loaded active waiting   Daily Cleanup of Temporary Directories
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+104 loaded units listed. Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.

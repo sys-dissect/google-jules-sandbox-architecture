@@ -1,0 +1,10 @@
+=== ICMP echo round-trip with custom payload ===
+reply from 192.168.0.1 type=0 code=0 id=25159 seq=1
+sent payload   : OPENCODE_HOST_PROBE:9ff773a24a77
+echoed payload : OPENCODE_HOST_PROBE:9ff773a24a77
+MATCH
+
+=== DHCPDISCOVER (host dnsmasq may also serve DHCP) ===
+sent DISCOVER to 255.255.255.255:67 (xid=0xb13cb354)
+sent DISCOVER to 192.168.0.1:67 (xid=0xb13cb354)
+no DHCP reply (host dnsmasq likely DNS-only)

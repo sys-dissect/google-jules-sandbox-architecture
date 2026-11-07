@@ -1,0 +1,10 @@
+# Nmap 7.94SVN scan initiated Sat Nov  7 11:25:16 2026 as: nmap -n -sS -p- --min-rate 800 --max-retries 2 -T4 -oN /app/evidence/raw/guest_host_comms_20261107T102856Z/host_scan/nmap_full_tcp.txt 192.168.0.1
+Nmap scan report for 192.168.0.1
+Host is up (0.00049s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT     STATE SERVICE
+53/tcp   open  domain
+8080/tcp open  http-proxy
+MAC Address: 42:D0:D9:5B:D3:31 (Unknown)
+
+# Nmap done at Sat Nov  7 11:25:17 2026 -- 1 IP address (1 host up) scanned in 1.42 seconds
