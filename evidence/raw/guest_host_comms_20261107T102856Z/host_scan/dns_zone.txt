@@ -1,0 +1,61 @@
+=== DNS zone introspection (host dnsmasq) ===
+--- devbox-gateway.internal SOA
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 40449
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+.			86386	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026110700 1800 900 604800 86400
+
+--- devbox-gateway.internal NS
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 2945
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+.			86348	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026110700 1800 900 604800 86400
+
+--- devbox-gateway.internal MX
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8686
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+.			86348	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026110700 1800 900 604800 86400
+
+--- devbox-gateway.internal TXT
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 63657
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+.			86395	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026110700 1800 900 604800 86400
+
+--- devbox-gateway.internal ANY
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8217
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+devbox-gateway.internal. 0	IN	A	192.168.0.1
+
+
+--- PTR 192.168.0.1
+--- wildcard TXT probe
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19843
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+--- CH hostname.bind

@@ -1,0 +1,44 @@
+=== VSOCK CID 2 port 512 (Muse hypervisor channel) ===
+cid=2 open=0
+cid=0 open=0
+
+=== logind / killswitch (JioPC probe) ===
+-- logind.conf (effective keys) --
+[Login]
+## /etc/systemd/logind.conf.d/*
+
+-- loginctl user/session --
+UID=1001
+GID=1001
+Name=jules
+Timestamp=Fri 2026-03-06 17:10:37 UTC
+TimestampMonotonic=12261185
+RuntimePath=/run/user/1001
+Service=user@1001.service
+Slice=user-1001.slice
+Display=c6
+State=active
+Sessions=c6 c5 c4 c3 c2
+IdleHint=no
+IdleSinceHint=0
+IdleSinceHintMonotonic=0
+Linger=no
+
+c2 1001 jules - - closing no -
+c3 1001 jules - - active  no -
+c4 1001 jules - - active  no -
+c5 1001 jules - - active  no -
+c6 1001 jules - - active  no -
+
+-- linger --
+total 0
+drwxr-xr-x 2 root root  40 Mar  6  2026 .
+drwxr-xr-x 8 root root 180 Mar  6  2026 ..
+
+-- relevant sysctls --
+kernel.unprivileged_userns_clone = (absent)
+vm.unprivileged_userfaultfd = (absent)
+kernel.perf_event_paranoid = (absent)
+kernel.kptr_restrict = (absent)
+kernel.dmesg_restrict = (absent)
+kernel.io_uring_disabled = (absent)

@@ -1,0 +1,118 @@
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/ssh-keygen -lf /root/.ssh/authorized_keys
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/ssh-keygen -lf /home/swebot/.ssh/authorized_keys
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/ssh-keygen -lf /home/jules/.ssh/authorized_keys
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.pub-cache/hosted/pub.dev/shelf-1.4.2/test/ssl_certs.dart
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.pub-cache/hosted/pub.dev/http_multi_server-3.2.2/test/http_multi_server_test.dart
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.pub-cache/hosted/pub.dev/dtd-4.0.0/test/utils.dart
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.pub-cache/hosted/pub.dev/devtools_shared-12.0.0/test/helpers/helpers.dart
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.pub-cache/hosted/pub.dev/dds-5.1.0/lib/src/devtools/dtd.dart
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/root/.android/adbkey
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-elf/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-armv4/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/linux-aarch64/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-x86_64-cc/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin64-arm64-cc/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/darwin-i386-cc/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/aix64-gcc-as/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64A/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64-ARM/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN64-ARM/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/VC-WIN32/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86_64/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/no-asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/no-asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/asm_avx2/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/asm_avx2/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/asm/include/openssl/x509.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.nvm/versions/node/v18.20.8/include/node/openssl/archs/BSD-x86/asm/include/openssl/ssl.h
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/pytest/lib/python3.12/site-packages/pygments/lexers/_php_builtins.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/secretstorage/dhcrypto.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/requests_toolbelt/adapters/x509.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/x509/ocsp.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/x509/base.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/ssh.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/pkcs7.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/base.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/__init__.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/rsa.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/ec.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/dsa.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/dh.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/openssl/_conditional.py
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/x509.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/pkcs7.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/openssl/rsa.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/openssl/keys.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/openssl/ec.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/openssl/dsa.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/openssl/dh.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/home/jules/.local/share/pipx/venvs/poetry/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust/ocsp.pyi
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/etc/ssl/openssl.cnf
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/etc/ssh/ssh_host_rsa_key
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/etc/ssh/ssh_host_ed25519_key
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/sha256sum /rom/etc/ssh/ssh_host_ecdsa_key
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/dd if=/sys/firmware/acpi/tables/MCFG bs=1 count=36
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/dd if=/sys/firmware/acpi/tables/FACP bs=1 count=36
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/dd if=/sys/firmware/acpi/tables/DSDT bs=1 count=36
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/dd if=/sys/firmware/acpi/tables/APIC bs=1 count=36
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/var/log/dpkg.log /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/dpkg.log
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/var/log/bootstrap.log /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/bootstrap.log
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/var/log/apt/term.log /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/apt_term.log
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/var/log/apt/history.log /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/apt_history.log
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/etc/devbox-version-info /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/devbox-version-info
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/etc/devbox-rebuild-hash /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/devbox-rebuild-hash
+      1 jules : PWD=/home/jules ; USER=root ; COMMAND=/usr/bin/cp -p /rom/etc/cloud/build.info /app/evidence/raw/guest_host_comms_20261107T102856Z/golden/cloud-build.info
+      1 jules : PWD=/app ; USER=root ; COMMAND=/usr/bin/sha256sum /dev/vda
+      1 jules : PWD=/app ; USER=root ; COMMAND=/usr/bin/dd if=/dev/vda bs=1 count=96

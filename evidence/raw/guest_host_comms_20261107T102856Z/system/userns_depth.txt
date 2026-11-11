@@ -1,0 +1,18 @@
+=== unprivileged userns capability depth ===
+-- id inside userns --
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+
+-- mount tmpfs inside userns+mountns --
+MOUNT_OK
+
+-- netns inside userns --
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+NETNS_OK
+
+-- pidns inside userns --
+PID_INSIDE=1
+    PID COMMAND
+      1 systemd
+
+-- /proc/self/uid_map --
+         0          0 4294967295

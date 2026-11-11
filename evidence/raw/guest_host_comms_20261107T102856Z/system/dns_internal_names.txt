@@ -1,0 +1,6 @@
+metadata.google.internal
+devbox-gateway.internal          192.168.0.1
+ftpmaster.internal
+google.internal
+metadata.goog                    169.254.169.254
+instance-data

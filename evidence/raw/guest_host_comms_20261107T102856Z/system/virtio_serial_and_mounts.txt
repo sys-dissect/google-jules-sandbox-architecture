@@ -1,0 +1,67 @@
+=== virtio-serial / console / vport devices ===
+crw-rw---- 1 root dialout 4, 64 Nov  7 09:02 /dev/ttyS0
+
+/sys/class/tty:
+total 0
+drwxr-xr-x  2 root root 0 Nov  7 11:41 .
+drwxr-xr-x 23 root root 0 Mar  6  2026 ..
+lrwxrwxrwx  1 root root 0 Mar  6  2026 console -> ../../devices/virtual/tty/console
+lrwxrwxrwx  1 root root 0 Mar  6  2026 ptmx -> ../../devices/virtual/tty/ptmx
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty -> ../../devices/virtual/tty/tty
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty0 -> ../../devices/virtual/tty/tty0
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty1 -> ../../devices/virtual/tty/tty1
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty10 -> ../../devices/virtual/tty/tty10
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty11 -> ../../devices/virtual/tty/tty11
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty12 -> ../../devices/virtual/tty/tty12
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty13 -> ../../devices/virtual/tty/tty13
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty14 -> ../../devices/virtual/tty/tty14
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty15 -> ../../devices/virtual/tty/tty15
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty16 -> ../../devices/virtual/tty/tty16
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty17 -> ../../devices/virtual/tty/tty17
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty18 -> ../../devices/virtual/tty/tty18
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty19 -> ../../devices/virtual/tty/tty19
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty2 -> ../../devices/virtual/tty/tty2
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty20 -> ../../devices/virtual/tty/tty20
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty21 -> ../../devices/virtual/tty/tty21
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty22 -> ../../devices/virtual/tty/tty22
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty23 -> ../../devices/virtual/tty/tty23
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty24 -> ../../devices/virtual/tty/tty24
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty25 -> ../../devices/virtual/tty/tty25
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty26 -> ../../devices/virtual/tty/tty26
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty27 -> ../../devices/virtual/tty/tty27
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty28 -> ../../devices/virtual/tty/tty28
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty29 -> ../../devices/virtual/tty/tty29
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty3 -> ../../devices/virtual/tty/tty3
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty30 -> ../../devices/virtual/tty/tty30
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty31 -> ../../devices/virtual/tty/tty31
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty32 -> ../../devices/virtual/tty/tty32
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty33 -> ../../devices/virtual/tty/tty33
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty34 -> ../../devices/virtual/tty/tty34
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty35 -> ../../devices/virtual/tty/tty35
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty36 -> ../../devices/virtual/tty/tty36
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty37 -> ../../devices/virtual/tty/tty37
+lrwxrwxrwx  1 root root 0 Mar  6  2026 tty38 -> ../../devices/virtual/tty/tty38
+
+=== virtio_console / hvc in dmesg ===
+[    0.000000] Command line: console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
+[    0.776001] Kernel command line: console=ttyS0 reboot=k panic=1 pci=off init=/usr/sbin/overlay-init ip=192.168.0.2::192.168.0.1:255.255.255.0::eth0:off systemd.set_credential=vmm.notify_socket:vsock-stream:2:9999 pci=off root=/dev/vda ro virtio_mmio.device=4K@0xc0001000:5 virtio_mmio.device=4K@0xc0002000:6 virtio_mmio.device=4K@0xc0003000:7 virtio_mmio.device=4K@0xc0004000:8
+[    1.347252] printk: legacy console [ttyS0] enabled
+[    2.120082] 00:00: ttyS0 at I/O 0x3f8 (irq = 29, base_baud = 115200) is a 16550A
+[    4.127355] systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+
+=== guest agent / supervisor binaries/processes ===
+  10554    2800 jules    /home/jules/go/bin/tailcat serve --ssh-authorized-keys=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7UMbg/h++f8V0Y2n4vdp7hahxkKuUy2JuSnlhVIg89 onkar@fedora-to-raspberrypi,ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAjyJnzKT3ta2HqxIcRM7ir9i6Sxdccq3JMJtkWsZJ9j u0_a451@localhost,ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU15YSbGpEQvbADLn+dStxC6xfcXIjMs9lawF7B+oyP hatch ssh
+
+=== filesystems / mounts (non-standard) ===
+      9
+
+=== /proc/filesystems (host-share types) ===
+	squashfs
+	fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	overlay
+
+=== /dev/fuse /dev/net/tun ===
+crw-rw-rw- 1 root root 10, 229 Mar  6  2026 /dev/fuse
+crw-rw-rw- 1 root root 10, 200 Mar  6  2026 /dev/net/tun

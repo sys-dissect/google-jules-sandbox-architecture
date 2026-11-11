@@ -1,0 +1,123 @@
+=== systemd-analyze ===
+Startup finished in 3.049s (kernel) + 18.167s (userspace) = 21.217s
+graphical.target reached after 18.127s in userspace.
+
+=== blame ===
+7.530s docker.service
+5.922s ldconfig.service
+2.838s containerd.service
+1.544s dpkg-db-backup.service
+ 908ms dev-vda.device
+ 900ms dev-vdb.device
+ 708ms user@1001.service
+ 634ms phpsessionclean.service
+ 579ms ssh.service
+ 508ms systemd-tmpfiles-setup.service
+ 429ms dbus.service
+ 416ms e2scrub_reap.service
+ 336ms sysstat-summary.service
+ 320ms apt-daily-upgrade.service
+ 304ms sysstat.service
+ 204ms systemd-udev-trigger.service
+ 193ms apt-daily.service
+ 187ms systemd-tmpfiles-setup-dev-early.service
+ 151ms systemd-logind.service
+ 144ms dev-hugepages.mount
+ 141ms dev-mqueue.mount
+ 140ms systemd-udevd.service
+ 132ms fstrim.service
+ 124ms var-lib-systemd.mount
+ 113ms sys-fs-fuse-connections.mount
+
+=== critical-chain ===
+The time when unit became active or started is printed after the "@" character.
+The time the unit took to start is printed after the "+" character.
+
+graphical.target @18.127s
+└─multi-user.target @18.127s
+  └─docker.service @10.595s +7.530s
+    └─containerd.service @7.718s +2.838s
+      └─dbus.service @7.255s +429ms
+        └─basic.target @7.251s
+          └─sockets.target @7.248s
+            └─docker.socket @7.213s +31ms
+              └─sysinit.target @7.161s
+                └─systemd-update-done.service @7.146s +10ms
+                  └─ldconfig.service @1.200s +5.922s
+                    └─local-fs.target @1.190s
+                      └─run-user-1001.mount @9.278s
+                        └─local-fs-pre.target @1.187s
+                          └─systemd-tmpfiles-setup-dev.service @1.170s +13ms
+                            └─systemd-sysusers.service @1.093s +52ms
+                              └─systemd-tmpfiles-setup-dev-early.service @890ms +187ms
+                                └─systemd-journald.socket @723ms
+                                  └─system.slice @595ms
+                                    └─-.slice @595ms
+
+=== dmesg milestones ===
+[    0.000000] Linux version 6.8.0 (feyu@feyu-encarta.c.googlers.com) (gcc (Debian 15.2.0-3) 15.2.0, GNU ld (GNU Binutils for Debian) 2.45) #1 SMP PREEMPT_DYNAMIC Fri Feb 20 20:38:43 UTC 2026
+[    0.763152] Booting paravirtualized kernel on KVM
+[    0.777127] random: crng init done
+[    2.741744] Freeing unused kernel image (initmem) memory: 2408K
+[    2.764984] Freeing unused kernel image (rodata/data gap) memory: 1412K
+[    3.607967] systemd[1]: systemd 255.4-1ubuntu8.12 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[    3.618608] systemd[1]: Detected virtualization kvm.
+[    3.620404] systemd[1]: Detected architecture x86-64.
+[    3.625680] systemd[1]: Received regular credentials: vmm.notify_socket
+[    3.628044] systemd[1]: Acquired 1 regular credentials, 0 untrusted credentials.
+[    3.642740] systemd[1]: Hostname set to <devbox>.
+[    4.062025] systemd[1]: Queued start job for default target graphical.target.
+[    4.081844] systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+[    4.088357] systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+[    4.094480] systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[    4.101397] systemd[1]: Created slice user.slice - User and Session Slice.
+[    4.106411] systemd[1]: Started systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch.
+[    4.113234] systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[    4.120154] systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+[    4.127355] systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+[    4.131906] systemd[1]: Reached target cryptsetup.target - Local Encrypted Volumes.
+[    4.137281] systemd[1]: Reached target integritysetup.target - Local Integrity Protected Volumes.
+[    4.143459] systemd[1]: Reached target network-online.target - Network is Online.
+[    4.148696] systemd[1]: Reached target paths.target - Path Units.
+[    4.153143] systemd[1]: Reached target remote-fs.target - Remote File Systems.
+[    4.158344] systemd[1]: Reached target slices.target - Slice Units.
+[    4.162820] systemd[1]: Reached target swap.target - Swaps.
+[    4.167004] systemd[1]: Reached target veritysetup.target - Local Verity Protected Volumes.
+[    4.172925] systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+[    4.181733] systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[    4.188134] systemd[1]: Listening on systemd-journald.socket - Journal Socket.
+[    4.193353] systemd[1]: systemd-pcrextend.socket - TPM2 PCR Extension (Varlink) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    4.201475] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[    4.207443] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[    4.235122] systemd[1]: Mounting dev-hugepages.mount - Huge Pages File System...
+[    4.242028] systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+[    4.247465] systemd[1]: sys-kernel-debug.mount - Kernel Debug File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/debug).
+[    4.251811] systemd[1]: sys-kernel-tracing.mount - Kernel Trace File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/tracing).
+[    4.257693] systemd[1]: var-lib-systemd.mount: Directory /var/lib/systemd to mount over is not empty, mounting anyway.
+[    4.262338] systemd[1]: Mounting var-lib-systemd.mount - /var/lib/systemd...
+[    4.271745] systemd[1]: Starting systemd-journald.service - Journal Service...
+[    4.276781] systemd[1]: kmod-static-nodes.service - Create List of Static Device Nodes was skipped because of an unmet condition check (ConditionFileNotEmpty=/lib/modules/6.8.0/modules.devname).
+[    4.285306] systemd[1]: Starting modprobe@configfs.service - Load Kernel Module configfs...
+[    4.292499] systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+[    4.302969] systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+[    4.310129] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[    4.317428] systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+[    4.324311] systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+[    4.335344] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[    4.340989] systemd[1]: systemd-pcrmachine.service - TPM2 PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    4.347217] systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+[    4.354793] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+[    4.361638] systemd[1]: systemd-tpm2-setup-early.service - TPM2 SRK Setup (Early) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    4.368144] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[    4.373674] systemd[1]: Started systemd-journald.service - Journal Service.
+
+=== journal boot milestones ===
+2026-03-06T17:10:29+00:00 devbox systemd[1]: Started systemd-journald.service - Journal Service.
+2026-03-06T17:10:36+00:00 devbox sshd[874]: Server listening on 0.0.0.0 port 22.
+2026-03-06T17:10:36+00:00 devbox sshd[874]: Server listening on :: port 22.
+2026-03-06T17:10:36+00:00 devbox systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+2026-03-06T17:10:36+00:00 devbox systemd[1]: Started devbox-ssh-over-vsock.service.
+2026-03-06T17:10:38+00:00 devbox systemd[887]: Startup finished in 613ms.
+2026-03-06T17:10:39+00:00 devbox systemd[1]: Started containerd.service - containerd container runtime.
+2026-11-07T09:02:17+00:00 devbox systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-07T09:02:17+00:00 devbox systemd[1]: Startup finished in 3.049s (kernel) + 18.167s (userspace) = 21.217s.

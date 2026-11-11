@@ -1,0 +1,108 @@
+    PID    PPID USER     STAT     ELAPSED CMD
+      1       0 root     Ss      01:22:41 /usr/sbin/init
+      2       0 root     S       01:22:41 [kthreadd]
+      3       2 root     S       01:22:41 [pool_workqueue_release]
+      4       2 root     I<      01:22:41 [kworker/R-rcu_g]
+      5       2 root     I<      01:22:41 [kworker/R-rcu_p]
+      6       2 root     I<      01:22:41 [kworker/R-slub_]
+      7       2 root     I<      01:22:41 [kworker/R-netns]
+      8       2 root     I       01:22:41 [kworker/0:0-events]
+      9       2 root     I<      01:22:41 [kworker/0:0H-events_highpri]
+     12       2 root     I<      01:22:41 [kworker/R-mm_pe]
+     13       2 root     I       01:22:41 [rcu_tasks_kthread]
+     14       2 root     I       01:22:41 [rcu_tasks_trace_kthread]
+     15       2 root     S       01:22:41 [ksoftirqd/0]
+     16       2 root     I       01:22:41 [rcu_preempt]
+     17       2 root     S       01:22:41 [migration/0]
+     18       2 root     S       01:22:41 [cpuhp/0]
+     19       2 root     S       01:22:41 [cpuhp/1]
+     20       2 root     S       01:22:41 [migration/1]
+     21       2 root     S       01:22:41 [ksoftirqd/1]
+     23       2 root     I<      01:22:41 [kworker/1:0H-events_highpri]
+     24       2 root     S       01:22:41 [cpuhp/2]
+     25       2 root     S       01:22:41 [migration/2]
+     26       2 root     S       01:22:41 [ksoftirqd/2]
+     28       2 root     I<      01:22:41 [kworker/2:0H-kblockd]
+     29       2 root     S       01:22:41 [cpuhp/3]
+     30       2 root     S       01:22:41 [migration/3]
+     31       2 root     S       01:22:41 [ksoftirqd/3]
+     33       2 root     I<      01:22:41 [kworker/3:0H-events_highpri]
+     34       2 root     S       01:22:41 [kdevtmpfs]
+     35       2 root     I<      01:22:41 [kworker/R-inet_]
+     36       2 root     S       01:22:41 [oom_reaper]
+     37       2 root     I<      01:22:41 [kworker/R-write]
+     38       2 root     S       01:22:41 [kcompactd0]
+     39       2 root     SN      01:22:41 [ksmd]
+     40       2 root     SN      01:22:41 [khugepaged]
+     41       2 root     I<      01:22:41 [kworker/R-crypt]
+     42       2 root     I<      01:22:41 [kworker/R-kbloc]
+     50       2 root     I<      01:22:41 [kworker/0:1H-kblockd]
+     78       2 root     S       01:22:41 [kswapd0]
+     84       2 root     I<      01:22:41 [kworker/R-kthro]
+     90       2 root     S       01:22:41 [irq/24-ACPI:Ged]
+     95       2 root     I<      01:22:41 [kworker/R-acpi_]
+    179       2 root     I<      01:22:41 [kworker/R-mld]
+    180       2 root     I<      01:22:41 [kworker/R-ipv6_]
+    181       2 root     I<      01:22:41 [kworker/1:1H-kblockd]
+    185       2 root     I<      01:22:41 [kworker/R-kstrp]
+    187       2 root     I<      01:22:41 [kworker/3:1H-kblockd]
+    413       2 root     I<      01:22:40 [kworker/2:1H-kblockd]
+    414       2 root     S       01:22:40 [jbd2/vdb-8]
+    415       2 root     I<      01:22:40 [kworker/R-ext4-]
+    439       1 root     S<s     01:22:39 /usr/lib/systemd/systemd-journald
+    783       2 root     I       01:22:38 [kworker/3:3-events]
+    790       1 root     Ss      01:22:38 /usr/lib/systemd/systemd-udevd
+    823       2 root     I       01:22:38 [kworker/1:3-virtio_vsock]
+    833       1 message+ Ss      01:22:32 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    841       1 root     Ss      01:22:32 /usr/lib/systemd/systemd-logind
+    844       1 root     Ss+     01:22:32 /sbin/agetty -o -p -- \u --noclear - linux
+    845       1 root     Ss+     01:22:32 /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600 - vt220
+    872       1 root     Ssl     01:22:32 /usr/bin/containerd
+    874       1 root     Ss      01:22:32 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    876       1 root     Ss      01:22:32 /usr/bin/socat -d VSOCK-LISTEN:22,fork TCP4:127.0.0.1:22
+    877     874 root     Ss      01:22:31 sshd: swebot [priv]
+    887       1 jules    Ss      01:22:30 /usr/lib/systemd/systemd --user
+    888     887 jules    S       01:22:30 (sd-pam)
+    907     877 jules    S       01:22:29 sshd: swebot@notty
+    911       1 root     Ssl     01:22:29 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+    918     874 root     Ss      01:22:29 sshd: swebot [priv]
+    929     918 jules    S       01:22:28 sshd: swebot@notty
+   2799       1 jules    Ss      01:22:13 tmux new-session -d -s default -c /app -e JULES_SESSION_ID=7665539030394901769 -e GIT_TERMINAL_PROMPT=0
+   2800    2799 jules    Ss+     01:22:13 -bash
+  10554    2800 jules    Sl      01:19:52 /home/jules/go/bin/tailcat serve --ssh-authorized-keys=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7UMbg/h++f8V0Y2n4vdp7hahxkKuUy2JuSnlhVIg89 onkar@fedora-to-raspberrypi,ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAjyJnzKT3ta2HqxIcRM7ir9i6Sxdccq3JMJtkWsZJ9j u0_a451@localhost,ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU15YSbGpEQvbADLn+dStxC6xfcXIjMs9lawF7B+oyP hatch ssh
+  14198   10554 jules    Ss+     01:17:22 /bin/bash -l
+  17710     874 root     Ss      01:10:13 sshd: swebot [priv]
+  17721   17710 jules    S       01:10:12 sshd: swebot@notty
+  25359   10554 jules    Ss      01:01:29 /bin/bash -l
+  25585   25359 jules    Sl+     01:01:14 opencode
+  37631       2 root     I          47:41 [kworker/u8:1-events_unbound]
+  41971     874 root     Ss         36:55 sshd: swebot [priv]
+  41982   41971 jules    S          36:55 sshd: swebot@notty
+  41998       2 root     I          36:54 [kworker/2:2-cgroup_destroy]
+  42286       2 root     I          36:36 [kworker/u8:2-events_unbound]
+  64424       2 root     I          29:12 [kworker/0:1-events_power_efficient]
+  76063     874 root     Ss         27:47 sshd: swebot [priv]
+  76065       2 root     I          27:47 [kworker/1:0-events]
+  76075   76063 jules    S          27:47 sshd: swebot@notty
+  78355       2 root     I          27:17 [kworker/3:1]
+  84117   10554 jules    Ss         21:34 /bin/bash -l
+  84343   84117 jules    Sl+        21:24 opencode
+  89253       1 root     S          15:55 sudo -n journalctl -f -o short-iso
+  89254       1 jules    S          15:55 grep --line-buffered -E swebot|devbox-session|PROMPT_COMMAND|Accepted publickey|socat
+  89256   89253 root     S          15:55 journalctl -f -o short-iso
+  89574     874 root     Ss         14:31 sshd: swebot [priv]
+  89585   89574 jules    S          14:30 sshd: swebot@notty
+  90664       2 root     I          14:00 [kworker/u8:0-events_unbound]
+ 101540       2 root     I          12:08 [kworker/2:1-events]
+ 127307   10554 jules    Ss         07:15 /bin/bash -l
+ 127537  127307 jules    Sl+        07:04 opencode
+ 137455       2 root     I          02:50 [kworker/u8:3-events_unbound]
+ 139139       2 root     I          02:07 [kworker/1:1-virtio_vsock]
+ 139155       2 root     I          02:04 [kworker/u8:4-events_unbound]
+ 139158       2 root     I          02:04 [kworker/u8:5-events_unbound]
+ 139169       2 root     I          02:04 [kworker/u8:6-events_unbound]
+ 139170       2 root     I          02:04 [kworker/u8:7-events_unbound]
+ 139171       2 root     I          02:04 [kworker/u8:8]
+ 139371  127537 jules    Ss         00:00 /bin/bash -c D=$(cat /tmp/ghc_dir)/system; TS=$(date -u +%Y-%m-%dT%H:%M:%SZ); { echo "captured_utc=$TS"; uname -a; echo; cat /proc/cmdline; echo; cat /proc/version; echo; systemd-detect-virt; hostnamectl 2>/dev/null; } > "$D/identity.txt" 2>&1; { free -h; echo; nproc; echo; lscpu 2>/dev/null; } > "$D/cpu_mem.txt" 2>&1; { lsblk -f; echo; df -hT; echo; mount; } > "$D/storage_mounts.txt" 2>&1; { ip -d addr; echo; ip route show table all; echo; ip neigh; echo; ss -ltnup; echo; ss -a --vsock; } > "$D/net.txt" 2>&1; { cat /proc/interrupts; echo; cat /proc/iomem; } > "$D/irq_iomem.txt" 2>&1; sudo -n dmesg > "$D/dmesg.txt" 2>&1; sudo -n zcat /proc/config.gz > "$D/kernel_config.txt" 2>&1; dpkg-query -W -f='${Package}\t${Version}\n' > "$D/dpkg_list.txt" 2>&1; systemctl list-unit-files --no-pager > "$D/unit_files.txt" 2>&1; systemctl list-units --no-pager > "$D/units.txt" 2>&1; ps -eo pid,ppid,user,stat,etime,cmd > "$D/proc_tree.txt" 2>&1; { cat /etc/os-release; echo; cat /etc/devbox-version-info /etc/devbox-rebuild-hash; echo; cat /etc/cloud/build.info 2>/dev/null; } > "$D/provenance.txt" 2>&1; sudo -n journalctl --disk-usage > "$D/journal_size.txt" 2>&1; echo "done"; ls -la "$D"; echo "pkg count: $(wc -l < "$D/dpkg_list.txt")"
+ 139379       1 root     Ss         00:00 /usr/lib/systemd/systemd-hostnamed
+ 139404  139371 jules    R    441077234-00:18:40 ps -eo pid,ppid,user,stat,etime,cmd

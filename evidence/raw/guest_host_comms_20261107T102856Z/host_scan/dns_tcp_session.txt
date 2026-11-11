@@ -1,0 +1,17 @@
+=== persistent DNS-over-TCP session to 192.168.0.1:53 ===
+connected: ('192.168.0.2', 34930) -> ('192.168.0.1', 53)
+
+[query 1] version.bind type=16 class=3 -> 55 bytes
+id=0x4201 rcode=0 ancount=1
+  TXT dnsmasq-2.91
+
+[query 2] opencode-dialog-1.devbox-gateway.internal type=1 class=1 -> 75 bytes
+id=0x4202 rcode=0 ancount=1
+  A 192.168.0.1
+
+[query 3] opencode-dialog-2.devbox-gateway.internal type=1 class=1 -> 75 bytes
+id=0x4203 rcode=0 ancount=1
+  A 192.168.0.1
+
+socket still open after 3 exchanges: True
+session closed by guest

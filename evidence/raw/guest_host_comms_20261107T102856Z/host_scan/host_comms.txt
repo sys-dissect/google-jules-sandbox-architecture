@@ -1,0 +1,88 @@
+=== HTTP GET /healthz ===
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Sat, 07 Nov 2026 11:23:45 GMT
+Content-Length: 58
+Cache-Control: no-cache
+Content-Type: text/html
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Date: Sat, 07 Nov 2026 11:23:45 GMT
+Accept-Ranges: bytes
+Set-Cookie: _gh_sess=QzJEgVY87IikG2XJzraU%2FeU1AUfs1q8hucjNQcJql540M3A9D5F%2F88hgF4b3Wm8inn1arMYbHoitHxNN7lk37dIdhp6EKKiihxTEiLiI73Zq4c5FAvJVUoNTB6XNd%2FuGdKjOeHF7GD0vhEDiNWeWaZJTocRMPDNvEiPxVs0cDNSThBa1%2FBtRakcQA21hvnDdQGyRmoocTYT3bL3GBSQU2%2BnORHFCSFBzQ4LVITeMmP6W9T0z4WbojiVTnYT7vafLl5kz6mspjKPmNS0h8lIaJA%3D%3D--8D8Tx7prh%2FYz1F8u--oafp9PvMnuOYEdlwbOgBXg%3D%3D; path=/; HttpOnly; secure; SameSite=Lax, _octo=GH1.1.592878210.1794050625; expires=Sun, 07 Nov 2027 11:23:45 GMT; domain=.github.com; path=/; secure; SameSite=Lax, logged_in=no; expires=Sun, 07 Nov 2027 11:23:45 GMT; domain=.github.com; path=/; HttpOnly; secure; SameSite=Lax
+X-GitHub-Request-Id: 8D40:99FE4:846706:A24CE1:6AEF0A41
+x-github-edge-region: iad
+
+<html><body><h1>200 OK</h1>
+Service ready.
+</body></html>
+
+=== HTTP POST /healthz (body echo test) ===
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Sat, 07 Nov 2026 11:23:45 GMT
+Content-Length: 58
+Cache-Control: no-cache
+Content-Type: text/html
+X-GitHub-Request-Id: 8D41:F8E57:8857E2:A5DFC0:6AEF0A41
+x-github-edge-region: iad
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+<html><body><h1>200 OK</h1>
+Service ready.
+</body></html>
+
+=== HTTP Host header = example.com ===
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Sat, 07 Nov 2026 11:23:45 GMT
+Date: Sat, 07 Nov 2026 11:23:39 GMT
+Content-Type: text/html; charset=utf-8
+Vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, X-GitHub-Client-Version, Accept-Language, Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With
+content-language: en-US
+ETag: W/"e6274396ec6308b0252014c9b55eb895"
+Cache-Control: max-age=0, private, must-revalidate
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+
+=== absolute-URI (forward-proxy) request ===
+HTTP/1.0 400 Bad Request: Absolute URI with domain/scheme is not allowed.
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Sat, 07 Nov 2026 11:23:45 GMT
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 392
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Error response</title>
+
+=== DNS UDP version.bind ===
+"dnsmasq-2.91"
+=== DNS UDP probe label ===
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42302
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+opencode-probe-1794050625.devbox-gateway.internal. 0 IN	A 192.168.0.1
+
+=== DNS over TCP ===
+"dnsmasq-2.91"
+=== ICMP custom payload (hex=OPENCODE_HOST) ===
+PATTERN: 0x4f50454e434f44455f484f5354
+PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.337 ms
+
+--- 192.168.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.337/0.337/0.337/0.000 ms
+
+=== ARP/neighbour ===
+192.168.0.1 dev eth0 lladdr 42:d0:d9:5b:d3:31 REACHABLE

@@ -12,7 +12,7 @@
 This specification details the comprehensive systems architecture of Google Jules, Google’s cloud-hosted asynchronous software engineering agent. Unlike traditional container sandboxes or gVisor syscall-emulated isolation wrappers (e.g. Gemini Spark), Google Jules executes inside dedicated, hardware-isolated KVM microVMs powered by AWS Firecracker.
 
 Through internal empirical telemetry, forensic superblock audits, ACPI table disassembly, and process tracing, this whitepaper uncovers the 5 operational layers supporting Jules:
-1. **Virtualization & Hardware Isolation**: Strict PCI-free (`pci=off`) microVM topology with Virtio-MMIO registers, x86_64 TSC clocksource, and sub-second warm-resumption mechanics.
+1. **Virtualization & Hardware Isolation**: Strict PCI-free (`pci=off`) microVM topology with Virtio-MMIO registers, x86_64 TSC clocksource, and warm snapshot-resume mechanics (measured ~3.0 s kernel + ~18.2 s userspace to `graphical.target` in a live capture; see `evidence/AUTH_AND_BOOT_SURFACE.md`).
 2. **Storage Subsystem & Ephemeral Lifecycle**: Hybrid dual-disk architecture combining an immutable SquashFS 4.0 golden image with an ext4 copy-on-write scratch layer orchestrated via `/usr/sbin/overlay-init` and `pivot_root`.
 3. **Control Plane & Command Harness**: AF_VSOCK-based hypervisor-to-guest orchestration, socat-bridged SSH ingress, and an asynchronous headless `tmux` FIFO harness synchronized with `inotifywait`.
 4. **Networking & Transparent Reverse Git Proxy**: Static kernel boot configuration, transparent host-side Python Git OAuth injection (`devbox-gateway.internal:8080`), and unthrottled GCP `us-central1` public NAT egress.

@@ -1,0 +1,11 @@
+/healthz -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 ]
+/readyz -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/livez -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/metrics -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/debug -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/version -> 404 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/status -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/robots.txt -> 200 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/.git/HEAD -> 404 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/api -> 404 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
+/openapi.json -> 410 [Server: BaseHTTP/0.6 Python/3.12.3 Server: github.com ]
